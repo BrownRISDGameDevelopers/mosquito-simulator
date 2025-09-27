@@ -1,3 +1,30 @@
-[gd_scene format=3 uid="uid://cu1ldntnivb8j"]
+[gd_scene load_steps=2 format=3 uid="uid://cu1ldntnivb8j"]
+
+[ext_resource type="Script" uid="uid://cp50y7rdio8mm" path="res://scripts/main_menu.gd" id="1_yqorp"]
 
 [node name="MainMenu" type="Node3D"]
+script = ExtResource("1_yqorp")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 918.0
+offset_top = 536.0
+offset_right = 964.0
+offset_bottom = 567.0
+text = "Start"
+
+[node name="InfiniteMode" type="Button" parent="."]
+offset_left = 886.0
+offset_top = 594.0
+offset_right = 998.0
+offset_bottom = 625.0
+text = "Infinite Mode
+"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 923.0
+offset_top = 656.0
+offset_right = 965.0
+offset_bottom = 687.0
+text = "Quit"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
