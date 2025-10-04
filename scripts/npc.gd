@@ -57,5 +57,7 @@ func _physics_process(_delta):
 	var current_agent_position: Vector3 = global_position
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 
+	print("Current: ", current_agent_position, " Next: ", next_path_position)
+
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	move_and_slide()
