@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://21duxb65jl10"]
+
+[node name="SwatMinigame" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 183.0
+offset_bottom = 59.0
+color = Color(0.3645068, 0.19753501, 0.09463603, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "swatting minigame"

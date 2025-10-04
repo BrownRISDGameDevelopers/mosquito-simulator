@@ -2,10 +2,13 @@ extends CharacterBody3D
 
 class_name Player
 
+signal minigame_toggle
 
 const SPEED = 1
 const JUMP_VELOCITY = 4.5
 
+var on_camper = false
+var current_camper
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -28,3 +31,16 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_area_3d_body_entered(body: Node3D):
+	if not on_camper:
+		minigame_toggle.emit()
+		on_camper = true
+		current_camper = body
+
+func _on_area_3d_body_exited(body: Node3D):
+	if on_camper and body == current_camper:
+		minigame_toggle.emit()
+		on_camper = false
+		current_camper = null

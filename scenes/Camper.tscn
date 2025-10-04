@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ayg4tlicupc"]
+
+[ext_resource type="Texture2D" uid="uid://di0rxj8b15frg" path="res://assets/tree.PNG" id="1_g1f8e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g1f8e"]
+radius = 0.25
+height = 1.0
+
+[node name="Camper" type="CharacterBody3D" groups=["Campers"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 2
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_g1f8e")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_g1f8e")
