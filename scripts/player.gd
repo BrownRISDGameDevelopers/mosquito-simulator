@@ -3,7 +3,7 @@ extends CharacterBody3D
 class_name Player
 
 
-const SPEED = 1
+const SPEED = 5
 const JUMP_VELOCITY = 4.5
 
 
@@ -20,6 +20,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
