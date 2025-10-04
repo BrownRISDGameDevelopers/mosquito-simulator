@@ -1,13 +1,14 @@
-[gd_scene format=3 uid="uid://21duxb65jl10"]
+[gd_scene load_steps=3 format=3 uid="uid://21duxb65jl10"]
+
+[ext_resource type="PackedScene" uid="uid://dqrapnubr13ws" path="res://scenes/Player2D.tscn" id="1_xre7j"]
+[ext_resource type="Texture2D" uid="uid://bqotwpd140nfa" path="res://assets/child sprite 1.png" id="2_86fu8"]
 
 [node name="SwatMinigame" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 183.0
-offset_bottom = 59.0
-color = Color(0.3645068, 0.19753501, 0.09463603, 1)
+[node name="ChildSprite1" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(30, 30)
+texture = ExtResource("2_86fu8")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "swatting minigame"
+[node name="Player2D" parent="." instance=ExtResource("1_xre7j")]
+position = Vector2(960, 540)

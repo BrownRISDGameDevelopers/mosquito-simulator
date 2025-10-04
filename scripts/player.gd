@@ -11,6 +11,8 @@ var on_camper = false
 var current_camper
 
 func _physics_process(delta: float) -> void:
+	if on_camper:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
