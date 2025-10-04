@@ -31,17 +31,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_hitbox_body_entered(body: Node3D) -> void:
-	if body.name.begins_with("npc"):
+	if body is NPC:
 		print("entered npc")
 		var bubble_scene = preload("res://scenes/SpeechBubble.tscn")
 		var bubble = bubble_scene.instantiate()
 
-		# var camera = $Camera3D
-		# var world_pos = body.global_position + Vector3(0, 2, 0)  # offset above head
-		# var screen_pos = camera.unproject_position(world_pos)
-		# bubble.global_position = screen_pos
-		
-		bubble.npc = body             # pass the NPC node
-		bubble.camera = $Camera3D     # reference your main camera
-   
-		get_tree().current_scene.add_child(bubble)
+		var camera = get_tree().current_scene.get_node("Camera3D")
+		var world_pos = body.global_position + Vector3(0, 0, 0)  # offset above head
+		var screen_pos = camera.unproject_position(world_pos)
+		bubble.global_position = screen_pos
+
+		get_tree().current_scene.get_node("CanvasLayer").add_child(bubble)

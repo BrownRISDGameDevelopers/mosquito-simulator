@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://ugb4dl0qkpih"]
+[gd_scene load_steps=17 format=3 uid="uid://ugb4dl0qkpih"]
 
 [ext_resource type="Script" uid="uid://cro18pkffxuew" path="res://scripts/player.gd" id="1_5hauk"]
 [ext_resource type="Script" uid="uid://r64v6uqb3av8" path="res://scripts/camera.gd" id="2_lajc7"]
-[ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="3_xkm8s"]
+[ext_resource type="PackedScene" path="res://scenes/NPC.tscn" id="3_xkm8s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tm3qm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -44,9 +44,7 @@ height = 2.8579102
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lajc7"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lajc7"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lajc7"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_xkm8s"]
 
 [node name="Map" type="Node3D"]
 
@@ -113,3 +111,10 @@ player = NodePath("../Player")
 
 [node name="NPC" parent="." instance=ExtResource("3_xkm8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1442285, 0.24709839, -1.1712259)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC"]
+shape = SubResource("SphereShape3D_xkm8s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="body_entered" from="Player/Hitbox" to="Player" method="_on_hitbox_body_entered"]

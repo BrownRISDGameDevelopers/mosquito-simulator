@@ -5,16 +5,14 @@
 [node name="Speech Bubble" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 179.0
+offset_bottom = 167.0
 script = ExtResource("1_2gmo7")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = -90.0
-offset_top = -80.0
-offset_right = 89.0
-offset_bottom = 63.0
+offset_right = 200.0
+offset_bottom = 200.0
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
