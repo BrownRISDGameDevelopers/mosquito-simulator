@@ -2,9 +2,11 @@ extends CharacterBody3D
 
 class_name Player
 
-
-const SPEED = 1
+var SPEED = 1
+var accelerating: bool = false
 const JUMP_VELOCITY = 4.5
+const ACCELERATE_SPEED = 2
+const NORMAL_SPEED = 1
 
 
 func _physics_process(delta: float) -> void:
@@ -18,6 +20,14 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	var accelearte_req := Input.is_action_pressed("accelerate");
+	if accelearte_req and not accelerating:
+		accelerating = true
+		SPEED = ACCELERATE_SPEED
+	elif not accelearte_req and accelerating:
+		accelerating = false
+		SPEED = NORMAL_SPEED
+
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
