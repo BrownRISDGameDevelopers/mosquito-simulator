@@ -24,6 +24,8 @@ func _physics_process(delta: float) -> void:
 	if accelearte_req and not accelerating:
 		accelerating = true
 		SPEED = ACCELERATE_SPEED
+		#
+
 	elif not accelearte_req and accelerating:
 		accelerating = false
 		SPEED = NORMAL_SPEED
