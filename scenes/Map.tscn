@@ -1,16 +1,40 @@
-[gd_scene load_steps=8 format=3 uid="uid://ugb4dl0qkpih"]
+[gd_scene load_steps=15 format=3 uid="uid://ugb4dl0qkpih"]
 
 [ext_resource type="Script" uid="uid://cro18pkffxuew" path="res://scripts/player.gd" id="1_5hauk"]
 [ext_resource type="Script" uid="uid://r64v6uqb3av8" path="res://scripts/camera.gd" id="2_lajc7"]
+[ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="3_xkm8s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tm3qm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_7ho5x"]
+sky_material = SubResource("ProceduralSkyMaterial_tm3qm")
+
+[sub_resource type="Environment" id="Environment_yyirk"]
+background_mode = 2
+sky = SubResource("Sky_7ho5x")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_41ykk"]
+vertices = PackedVector3Array(-4.5, 0.26000002, 0, -4.25, 0.26000002, 0, -4, 0.26000002, -0.75, -4.5, 0.26000002, -4.5, 4.5, 0.26000002, -4.5, -0.25, 0.26000002, -4.25, 1.25, 0.26000002, -4, -0.75, 0.26000002, -0.75, -0.75, 0.26000002, -3.25, 1, 0.26000002, -0.75, 4.5, 0.26000002, -0.5, -4, 0.26000002, 0.75, -4.5, 0.26000002, 4.5, 4.5, 0.26000002, 4.5, -0.75, 0.26000002, 4.25, -0.75, 0.26000002, 0.75, 0.75, 0.26000002, 4, 4.5, 0.26000002, 0.5, 1, 0.26000002, 0.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(7, 2, 8), PackedInt32Array(8, 2, 3), PackedInt32Array(9, 6, 10), PackedInt32Array(10, 6, 4), PackedInt32Array(5, 8, 3), PackedInt32Array(5, 3, 4), PackedInt32Array(1, 11, 0), PackedInt32Array(0, 11, 12), PackedInt32Array(14, 13, 12), PackedInt32Array(15, 14, 11), PackedInt32Array(11, 14, 12), PackedInt32Array(14, 16, 13), PackedInt32Array(18, 17, 16), PackedInt32Array(16, 17, 13)]
+cell_height = 0.18
+agent_height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lajc7"]
 albedo_color = Color(0.3658983, 0.59, 0.2773, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xkm8s"]
 material = SubResource("StandardMaterial3D_lajc7")
+size = Vector2(10, 10)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5hauk"]
-size = Vector3(2, 0.1, 2)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_xkm8s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_inly4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ctrk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tm3qm"]
 
@@ -18,17 +42,45 @@ size = Vector3(2, 0.1, 2)
 
 [node name="Map" type="Node3D"]
 
-[node name="Floor" type="MeshInstance3D" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yyirk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_41ykk")
+
+[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D"]
 mesh = SubResource("PlaneMesh_xkm8s")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Floor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
-shape = SubResource("BoxShape3D_5hauk")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_xkm8s")
+
+[node name="Obstacles" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D/Obstacles"]
+transform = Transform3D(0.37610993, 0.0026367025, 0.4772869, -0.0150520895, 0.9976314, -0.0012159807, -7.4502215, -0.0018824607, 0.024097357, 0.098350786, 0.42696798, -0.001104329)
+mesh = SubResource("BoxMesh_inly4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Obstacles/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Obstacles/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_7ctrk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Obstacles"]
+transform = Transform3D(7.4597254, -4.1154635e-11, 1.7462298e-10, 9.931682e-10, 0.99763656, -1.0477379e-09, -9.313226e-10, 2.3283064e-09, 0.47789636, 0.098350786, 0.426968, -0.0011043289)
+mesh = SubResource("BoxMesh_inly4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Obstacles/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Obstacles/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_7ctrk")
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.849088, 0, 1.8766401)
 script = ExtResource("1_5hauk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
@@ -43,3 +95,6 @@ shape = SubResource("CapsuleShape3D_yyirk")
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0.85, 0.5)
 script = ExtResource("2_lajc7")
 player = NodePath("../Player")
+
+[node name="NPC" parent="." instance=ExtResource("3_xkm8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1442285, 0.24709839, -1.1712259)
