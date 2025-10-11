@@ -44,4 +44,5 @@ render_target_update_mode = 4
 
 [node name="Map" parent="MapViewport/SubViewport" instance=ExtResource("2_h42ee")]
 
+[connection signal="exited_bounds" from="MinigameViewport/SubViewport/SwatMinigame" to="." method="_on_swat_minigame_exited_bounds"]
 [connection signal="minigame_toggle" from="MapViewport/SubViewport/Map" to="." method="_on_map_minigame_toggle"]
