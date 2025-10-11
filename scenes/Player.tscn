@@ -22,6 +22,7 @@ shape = SubResource("CapsuleShape3D_yyirk")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+billboard = 1
 texture = ExtResource("2_3li8b")
 
 [node name="Area3D" type="Area3D" parent="."]

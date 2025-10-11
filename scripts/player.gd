@@ -7,6 +7,10 @@ signal minigame_toggle
 const SPEED = 5
 const JUMP_VELOCITY = 4.5
 
+signal sucked_blood
+
+@onready var blood_bar = $"../Camera3D/Control"
+
 var on_camper = false
 var can_attach = true
 
@@ -45,7 +49,15 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+	if Input.is_action_just_pressed("suck"):
+		_add_blood()
+	
+
 	move_and_slide()
+	
+func _add_blood():
+	emit_signal("sucked_blood")
+	blood_bar._on_sucked_blood()
 
 func cycle_helper(t, min_bound, max_bound):
 	if min_bound * PI <= t and t <= max_bound * PI:
