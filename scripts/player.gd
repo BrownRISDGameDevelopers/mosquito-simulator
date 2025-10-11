@@ -5,6 +5,7 @@ class_name Player
 
 const SPEED = 5
 const JUMP_VELOCITY = 4.5
+var sprite;
 
 
 func _physics_process(delta: float) -> void:
@@ -30,15 +31,19 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	if Input.is_action_just_pressed("bite") and sprite:
+		_on_bite_me_pressed()
+
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body is NPC:
 		print("entered npc")
-		var bubble_scene = preload("res://scenes/SpeechBubble.tscn")
-		var bubble = bubble_scene.instantiate()
+		var popup_node = body.get_node("popup_node")
+		sprite = popup_node.get_node("popup_sprite")
+		sprite.visible = true;
 
-		var camera = get_tree().current_scene.get_node("Camera3D")
-		var world_pos = body.global_position + Vector3(0, 0, 0)  # offset above head
-		var screen_pos = camera.unproject_position(world_pos)
-		bubble.global_position = screen_pos
+func _on_bite_me_pressed() -> void:
+	print("bite me button pressed")
+	sprite.visible = false;
+	sprite = null
 
-		get_tree().current_scene.get_node("CanvasLayer").add_child(bubble)
+	

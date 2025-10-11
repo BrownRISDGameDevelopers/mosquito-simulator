@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://ugb4dl0qkpih"]
+[gd_scene load_steps=21 format=3 uid="uid://ugb4dl0qkpih"]
 
 [ext_resource type="Script" uid="uid://cro18pkffxuew" path="res://scripts/player.gd" id="1_5hauk"]
 [ext_resource type="Script" uid="uid://r64v6uqb3av8" path="res://scripts/camera.gd" id="2_lajc7"]
-[ext_resource type="PackedScene" path="res://scenes/NPC.tscn" id="3_xkm8s"]
+[ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="3_xkm8s"]
+[ext_resource type="Script" uid="uid://cxjeq1yk5lict" path="res://scenes/popup_sprite.gd" id="4_tm3qm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tm3qm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -45,6 +46,15 @@ height = 2.8579102
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lajc7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xkm8s"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tm3qm"]
+viewport_path = NodePath("NPC/popup_node/SubViewport")
+
+[sub_resource type="InputEventAction" id="InputEventAction_tm3qm"]
+action = &"Bite Button"
+
+[sub_resource type="Shortcut" id="Shortcut_yyirk"]
+events = [SubResource("InputEventAction_tm3qm")]
 
 [node name="Map" type="Node3D"]
 
@@ -98,23 +108,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0466309, 0)
 shape = SubResource("CapsuleShape3D_yyirk")
 
 [node name="Hitbox" type="Area3D" parent="Player"]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0.08120507, 1.2568758, -0.13669729)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14341736, 1.2568759, -0.13669777)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Hitbox"]
-transform = Transform3D(1.4999949, 0, 0.0039008064, 0, 1.5, 0, -0.0039008064, 0, 1.4999949, -2.9685907e-09, -5.7908706e-05, -3.111956e-05)
+transform = Transform3D(1.4999949, 0, 0.0039008067, 0, 1.5, 0, -0.0039008067, 0, 1.4999949, -0.0022982508, -5.7908706e-05, -3.1113625e-05)
 shape = SubResource("CapsuleShape3D_lajc7")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0.85, 0.5)
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 2.510848, 0.5)
 script = ExtResource("2_lajc7")
 player = NodePath("../Player")
 
 [node name="NPC" parent="." instance=ExtResource("3_xkm8s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1442285, 0.24709839, -1.1712259)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.1442285, 0.24709839, -1.1712259)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC"]
 shape = SubResource("SphereShape3D_xkm8s")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="popup_node" type="Node3D" parent="NPC"]
+
+[node name="popup_sprite" type="Sprite3D" parent="NPC/popup_node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23249483, 0.09675431, -0.30684423)
+billboard = 1
+texture = SubResource("ViewportTexture_tm3qm")
+script = ExtResource("4_tm3qm")
+
+[node name="SubViewport" type="SubViewport" parent="NPC/popup_node"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(200, 100)
+render_target_update_mode = 4
+
+[node name="bite me" type="Button" parent="NPC/popup_node/SubViewport"]
+offset_right = 97.0
+offset_bottom = 31.0
+pivot_offset = Vector2(-2432, -479)
+action_mode = 0
+shortcut = SubResource("Shortcut_yyirk")
+text = "click to bite"
 
 [connection signal="body_entered" from="Player/Hitbox" to="Player" method="_on_hitbox_body_entered"]
+[connection signal="pressed" from="NPC/popup_node/SubViewport/bite me" to="Player" method="_on_bite_me_pressed"]
