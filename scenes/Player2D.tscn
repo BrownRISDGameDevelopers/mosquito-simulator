@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqrapnubr13ws"]
+
+[ext_resource type="Texture2D" uid="uid://di0rxj8b15frg" path="res://assets/tree.PNG" id="1_l3lvq"]
+[ext_resource type="Script" uid="uid://dqucnn32ba1gt" path="res://scripts/player_2d.gd" id="1_smyaq"]
+
+[node name="Player2D" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_smyaq")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_l3lvq")
+
+[node name="Camera2D" type="Camera2D" parent="."]

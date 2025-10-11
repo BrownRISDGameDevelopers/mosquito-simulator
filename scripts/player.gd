@@ -2,16 +2,21 @@ extends CharacterBody3D
 
 class_name Player
 
+signal minigame_toggle
 
-const SPEED = 1
+const SPEED = 5
 const JUMP_VELOCITY = 4.5
 
 signal sucked_blood
 
 @onready var blood_bar = $"../Camera3D/Control"
 
+var on_camper = false
+var current_camper
 
 func _physics_process(delta: float) -> void:
+	if on_camper:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -24,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -40,3 +46,16 @@ func _physics_process(delta: float) -> void:
 func _add_blood():
 	emit_signal("sucked_blood")
 	blood_bar._on_sucked_blood()
+
+
+func _on_area_3d_body_entered(body: Node3D):
+	if not on_camper:
+		minigame_toggle.emit()
+		on_camper = true
+		current_camper = body
+
+func _on_area_3d_body_exited(body: Node3D):
+	if on_camper and body == current_camper:
+		minigame_toggle.emit()
+		on_camper = false
+		current_camper = null
