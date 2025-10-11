@@ -19,19 +19,19 @@ func _on_timer_timeout() -> void:
 @onready var blood_left = 100
 
 func _ready():
-	update()	
+	update()
 
-func _on_timer_timeout() -> void:	
+func _on_timer_timeout() -> void:
 	update()
 	
 
 func update():
 	print("updating")
 	blood_left -= 1
-	$TextureProgressBar.value = blood_left
+	$ProgressBar.value = blood_left
 	
 func _on_sucked_blood():
-	blood_left +=10
+	blood_left += 10
 	print("sucking blood")
-	if (blood_left >100):
+	if (blood_left > 100):
 		blood_left = 100
