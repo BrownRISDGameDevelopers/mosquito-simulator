@@ -11,16 +11,7 @@ const DECELERATION: float = 2
 var current_speed: float = 1
 var accelerating: bool = false
 
-func _physics_process(delta: float) -> void:
-	player_movement(delta)
-
-	move_and_slide()
-
-func player_movement(delta):
 signal minigame_toggle
-
-const SPEED = 5
-const JUMP_VELOCITY = 4.5
 
 signal sucked_blood
 
@@ -48,6 +39,14 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	player_movement(delta)
+		
+	if Input.is_action_just_pressed("suck"):
+		_add_blood()
+
+	move_and_slide()
+
+func player_movement(delta):
 	# handling sprinting
 	var sprint_req := Input.is_action_pressed("sprint");
 	if sprint_req and not accelerating:
@@ -71,23 +70,11 @@ func _physics_process(delta: float) -> void:
 
 	if direction == Vector3.ZERO:
 		horizontal_velocity = horizontal_velocity.move_toward(Vector3.ZERO, DECELERATION * delta)
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
 	else:
 		horizontal_velocity = horizontal_velocity.move_toward(target_velocity, ACCELERATION * delta)
 
 	velocity.x = horizontal_velocity.x
 	velocity.z = horizontal_velocity.z
-
-	print(current_speed)
-	if Input.is_action_just_pressed("suck"):
-		_add_blood()
-	
-
-	move_and_slide()
 	
 func _add_blood():
 	emit_signal("sucked_blood")
