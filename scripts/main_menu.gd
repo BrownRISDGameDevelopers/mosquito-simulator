@@ -16,6 +16,8 @@ func _on_infinite_mode_pressed() -> void:
 	# Global.starting_level = INFINITE_MODE
 	# get_tree().change_scene_to_packed(LEVEL_CONTAINER)
 	print("infinite mode")
+	Global.starting_level = INFINITE_MODE
+	get_tree().change_scene_to_packed(LEVEL_CONTAINER)
 
 
 func _on_button_pressed() -> void:
