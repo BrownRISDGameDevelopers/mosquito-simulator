@@ -22,3 +22,6 @@ func _on_map_minigame_toggle():
 func _on_swat_minigame_exited_bounds():
 	toggle_minigame(false)
 	map_3d.free_player()
+
+func _on_map_add_swatter_to_minigame():
+	minigame.add_swatter()

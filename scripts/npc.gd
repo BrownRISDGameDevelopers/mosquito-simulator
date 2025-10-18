@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 class_name NPC
 
+signal add_swatter
+
 var rng = RandomNumberGenerator.new()
 
 var movement_speed: float = rng.randf_range(1.0, 3.0)
@@ -55,7 +57,7 @@ func actor_setup():
 
 
 func _on_navigation_finished():
-    # When the NPC reaches its target, set a new random target
+	# When the NPC reaches its target, set a new random target
 	await get_tree().create_timer(rng.randf_range(1.0, 5.0)).timeout # Wait a bit
 	if bit_camper == null:
 		set_random_target()
@@ -82,3 +84,7 @@ func _physics_process(_delta):
 
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	move_and_slide()
+
+func _on_area_3d_body_entered(body: Node3D):
+	if body is Player:
+		add_swatter.emit()

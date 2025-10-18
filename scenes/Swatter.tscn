@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmbjd2lukby5b"]
+[gd_scene load_steps=8 format=3 uid="uid://cmbjd2lukby5b"]
 
 [ext_resource type="Script" uid="uid://bc0may7e5kl3r" path="res://scripts/swatter.gd" id="1_76vkj"]
 [ext_resource type="Texture2D" uid="uid://di0rxj8b15frg" path="res://assets/tree.PNG" id="2_q1jp2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_76vkj"]
+radius = 78.0
+height = 214.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76vkj"]
 size = Vector2(82, 57)
@@ -84,6 +88,8 @@ _data = {
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_76vkj")
+swat_speed = 2.0
+movement_speed = 550.0
 
 [node name="Tree" type="Sprite2D" parent="."]
 position = Vector2(0, -200)
@@ -92,7 +98,8 @@ scale = Vector2(5, 5)
 texture = ExtResource("2_q1jp2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_76vkj")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_76vkj")
 debug_color = Color(0.83916634, 0.34032944, 0.47643143, 0.41960785)
 
 [node name="SwatHitbox" type="Area2D" parent="."]
