@@ -16,7 +16,11 @@ func _on_timer_timeout() -> void:
 	if _time_to_die():
 		emit_signal("death")"""
 
+@export var FAST_DEPLETION = 4
+@export var NORMAL_DEPLETION = 1
+
 @onready var blood_left = 100
+@onready var blood_deplete_rate = 1
 
 func _ready():
 	update()
@@ -27,7 +31,7 @@ func _on_timer_timeout() -> void:
 
 func update():
 	print("updating")
-	blood_left -= 1
+	blood_left -= blood_deplete_rate
 	$ProgressBar.value = blood_left
 	
 func _on_sucked_blood():
