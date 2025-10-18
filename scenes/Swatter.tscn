@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmbjd2lukby5b"]
+
+[ext_resource type="Script" uid="uid://bc0may7e5kl3r" path="res://scripts/swatter.gd" id="1_76vkj"]
+[ext_resource type="Texture2D" uid="uid://di0rxj8b15frg" path="res://assets/tree.PNG" id="2_q1jp2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76vkj"]
+size = Vector2(272, 176)
+
+[sub_resource type="Animation" id="Animation_76vkj"]
+resource_name = "swat"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tree:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.083333336, 0, 0.083333336, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tree:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(-200, -0.25, 0, 0.25, 0, 0, -0.083333336, 0, 0.083333336, 0, -200, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"swat_player"
+}, {
+"args": [],
+"method": &"post_swat"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_q1jp2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tree:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tree:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-200, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q1jp2"]
+_data = {
+&"RESET": SubResource("Animation_q1jp2"),
+&"swat": SubResource("Animation_76vkj")
+}
+
+[node name="Swatter" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_76vkj")
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(0, -200)
+rotation = -1.5707964
+scale = Vector2(5, 5)
+texture = ExtResource("2_q1jp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_76vkj")
+debug_color = Color(0.83916634, 0.34032944, 0.47643143, 0.41960785)
+
+[node name="SwatHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwatHitbox"]
+shape = SubResource("RectangleShape2D_76vkj")
+
+[node name="SwatTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_q1jp2")
+}
+
+[connection signal="body_entered" from="SwatHitbox" to="." method="_on_swat_hitbox_body_entered"]
+[connection signal="body_exited" from="SwatHitbox" to="." method="_on_swat_hitbox_body_exited"]
+[connection signal="timeout" from="SwatTimer" to="." method="_on_swat_timer_timeout"]

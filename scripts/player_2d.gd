@@ -12,3 +12,6 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
+
+func get_swatted():
+	$Label.text = $Label.text + "ouch"
