@@ -2,8 +2,19 @@ extends Control
 
 var minigame_visible = false
 
-@onready var map_3d = $MapViewport/SubViewport/Map
+@onready var map_viewport = $MapViewport/SubViewport
 @onready var minigame = $MinigameViewport/SubViewport/SwatMinigame
+var map_3d = null
+
+func _ready() -> void:
+	set_level(Global.starting_level)
+
+func set_level(map: PackedScene):
+	var level_instance = map.instantiate()
+	for child in map_viewport.get_children():
+		child.queue_free()
+	map_viewport.add_child(level_instance)
+	map_3d = level_instance
 
 func toggle_minigame(minigame_state):
 	minigame_visible = minigame_state
