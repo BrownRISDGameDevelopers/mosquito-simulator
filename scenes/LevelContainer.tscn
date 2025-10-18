@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cea4mxa35k4wb" path="res://scripts/level_container.gd" id="1_etwxj"]
 [ext_resource type="PackedScene" uid="uid://ugb4dl0qkpih" path="res://scenes/Map.tscn" id="2_h42ee"]
-[ext_resource type="PackedScene" path="res://scenes/SwatMinigame.tscn" id="3_tsmwp"]
-[ext_resource type="PackedScene" path="res://scenes/BloodBar.tscn" id="4_x305a"]
+[ext_resource type="PackedScene" uid="uid://21duxb65jl10" path="res://scenes/SwatMinigame.tscn" id="3_tsmwp"]
+[ext_resource type="PackedScene" uid="uid://byt7b6d8mkcsh" path="res://scenes/BloodBar.tscn" id="4_x305a"]
 
 [node name="LevelContainer" type="Control"]
 layout_mode = 3
