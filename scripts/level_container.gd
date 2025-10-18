@@ -4,7 +4,11 @@ var minigame_visible = false
 
 @onready var map_viewport = $MapViewport/SubViewport
 @onready var minigame = $MinigameViewport/SubViewport/SwatMinigame
+@onready var infinite_mode: bool = false
 var map_3d = null
+
+signal player_win
+signal player_lose
 
 func _ready() -> void:
 	set_level(Global.starting_level)
@@ -33,3 +37,5 @@ func _on_map_minigame_toggle():
 func _on_swat_minigame_exited_bounds():
 	toggle_minigame(false)
 	map_3d.free_player()
+
+
