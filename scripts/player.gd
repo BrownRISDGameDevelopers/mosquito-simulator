@@ -2,41 +2,51 @@ extends CharacterBody3D
 
 class_name Player
 
-var SPEED = 1
-var accelerating: bool = false
-const JUMP_VELOCITY = 4.5
-const ACCELERATE_SPEED = 2
-const NORMAL_SPEED = 1
+const JUMP_VELOCITY: float= 4.5
+const SPRINT_SPEED: float = 4
+const NORMAL_SPEED: float = 2
+const ACCELERATION: float = 2.5
+const DECELERATION: float = 2
 
+var current_speed: float = 1
+var accelerating: bool = false
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	player_movement(delta)
+
+	move_and_slide()
+
+func player_movement(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	# if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-	# 	velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var accelearte_req := Input.is_action_pressed("accelerate");
-	if accelearte_req and not accelerating:
+	# handling sprinting
+	var sprint_req := Input.is_action_pressed("sprint");
+	if sprint_req and not accelerating:
 		accelerating = true
-		SPEED = ACCELERATE_SPEED
-		#
-
-	elif not accelearte_req and accelerating:
+		current_speed = SPRINT_SPEED
+	elif not sprint_req and accelerating:
 		accelerating = false
-		SPEED = NORMAL_SPEED
-
+		current_speed = NORMAL_SPEED
+	
+	if accelerating:
+		# decrease blood
+		pass
+	
 	var input_dir := Input.get_vector("left", "right", "up", "down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	# transform to vector3
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() 
 
-	move_and_slide()
+	var target_velocity := direction * current_speed
+	var horizontal_velocity := velocity
+	horizontal_velocity.y = 0 # separating horizontal velocity
+
+	if direction == Vector3.ZERO:
+		horizontal_velocity = horizontal_velocity.move_toward(Vector3.ZERO, DECELERATION * delta)
+	else:
+		horizontal_velocity = horizontal_velocity.move_toward(target_velocity, ACCELERATION * delta)
+
+	velocity.x = horizontal_velocity.x
+	velocity.z = horizontal_velocity.z
+
+	print(current_speed)
