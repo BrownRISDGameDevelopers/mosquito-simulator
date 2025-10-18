@@ -5,10 +5,11 @@ var minigame_visible = false
 @onready var map_viewport = $MapViewport/SubViewport
 @onready var minigame = $MinigameViewport/SubViewport/SwatMinigame
 @onready var infinite_mode: bool = false
+
 var map_3d = null
+var npcs # update in set_level: npc will register themselves
 
 signal player_win
-signal player_lose
 
 func _ready() -> void:
 	set_level(Global.starting_level)
@@ -20,6 +21,8 @@ func set_level(map: PackedScene):
 	map_viewport.add_child(level_instance)
 	map_3d = level_instance
 
+	npcs = get_tree().get_nodes_in_group("npcs")
+
 func toggle_minigame(minigame_state):
 	minigame_visible = minigame_state
 	$MinigameViewport.visible = minigame_visible
@@ -28,6 +31,11 @@ func toggle_minigame(minigame_state):
 	if not minigame_visible:
 		$MapViewport.scale = Vector2.ONE
 
+func _process(_delta) -> void:
+	if not infinite_mode:
+		if all_npc_bitten():
+			get_tree().paused = true
+			emit_signal("player_win")
 
 func _on_map_minigame_toggle():
 	toggle_minigame(true)
@@ -38,4 +46,9 @@ func _on_swat_minigame_exited_bounds():
 	toggle_minigame(false)
 	map_3d.free_player()
 
-
+# checks if all npcs are bitten and returns true if so
+func all_npc_bitten() -> bool:
+	for npc in npcs:
+		if npc.is_bitten == false:
+			return false
+	return true
