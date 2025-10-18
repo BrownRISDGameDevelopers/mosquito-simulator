@@ -5,8 +5,8 @@ class_name Player
 
 const SPEED = 5
 const JUMP_VELOCITY = 4.5
-var sprite;
 
+var npc: NPC
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -31,19 +31,16 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	if Input.is_action_just_pressed("bite") and sprite:
+	if Input.is_action_just_pressed("bite") and npc:
 		_on_bite_me_pressed()
 
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body is NPC:
 		print("entered npc")
-		var popup_node = body.get_node("popup_node")
-		sprite = popup_node.get_node("popup_sprite")
-		sprite.visible = true;
+		npc = body.get_node("Overhead")
+		npc.visible = true;
 
 func _on_bite_me_pressed() -> void:
 	print("bite me button pressed")
-	sprite.visible = false;
-	sprite = null
-
-	
+	npc.visible = false;
+	npc = null
