@@ -26,5 +26,7 @@ debug_color = Color(0.51330525, 0.5524319, 0.46904778, 0.41960785)
 [node name="Swatter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_y7wqd")]
 position = Vector2(784, -390)
 player = NodePath("../Player2D")
+swat_speed = 2.0
+movement_speed = 550.0
 
 [connection signal="body_exited" from="MinigameBounds" to="." method="_on_minigame_bounds_body_exited"]

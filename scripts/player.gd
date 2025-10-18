@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 class_name Player
 
-signal minigame_toggle
+signal minigame_toggle(camper)
 
 const SPEED = 5
 const JUMP_VELOCITY = 4.5
@@ -71,7 +71,7 @@ func epicycle():
 		 cycle_helper(t, 0.5, 1.0) * 1 / cos(t - 0.75 * PI) +
 		 cycle_helper(t, 1.0, 1.5) * 1 / cos(t - 1.25 * PI) +
 		 cycle_helper(t, 1.5, 2.0) * 1 / cos(t - 1.75 * PI))
-	return Vector3(cos(t) * r, hover_height, sin(t) * r)
+	return Vector3(cos(t) * r, hover_height, cos(t) * sin(t) * r)
 
 func return_control():
 	on_camper = false
@@ -79,7 +79,7 @@ func return_control():
 
 func _on_area_3d_body_entered(body: Node3D):
 	if not on_camper and can_attach:
-		minigame_toggle.emit()
+		minigame_toggle.emit(body)
 		on_camper = true
 		can_attach = false
 		current_camper = body
