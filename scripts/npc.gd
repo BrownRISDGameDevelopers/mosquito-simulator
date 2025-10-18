@@ -36,7 +36,7 @@ func actor_setup():
 
 
 func _on_navigation_finished():
-    # When the NPC reaches its target, set a new random target
+	# When the NPC reaches its target, set a new random target
 	await get_tree().create_timer(rng.randf_range(1.0, 5.0)).timeout # Wait a bit
 	set_random_target()
 
