@@ -5,16 +5,20 @@ class_name NPC
 var rng = RandomNumberGenerator.new()
 
 var movement_speed: float = rng.randf_range(1.0, 3.0)
+var bit_camper: NPC
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
 func set_random_target():
-	var nav_map = navigation_agent.get_navigation_map()
-
 	# generate random coords in world space
 	var random_x = rng.randf_range(-10.0, 10.0)
 	var random_z = rng.randf_range(-10.0, 10.0)
-	var target_position = Vector3(random_x, global_position.y, random_z)
+	var random_position = Vector3(random_x, global_position.y, random_z)
+	set_target_by_position(random_position)
+
+
+func set_target_by_position(target_position):
+	var nav_map = navigation_agent.get_navigation_map()
 
 	# snap to navmesh
 	var closest_point = NavigationServer3D.map_get_closest_point(nav_map, target_position)
@@ -25,7 +29,23 @@ func set_random_target():
 		# try again if unreachable
 		set_random_target()
 
+func set_camper_target(camper: NPC):
+	bit_camper = camper
+	set_target_by_position(bit_camper.global_position)
+	if bit_camper == self:
+		panic()
 
+func clear_camper_target():
+	if bit_camper == self:
+		calm_down()
+	bit_camper = null
+
+func panic():
+	print("I'm panicking")
+
+func calm_down():
+	print("I calmed down")
+	
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
@@ -37,7 +57,10 @@ func actor_setup():
 func _on_navigation_finished():
     # When the NPC reaches its target, set a new random target
 	await get_tree().create_timer(rng.randf_range(1.0, 5.0)).timeout # Wait a bit
-	set_random_target()
+	if bit_camper == null:
+		set_random_target()
+	else:
+		set_target_by_position(bit_camper.global_position)
 
 func _ready():
 	# These values need to be adjusted for the actor's speed

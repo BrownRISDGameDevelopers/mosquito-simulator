@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bh26dknmrfir1"]
 
 [ext_resource type="Script" uid="uid://cro18pkffxuew" path="res://scripts/player.gd" id="1_v6fml"]
-[ext_resource type="Texture2D" uid="uid://di0rxj8b15frg" path="res://assets/tree.PNG" id="2_3li8b"]
+[ext_resource type="Texture2D" uid="uid://cm41lsvfnra0d" path="res://assets/mosquitosprite_front_v1.PNG" id="2_v6fml"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yyirk"]
 radius = 0.25
@@ -23,7 +23,7 @@ shape = SubResource("CapsuleShape3D_yyirk")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 billboard = 1
-texture = ExtResource("2_3li8b")
+texture = ExtResource("2_v6fml")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0)
