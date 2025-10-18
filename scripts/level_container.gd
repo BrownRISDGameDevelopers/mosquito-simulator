@@ -2,12 +2,17 @@ extends Control
 
 var minigame_visible = false
 
+const MAP = preload("res://scenes/Map.tscn")
+
 @onready var map_viewport = $MapViewport/SubViewport
 @onready var minigame = $MinigameViewport/SubViewport/SwatMinigame
+
 var map_3d = null
 
 func _ready() -> void:
-	set_level(Global.starting_level)
+	# set_level(Global.starting_level)
+	set_level(MAP)
+	pass
 
 func set_level(map: PackedScene):
 	var level_instance = map.instantiate()
