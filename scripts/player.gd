@@ -12,10 +12,9 @@ var current_speed: float = 1
 var accelerating: bool = false
 
 signal minigame_toggle
-
 signal sucked_blood
 
-@onready var blood_bar = $"../Camera3D/Control"
+@onready var blood_bar = $"../../../../BloodBar"
 
 var on_camper = false
 var can_attach = true
@@ -52,13 +51,12 @@ func player_movement(delta):
 	if sprint_req and not accelerating:
 		accelerating = true
 		current_speed = SPRINT_SPEED
+		blood_bar.blood_deplete_rate = blood_bar.FAST_DEPLETION
+
 	elif not sprint_req and accelerating:
 		accelerating = false
 		current_speed = NORMAL_SPEED
-	
-	if accelerating:
-		# decrease blood
-		pass
+		blood_bar.blood_deplete_rate = blood_bar.NORMAL_DEPLETION
 	
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	# transform to vector3
