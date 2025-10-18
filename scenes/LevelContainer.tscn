@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkd675tlyb8ra"]
+[gd_scene load_steps=5 format=3 uid="uid://b80geqbgk4ppb"]
 
 [ext_resource type="Script" path="res://scripts/level_container.gd" id="1_etwxj"]
 [ext_resource type="PackedScene" uid="uid://ugb4dl0qkpih" path="res://scenes/Map.tscn" id="2_h42ee"]
-[ext_resource type="PackedScene" uid="uid://21duxb65jl10" path="res://scenes/SwatMinigame.tscn" id="3_tsmwp"]
-[ext_resource type="PackedScene" uid="uid://byt7b6d8mkcsh" path="res://scenes/BloodBar.tscn" id="4_x305a"]
+[ext_resource type="PackedScene" path="res://scenes/SwatMinigame.tscn" id="3_tsmwp"]
+[ext_resource type="PackedScene" uid="uid://cxova27gciulx" path="res://blood bar.tscn" id="5_wm43x"]
 
 [node name="LevelContainer" type="Control"]
 layout_mode = 3
@@ -45,7 +45,7 @@ render_target_update_mode = 4
 
 [node name="Map" parent="MapViewport/SubViewport" instance=ExtResource("2_h42ee")]
 
-[node name="BloodBar" parent="." instance=ExtResource("4_x305a")]
+[node name="Control" parent="." instance=ExtResource("5_wm43x")]
 layout_mode = 1
 
 [connection signal="minigame_toggle" from="MapViewport/SubViewport/Map" to="." method="_on_map_minigame_toggle"]
