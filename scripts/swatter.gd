@@ -7,12 +7,13 @@ var prev_position = global_position
 @export var swat_speed = 1.0
 @export var movement_speed = 200.0
 
-@export var swatting = false
 var player_in_hitbox = false
+@export var swatting = false
 @onready var swat_timer = $SwatTimer
 @onready var anim_player = $AnimationPlayer
 
 func _ready():
+	swat_timer.wait_time = swat_interval
 	anim_player.speed_scale = swat_speed
 
 func _physics_process(delta):

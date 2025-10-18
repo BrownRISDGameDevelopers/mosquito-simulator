@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ugb4dl0qkpih"]
+[gd_scene load_steps=14 format=3 uid="uid://chogavn7l2yj6"]
 
-[ext_resource type="Script" uid="uid://b758chpqi1w0e" path="res://scripts/map.gd" id="1_tm3qm"]
-[ext_resource type="PackedScene" uid="uid://bh26dknmrfir1" path="res://scenes/Player.tscn" id="1_xkm8s"]
-[ext_resource type="Script" uid="uid://r64v6uqb3av8" path="res://scripts/camera.gd" id="2_lajc7"]
-[ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="3_xkm8s"]
+[ext_resource type="Script" uid="uid://b758chpqi1w0e" path="res://scripts/map.gd" id="1_bl1rg"]
+[ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="2_fkoim"]
+[ext_resource type="PackedScene" uid="uid://bh26dknmrfir1" path="res://scenes/Player.tscn" id="3_0cvu2"]
+[ext_resource type="Script" uid="uid://r64v6uqb3av8" path="res://scripts/camera.gd" id="4_e6d76"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tm3qm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -40,7 +40,7 @@ size = Vector2(10, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ctrk"]
 
 [node name="Map" type="Node3D"]
-script = ExtResource("1_tm3qm")
+script = ExtResource("1_bl1rg")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yyirk")
@@ -81,15 +81,16 @@ mesh = SubResource("BoxMesh_inly4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Obstacles/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_7ctrk")
 
-[node name="Player" parent="." instance=ExtResource("1_xkm8s")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.636, 0.22804737, 1.22)
+[node name="NPC" parent="." groups=["Campers"] instance=ExtResource("2_fkoim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1442285, 0.24709839, -1.1712259)
+collision_mask = 6
+
+[node name="Player" parent="." instance=ExtResource("3_0cvu2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.636, 0.3637647, 1.22)
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 6.3092656, 0.5)
-script = ExtResource("2_lajc7")
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0.85, 0.5)
+script = ExtResource("4_e6d76")
 player = NodePath("../Player")
-
-[node name="NPC" parent="." groups=["Campers"] instance=ExtResource("3_xkm8s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.18363154, -2)
 
 [connection signal="minigame_toggle" from="Player" to="." method="_on_player_minigame_toggle"]

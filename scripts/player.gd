@@ -3,19 +3,25 @@ extends CharacterBody3D
 class_name Player
 
 signal minigame_toggle(camper)
-
-const SPEED = 5
-const JUMP_VELOCITY = 4.5
-
 signal sucked_blood
 
-@onready var blood_bar = $"../Camera3D/Control"
+const SPEED = 20
+
+const JUMP_VELOCITY: float = 4.5
+const SPRINT_SPEED: float = 4
+const NORMAL_SPEED: float = 2
+const ACCELERATION: float = 2.5
+const DECELERATION: float = 2
+
+var current_speed: float = 1
+var accelerating: bool = false
 
 var on_camper = false
 var can_attach = true
 
 var current_camper
 
+@onready var blood_bar = $"../../../../BloodBar"
 @onready var epicycle_timer = $EpicycleTimer
 @export var hover_distance = 0.1
 @export var hover_height = 0.2
@@ -33,27 +39,41 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	# if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-	# 	velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("left", "right", "up", "down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	player_movement(delta)
+		
 	if Input.is_action_just_pressed("suck"):
 		_add_blood()
-	
 
 	move_and_slide()
+
+func player_movement(delta):
+	# handling sprinting
+	var sprint_req := Input.is_action_pressed("sprint");
+	if sprint_req and not accelerating:
+		accelerating = true
+		current_speed = SPRINT_SPEED
+		blood_bar.blood_deplete_rate = blood_bar.FAST_DEPLETION
+
+	elif not sprint_req and accelerating:
+		accelerating = false
+		current_speed = NORMAL_SPEED
+		blood_bar.blood_deplete_rate = blood_bar.NORMAL_DEPLETION
+	
+	var input_dir := Input.get_vector("left", "right", "up", "down")
+	# transform to vector3
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+	var target_velocity := direction * current_speed
+	var horizontal_velocity := velocity
+	horizontal_velocity.y = 0 # separating horizontal velocity
+
+	if direction == Vector3.ZERO:
+		horizontal_velocity = horizontal_velocity.move_toward(Vector3.ZERO, DECELERATION * delta)
+	else:
+		horizontal_velocity = horizontal_velocity.move_toward(target_velocity, ACCELERATION * delta)
+
+	velocity.x = horizontal_velocity.x
+	velocity.z = horizontal_velocity.z
 	
 func _add_blood():
 	emit_signal("sucked_blood")
