@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkd675tlyb8ra"]
+
+[ext_resource type="Script" path="res://scripts/level_container.gd" id="1_etwxj"]
+[ext_resource type="PackedScene" uid="uid://ugb4dl0qkpih" path="res://scenes/Map.tscn" id="2_h42ee"]
+[ext_resource type="PackedScene" uid="uid://21duxb65jl10" path="res://scenes/SwatMinigame.tscn" id="3_tsmwp"]
+[ext_resource type="PackedScene" uid="uid://byt7b6d8mkcsh" path="res://scenes/BloodBar.tscn" id="4_x305a"]
+
+[node name="LevelContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_etwxj")
+
+[node name="MinigameViewport" type="SubViewportContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="MinigameViewport"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 0
+
+[node name="SwatMinigame" parent="MinigameViewport/SubViewport" instance=ExtResource("3_tsmwp")]
+
+[node name="MapViewport" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="MapViewport"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Map" parent="MapViewport/SubViewport" instance=ExtResource("2_h42ee")]
+
+[node name="BloodBar" parent="." instance=ExtResource("4_x305a")]
+layout_mode = 1
+
+[connection signal="exited_bounds" from="MinigameViewport/SubViewport/SwatMinigame" to="." method="_on_swat_minigame_exited_bounds"]
+
+[connection signal="minigame_toggle" from="MapViewport/SubViewport/Map" to="." method="_on_map_minigame_toggle"]
