@@ -10,6 +10,7 @@ size = Vector2(836, 1932)
 
 [node name="SwatMinigame" type="Node2D"]
 script = ExtResource("1_vn5tw")
+swatter_scene = ExtResource("4_y7wqd")
 
 [node name="ChildSprite1" type="Sprite2D" parent="."]
 scale = Vector2(30, 30)
