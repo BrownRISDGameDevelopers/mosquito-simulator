@@ -6,7 +6,7 @@ var playing_minigame = false
 @onready var map_3d = $MapViewport/SubViewport/Map
 @onready var minigame_viewport = $MinigameViewport
 @onready var minigame = $MinigameViewport/SubViewport/SwatMinigame
-@onready var infinite_mode: bool = false
+# @onready var infinite_mode: bool = false
 
 const WIN_SCREEN = preload("res://scenes/WinScreen.tscn")
 
@@ -43,10 +43,8 @@ func toggle_minigame(minigame_state):
 		$MapViewport.scale = Vector2.ONE
 
 func _process(_delta) -> void:
-	if not infinite_mode:
+	if Global.current_level == "infinite":
 		if all_npc_bitten():
-			# add_child(win_screen)
-			# win_screen.visible = true
 			emit_signal("player_win")
 			get_tree().change_scene_to_packed(WIN_SCREEN) # display win screen
 			
