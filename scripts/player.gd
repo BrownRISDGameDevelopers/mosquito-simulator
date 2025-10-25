@@ -2,7 +2,12 @@ extends CharacterBody3D
 
 class_name Player
 
-const JUMP_VELOCITY: float= 4.5
+signal minigame_toggle(camper)
+signal sucked_blood
+
+const SPEED = 20
+
+const JUMP_VELOCITY: float = 4.5
 const SPRINT_SPEED: float = 4
 const NORMAL_SPEED: float = 2
 const ACCELERATION: float = 2.5
@@ -11,16 +16,12 @@ const DECELERATION: float = 2
 var current_speed: float = 1
 var accelerating: bool = false
 
-signal minigame_toggle
-signal sucked_blood
-
-@onready var blood_bar = $"../../../../BloodBar"
-
 var on_camper = false
 var can_attach = true
 
 var current_camper
 
+@onready var blood_bar = $"../../../../BloodBar"
 @onready var epicycle_timer = $EpicycleTimer
 @export var hover_distance = 0.1
 @export var hover_height = 0.2
@@ -62,7 +63,7 @@ func player_movement(delta):
 	
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	# transform to vector3
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() 
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	var target_velocity := direction * current_speed
 	var horizontal_velocity := velocity
@@ -92,7 +93,7 @@ func epicycle():
 		 cycle_helper(t, 0.5, 1.0) * 1 / cos(t - 0.75 * PI) +
 		 cycle_helper(t, 1.0, 1.5) * 1 / cos(t - 1.25 * PI) +
 		 cycle_helper(t, 1.5, 2.0) * 1 / cos(t - 1.75 * PI))
-	return Vector3(cos(t) * r, hover_height, sin(t) * r)
+	return Vector3(cos(t) * r, hover_height, cos(t) * sin(t) * r)
 
 func return_control():
 	on_camper = false
@@ -100,7 +101,7 @@ func return_control():
 
 func _on_area_3d_body_entered(body: Node3D):
 	if not on_camper and can_attach:
-		minigame_toggle.emit()
+		minigame_toggle.emit(body)
 		on_camper = true
 		can_attach = false
 		current_camper = body
