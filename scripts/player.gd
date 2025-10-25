@@ -3,11 +3,9 @@ extends CharacterBody3D
 class_name Player
 
 signal minigame_toggle(camper)
+signal change_blood_rate(fast_drain: bool)
 signal sucked_blood
 
-const SPEED = 20
-
-const JUMP_VELOCITY: float = 4.5
 const SPRINT_SPEED: float = 4
 const NORMAL_SPEED: float = 2
 const ACCELERATION: float = 2.5
@@ -21,13 +19,13 @@ var can_attach = true
 
 var current_camper
 
-@onready var blood_bar = $"../../../../BloodBar"
 @onready var epicycle_timer = $EpicycleTimer
 @export var hover_distance = 0.1
 @export var hover_height = 0.2
 @export var hover_freq = 4
 
 func _ready():
+	current_speed = NORMAL_SPEED
 	hover_height = hover_height / hover_distance
 	epicycle_timer.wait_time = 2 * PI / hover_freq
 
@@ -52,12 +50,12 @@ func player_movement(delta):
 	if sprint_req and not accelerating:
 		accelerating = true
 		current_speed = SPRINT_SPEED
-		blood_bar.blood_deplete_rate = blood_bar.FAST_DEPLETION
+		change_blood_rate.emit(true)
 
 	elif not sprint_req and accelerating:
 		accelerating = false
 		current_speed = NORMAL_SPEED
-		blood_bar.blood_deplete_rate = blood_bar.NORMAL_DEPLETION
+		change_blood_rate.emit(false)
 	
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	# transform to vector3
@@ -76,8 +74,7 @@ func player_movement(delta):
 	velocity.z = horizontal_velocity.z
 	
 func _add_blood():
-	emit_signal("sucked_blood")
-	blood_bar._on_sucked_blood()
+	sucked_blood.emit()
 
 func cycle_helper(t, min_bound, max_bound):
 	if min_bound * PI <= t and t <= max_bound * PI:
@@ -95,7 +92,10 @@ func epicycle():
 
 func return_control():
 	on_camper = false
+	current_camper = null
 	global_position -= hover_distance * epicycle()
+
+# will be obsoleted with bite prompt
 
 func _on_area_3d_body_entered(body: Node3D):
 	if not on_camper and can_attach:

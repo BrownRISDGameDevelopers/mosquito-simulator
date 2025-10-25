@@ -43,5 +43,5 @@ func _on_swat_minigame_exited_bounds():
 	toggle_minigame(false)
 	map_3d.free_player()
 
-func on_map_3d_add_swatter_to_minigame():
-	minigame.add_swatter()
+func on_map_3d_add_swatter_to_minigame(num_swatters):
+	minigame.add_swatter(num_swatters)

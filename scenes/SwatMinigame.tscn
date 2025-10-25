@@ -24,8 +24,4 @@ debug_color = Color(0.51330525, 0.5524319, 0.46904778, 0.41960785)
 
 [node name="Player2D" parent="." instance=ExtResource("1_xre7j")]
 
-[node name="Swatter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_y7wqd")]
-position = Vector2(784, -390)
-player = NodePath("../Player2D")
-
 [connection signal="body_exited" from="MinigameBounds" to="." method="_on_minigame_bounds_body_exited"]
