@@ -6,6 +6,9 @@ var minigame_visible = false
 @onready var minigame = $MinigameViewport/SubViewport/SwatMinigame
 @onready var infinite_mode: bool = false
 
+const WIN_SCREEN_SCENE = preload("res://scenes/WinScreen.tscn")
+var win_screen = WIN_SCREEN_SCENE.instantiate()
+
 var map_3d = null
 var npcs # update in set_level: npc will register themselves
 
@@ -34,8 +37,11 @@ func toggle_minigame(minigame_state):
 func _process(_delta) -> void:
 	if not infinite_mode:
 		if all_npc_bitten():
+			add_child(win_screen)
+			win_screen.visible = true
 			get_tree().paused = true
 			emit_signal("player_win")
+			
 
 func _on_map_minigame_toggle():
 	toggle_minigame(true)
