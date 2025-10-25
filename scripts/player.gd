@@ -51,12 +51,14 @@ func player_movement(delta):
 	if sprint_req and not accelerating:
 		accelerating = true
 		current_speed = SPRINT_SPEED
-		blood_bar.blood_deplete_rate = blood_bar.FAST_DEPLETION
+		if blood_bar != null:
+			blood_bar.blood_deplete_rate = blood_bar.FAST_DEPLETION
 
 	elif not sprint_req and accelerating:
 		accelerating = false
 		current_speed = NORMAL_SPEED
-		blood_bar.blood_deplete_rate = blood_bar.NORMAL_DEPLETION
+		if blood_bar != null:
+			blood_bar.blood_deplete_rate = blood_bar.NORMAL_DEPLETION
 	
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	# transform to vector3
