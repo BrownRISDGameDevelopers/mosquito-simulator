@@ -7,6 +7,7 @@ signal add_swatter(num_swatters)
 var rng = RandomNumberGenerator.new()
 
 var movement_speed: float = rng.randf_range(1.0, 3.0)
+@export var is_bitten: bool = false
 var bit_camper: NPC
 var panicking = false
 var panic_timer = 0.
@@ -78,6 +79,8 @@ func _ready():
 	navigation_agent.target_desired_distance = 0.5
 
 	navigation_agent.navigation_finished.connect(_on_navigation_finished)
+
+	add_to_group("npcs") # maintain list
 
 	# Make sure to not await during _ready.
 	actor_setup.call_deferred()

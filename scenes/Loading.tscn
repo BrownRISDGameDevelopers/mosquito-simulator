@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbvvla6w656vp"]
+
+[ext_resource type="Texture2D" uid="uid://bj3ce5y846j7b" path="res://assets/Transition from Tutorial to Camp concept rev2.png" id="1_rx3dl"]
+[ext_resource type="Script" uid="uid://bu332k8nlfs6c" path="res://scripts/loading.gd" id="1_y56h7"]
+[ext_resource type="Texture2D" uid="uid://cm41lsvfnra0d" path="res://assets/mosquitosprite_front_v1.PNG" id="2_5d8b5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y56h7"]
+atlas = ExtResource("1_rx3dl")
+region = Rect2(2593.075, 0, 244.92505, 638)
+
+[node name="Loading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y56h7")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014583333
+anchor_right = 2.5166667
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_right = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rx3dl")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Mosquito" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24635416
+anchor_top = 0.49444443
+anchor_right = 0.31041655
+anchor_bottom = 0.60833335
+offset_top = 6.0
+offset_bottom = 6.0
+texture = ExtResource("2_5d8b5")
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TentClip" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.2869792
+anchor_top = 0.0018518518
+anchor_right = 2.5038676
+anchor_bottom = 1.0018518
+offset_left = -0.041015625
+offset_top = -2.0
+offset_right = -3.4257813
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_y56h7")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
