@@ -41,6 +41,7 @@ size = Vector2(10, 10)
 
 [node name="Map" type="Node3D"]
 script = ExtResource("1_tm3qm")
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yyirk")
@@ -92,4 +93,6 @@ player = NodePath("../Player")
 [node name="NPC" parent="." groups=["Campers"] instance=ExtResource("3_xkm8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.18363154, -2)
 
+[connection signal="change_blood_rate" from="Player" to="." method="_on_player_change_blood_rate"]
 [connection signal="minigame_toggle" from="Player" to="." method="_on_player_minigame_toggle"]
+[connection signal="sucked_blood" from="Player" to="." method="_on_player_sucked_blood"]
