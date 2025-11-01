@@ -50,7 +50,6 @@ func _process(_delta) -> void:
 		if all_npc_bitten():
 			emit_signal("player_win")
 			get_tree().change_scene_to_packed(WIN_SCREEN) # display win screen
-			
 
 func on_map_3d_minigame_toggle():
 	toggle_minigame(true)

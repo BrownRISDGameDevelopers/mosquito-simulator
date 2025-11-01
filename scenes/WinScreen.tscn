@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bge0omsur22a3"]
 
-[ext_resource type="Script" path="res://scenes/win_screen.gd" id="1_okh34"]
+[ext_resource type="Script" uid="uid://dqab43ks6dmu6" path="res://scripts/end_screen.gd" id="1_okh34"]
 [ext_resource type="Texture2D" uid="uid://di0rxj8b15frg" path="res://assets/tree.PNG" id="1_ulig0"]
 
-[node name="WinScreen" type="Control"]
+[node name="EndScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
