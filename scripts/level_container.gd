@@ -17,8 +17,11 @@ const MAP = preload("res://scenes/Map.tscn")
 signal player_win
 
 func _ready() -> void:
-	# set_level(Global.starting_level)
-	set_level(MAP)
+	if Engine.is_editor_hint():
+		set_level(Global.starting_level)
+	else:
+		set_level(MAP)
+		
 	toggle_minigame(playing_minigame)
 
 func set_level(map: PackedScene):
@@ -58,8 +61,8 @@ func _on_swat_minigame_exited_bounds():
 	toggle_minigame(false)
 	map_3d.free_player()
 
-func on_map_3d_add_swatter_to_minigame():
-	minigame.add_swatter()
+func on_map_3d_add_swatter_to_minigame(num_swatters):
+	minigame.add_swatter(num_swatters)
 
 # checks if all npcs are bitten and returns true if so
 func all_npc_bitten() -> bool:

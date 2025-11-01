@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbvvla6w656vp"]
+[gd_scene load_steps=6 format=3 uid="uid://cbvvla6w656vp"]
 
 [ext_resource type="Texture2D" uid="uid://bj3ce5y846j7b" path="res://assets/Transition from Tutorial to Camp concept rev2.png" id="1_rx3dl"]
 [ext_resource type="Script" uid="uid://bu332k8nlfs6c" path="res://scripts/loading.gd" id="1_y56h7"]
 [ext_resource type="Texture2D" uid="uid://cm41lsvfnra0d" path="res://assets/mosquitosprite_front_v1.PNG" id="2_5d8b5"]
+[ext_resource type="FontFile" uid="uid://c7vbvnaiafor2" path="res://assets/fonts/Chaloops Medium.otf" id="4_wwpl6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y56h7"]
 atlas = ExtResource("1_rx3dl")
@@ -61,5 +62,34 @@ texture = SubResource("AtlasTexture_y56h7")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_width = 20.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="LoadingLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.79895836
+anchor_top = 0.862037
+anchor_right = 0.9348958
+anchor_bottom = 0.9212963
+offset_top = 6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.38431373, 0.28235295, 0.38431373, 1)
+theme_override_colors/font_outline_color = Color(1.8023616, 1.8300784, 1.7607867, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("4_wwpl6")
+theme_override_font_sizes/font_size = 64
+text = "Loading..."
+visible_characters = 7
+visible_ratio = 0.7
+metadata/_edit_use_anchors_ = true

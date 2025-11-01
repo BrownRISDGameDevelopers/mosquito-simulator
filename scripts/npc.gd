@@ -2,20 +2,26 @@ extends CharacterBody3D
 
 class_name NPC
 
-signal add_swatter
+signal add_swatter(num_swatters)
 
 var rng = RandomNumberGenerator.new()
 
-var movement_speed: float = rng.randf_range(1.0, 3.0)
 @export var is_bitten: bool = false
+@export var prompt: Sprite3D
+
+var movement_speed: float = rng.randf_range(0.5, 2.0)
 var bit_camper: NPC
+var panicking = false
+var panic_timer = 0.
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var npc_sprite: AnimatedSprite3D = $NPCSprite
+@export var npc_frames: SpriteFrames
 
-func set_random_target():
+func set_random_target(range: float = 10.0):
 	# generate random coords in world space
-	var random_x = rng.randf_range(-10.0, 10.0)
-	var random_z = rng.randf_range(-10.0, 10.0)
+	var random_x = rng.randf_range(-range, range)
+	var random_z = rng.randf_range(-range, range)
 	var random_position = Vector3(random_x, global_position.y, random_z)
 	set_target_by_position(random_position)
 
@@ -44,10 +50,11 @@ func clear_camper_target():
 	bit_camper = null
 
 func panic():
-	print("I'm panicking")
+	panicking = true
 
 func calm_down():
-	print("I calmed down")
+	panicking = false
+	set_random_target()
 	
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -59,13 +66,15 @@ func actor_setup():
 
 func _on_navigation_finished():
 	# When the NPC reaches its target, set a new random target
+	npc_sprite.stop()
 	await get_tree().create_timer(rng.randf_range(1.0, 5.0)).timeout # Wait a bit
 	if bit_camper == null:
 		set_random_target()
-	else:
+	elif bit_camper != self:
 		set_target_by_position(bit_camper.global_position)
 
 func _ready():
+	npc_sprite.sprite_frames = npc_frames
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
 	navigation_agent.path_desired_distance = 0.5
@@ -73,21 +82,43 @@ func _ready():
 
 	navigation_agent.navigation_finished.connect(_on_navigation_finished)
 
+	prompt = $Prompt
+
 	add_to_group("npcs") # maintain list
 
 	# Make sure to not await during _ready.
 	actor_setup.call_deferred()
 
-func _physics_process(_delta):
-	if navigation_agent.is_navigation_finished():
+func _physics_process(delta):
+	if navigation_agent.is_navigation_finished() and not panicking:
 		return
 
 	var current_agent_position: Vector3 = global_position
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 
-	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+	if not panicking:
+		velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+	
+	else:
+		panic_timer += delta
+		velocity = Vector3(cos(panic_timer * PI * movement_speed), 0, 0)
+
+	var angle = atan2(velocity.z, velocity.x)
+	if abs(angle) < 0.25 * PI:
+		npc_sprite.play("walk_right")
+	elif abs(angle) > 0.75 * PI:
+		npc_sprite.play("walk_left")
+	elif angle > 0.0:
+		npc_sprite.play("walk_forward")
+	else:
+		npc_sprite.play("walk_backward")
 	move_and_slide()
 
 func _on_area_3d_body_entered(body: Node3D):
 	if body is Player:
-		add_swatter.emit()
+		add_swatter.emit(1)
+
+
+func _on_area_3d_body_exited(body):
+	if body is Player:
+		add_swatter.emit(-1)
