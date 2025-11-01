@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdmp80whhqn5j"
-path.s3tc="res://.godot/imported/tutorial cow.png-9bb88ad13bc005cf0cf4a2964cb0865b.s3tc.ctex"
+uid="uid://cnfmjl528hr27"
+path.s3tc="res://.godot/imported/cow spritesheet.png-7fbf75ac417f3afe4f23787e3a0c7a08.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/tutorial cow.png"
-dest_files=["res://.godot/imported/tutorial cow.png-9bb88ad13bc005cf0cf4a2964cb0865b.s3tc.ctex"]
+source_file="res://assets/cow spritesheet.png"
+dest_files=["res://.godot/imported/cow spritesheet.png-7fbf75ac417f3afe4f23787e3a0c7a08.s3tc.ctex"]
 
 [params]
 
