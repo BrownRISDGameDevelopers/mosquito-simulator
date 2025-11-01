@@ -17,8 +17,11 @@ const MAP = preload("res://scenes/Map.tscn")
 signal player_win
 
 func _ready() -> void:
-	# set_level(Global.starting_level)
-	set_level(MAP)
+	if Engine.is_editor_hint():
+		set_level(Global.starting_level)
+	else:
+		set_level(MAP)
+		
 	toggle_minigame(playing_minigame)
 
 func set_level(map: PackedScene):

@@ -11,6 +11,8 @@ const NORMAL_SPEED: float = 2
 const ACCELERATION: float = 2.5
 const DECELERATION: float = 2
 
+const MIN_DISTANCE_TO_NPC: float = 0.5
+
 var current_speed: float = 1
 var accelerating: bool = false
 
@@ -18,6 +20,7 @@ var on_camper = false
 var can_attach = true
 
 var current_camper
+var closest_camper
 
 @onready var epicycle_timer = $EpicycleTimer
 @export var hover_distance = 0.1
@@ -39,10 +42,43 @@ func _physics_process(delta: float) -> void:
 
 	player_movement(delta)
 		
-	if Input.is_action_just_pressed("suck"):
-		_add_blood()
+
+	for npc in get_tree().get_nodes_in_group("npcs"):
+		npc.prompt.visible = false
+
+	closest_camper = get_nearest_npc()
+	if closest_camper:
+		closest_camper.prompt.visible = true
+	
+	if Input.is_action_just_pressed("suck") and closest_camper and not on_camper:
+		minigame_toggle.emit(closest_camper)
+		on_camper = true
+		can_attach = false
+		current_camper = closest_camper
 
 	move_and_slide()
+
+func toggle_bite_prompt():
+	pass
+
+func get_nearest_npc():
+	var npcs = get_tree().get_nodes_in_group("npcs")
+	var nearest_npc = null
+	var nearest_distance = INF
+
+	for npc in npcs:
+		var dist = global_position.distance_to(npc.global_position)
+		if dist < nearest_distance:
+			nearest_distance = dist
+			nearest_npc = npc
+	
+	if nearest_distance > MIN_DISTANCE_TO_NPC:
+		return null
+
+	if nearest_npc.is_bitten:
+		return null
+	
+	return nearest_npc
 
 func player_movement(delta):
 	# handling sprinting
@@ -98,11 +134,12 @@ func return_control():
 # will be obsoleted with bite prompt
 
 func _on_area_3d_body_entered(body: Node3D):
-	if not on_camper and can_attach:
-		minigame_toggle.emit(body)
-		on_camper = true
-		can_attach = false
-		current_camper = body
+	pass
+	# if not on_camper and can_attach:
+	# 	minigame_toggle.emit(body)
+	# 	on_camper = true
+	# 	can_attach = false
+	# 	current_camper = body
 
 func _on_area_3d_body_exited(body: Node3D):
 	can_attach = true
