@@ -75,7 +75,11 @@ sources/0 = SubResource("TileSetAtlasSource_2wh52")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 0.022000002
+offset_right = 1877.76
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_yqorp")
 
 [node name="Background" type="TileMapLayer" parent="."]
@@ -85,18 +89,26 @@ tile_set = SubResource("TileSet_ow34m")
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 1017.0
-offset_right = 110.0
-offset_bottom = 1055.0
+anchor_left = 0.017708333
+anchor_top = 0.94166666
+anchor_right = 0.057291668
+anchor_bottom = 0.9768519
 text = "Quit"
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 924.0
-offset_top = 480.0
-offset_right = 1095.0
-offset_bottom = 599.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -50.5
+offset_right = 56.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -115,4 +127,4 @@ text = "Credits
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/InfiniteMode" to="." method="_on_infinite_mode_pressed"]
-[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_infinite_mode_button_pressed"]

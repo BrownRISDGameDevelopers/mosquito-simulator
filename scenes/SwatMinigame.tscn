@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://2qnwmedvmruf"]
+[gd_scene load_steps=6 format=3 uid="uid://21duxb65jl10"]
 
-[ext_resource type="Script" path="res://scripts/swat_minigame.gd" id="1_vn5tw"]
-[ext_resource type="PackedScene" path="res://scenes/Player2D.tscn" id="1_xre7j"]
-[ext_resource type="Texture2D" path="res://assets/child sprite 1.png" id="2_86fu8"]
-[ext_resource type="PackedScene" path="res://scenes/Swatter.tscn" id="4_y7wqd"]
+[ext_resource type="Script" uid="uid://bbwtfw2j6qh7v" path="res://scripts/swat_minigame.gd" id="1_vn5tw"]
+[ext_resource type="PackedScene" uid="uid://dqrapnubr13ws" path="res://scenes/Player2D.tscn" id="1_xre7j"]
+[ext_resource type="Texture2D" uid="uid://bqotwpd140nfa" path="res://assets/child sprite 1.png" id="2_86fu8"]
+[ext_resource type="PackedScene" uid="uid://cmbjd2lukby5b" path="res://scenes/Swatter.tscn" id="4_y7wqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86fu8"]
 size = Vector2(836, 1932)
 
 [node name="SwatMinigame" type="Node2D"]
 script = ExtResource("1_vn5tw")
+swatter_scene = ExtResource("4_y7wqd")
 
 [node name="ChildSprite1" type="Sprite2D" parent="."]
 scale = Vector2(30, 30)
@@ -22,9 +23,5 @@ shape = SubResource("RectangleShape2D_86fu8")
 debug_color = Color(0.51330525, 0.5524319, 0.46904778, 0.41960785)
 
 [node name="Player2D" parent="." instance=ExtResource("1_xre7j")]
-
-[node name="Swatter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_y7wqd")]
-position = Vector2(784, -390)
-player = NodePath("../Player2D")
 
 [connection signal="body_exited" from="MinigameBounds" to="." method="_on_minigame_bounds_body_exited"]

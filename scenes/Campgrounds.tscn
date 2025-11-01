@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://b032rg0rt4el7"]
+[gd_scene load_steps=14 format=3 uid="uid://chogavn7l2yj6"]
 
-[ext_resource type="Script" path="res://scripts/map.gd" id="1_bl1rg"]
+[ext_resource type="Script" uid="uid://b758chpqi1w0e" path="res://scripts/map.gd" id="1_bl1rg"]
 [ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="2_fkoim"]
-[ext_resource type="PackedScene" uid="uid://d3trfc3ht15x2" path="res://scenes/Player.tscn" id="3_0cvu2"]
+[ext_resource type="PackedScene" uid="uid://bh26dknmrfir1" path="res://scenes/Player.tscn" id="3_0cvu2"]
 [ext_resource type="Script" uid="uid://r64v6uqb3av8" path="res://scripts/camera.gd" id="4_e6d76"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tm3qm"]
@@ -83,7 +83,6 @@ shape = SubResource("BoxShape3D_7ctrk")
 
 [node name="NPC" parent="." groups=["Campers"] instance=ExtResource("2_fkoim")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1442285, 0.24709839, -1.1712259)
-collision_layer = 2
 collision_mask = 6
 
 [node name="Player" parent="." instance=ExtResource("3_0cvu2")]
@@ -93,3 +92,5 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.636, 0.3637647, 1.22
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0.85, 0.5)
 script = ExtResource("4_e6d76")
 player = NodePath("../Player")
+
+[connection signal="minigame_toggle" from="Player" to="." method="_on_player_minigame_toggle"]

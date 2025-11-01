@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7ttl8xa7spw1"]
+[gd_scene load_steps=6 format=3 uid="uid://cxova27gciulx"]
 
-[ext_resource type="Script" path="res://blood_bar.gd" id="1_oj3me"]
-[ext_resource type="Texture2D" path="res://assets/Untitled-1.png" id="2_xnduq"]
-[ext_resource type="Texture2D" path="res://assets/blood.png" id="3_e8nxs"]
+[ext_resource type="Script" uid="uid://dvw2xug5adtq0" path="res://blood_bar.gd" id="1_oj3me"]
+[ext_resource type="Texture2D" uid="uid://biry4r3wd62qm" path="res://assets/Untitled-1.png" id="2_xnduq"]
+[ext_resource type="Texture2D" uid="uid://dotcu0n2rh1xq" path="res://assets/blood.png" id="3_e8nxs"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_hf4ml"]
 

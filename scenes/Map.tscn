@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://ugb4dl0qkpih"]
+[gd_scene load_steps=14 format=3 uid="uid://ugb4dl0qkpih"]
 
-[ext_resource type="Script" uid="uid://cro18pkffxuew" path="res://scripts/player.gd" id="1_5hauk"]
+[ext_resource type="Script" uid="uid://b758chpqi1w0e" path="res://scripts/map.gd" id="1_tm3qm"]
+[ext_resource type="PackedScene" uid="uid://bh26dknmrfir1" path="res://scenes/Player.tscn" id="1_xkm8s"]
 [ext_resource type="Script" uid="uid://r64v6uqb3av8" path="res://scripts/camera.gd" id="2_lajc7"]
 [ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="3_xkm8s"]
 
@@ -38,15 +39,9 @@ size = Vector2(10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ctrk"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_tm3qm"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yyirk"]
-radius = 0.8569336
-height = 2.8579102
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lajc7"]
-
 [node name="Map" type="Node3D"]
+script = ExtResource("1_tm3qm")
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yyirk")
@@ -61,6 +56,8 @@ mesh = SubResource("PlaneMesh_xkm8s")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Floor"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor/StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_xkm8s")
@@ -85,31 +82,17 @@ mesh = SubResource("BoxMesh_inly4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Obstacles/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_7ctrk")
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.849088, 0, 1.8766401)
-script = ExtResource("1_5hauk")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.004605055)
-mesh = SubResource("CapsuleMesh_tm3qm")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0466309, 0)
-shape = SubResource("CapsuleShape3D_yyirk")
-
-[node name="Hitbox" type="Area3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14341736, 1.2568759, -0.13669777)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Hitbox"]
-transform = Transform3D(1.4999949, 0, 0.0039008067, 0, 1.5, 0, -0.0039008067, 0, 1.4999949, -0.0022982508, -5.7908706e-05, -3.1113625e-05)
-shape = SubResource("CapsuleShape3D_lajc7")
+[node name="Player" parent="." instance=ExtResource("1_xkm8s")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.636, 0.22804737, 1.22)
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 2.510848, 0.5)
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 6.3092656, 0.5)
 script = ExtResource("2_lajc7")
 player = NodePath("../Player")
 
-[node name="NPC" parent="." instance=ExtResource("3_xkm8s")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.1442285, 0.25, -1.1712259)
+[node name="NPC" parent="." groups=["Campers"] instance=ExtResource("3_xkm8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.18363154, -2)
 
-[connection signal="body_entered" from="Player/Hitbox" to="Player" method="_on_hitbox_body_entered"]
+[connection signal="change_blood_rate" from="Player" to="." method="_on_player_change_blood_rate"]
+[connection signal="minigame_toggle" from="Player" to="." method="_on_player_minigame_toggle"]
+[connection signal="sucked_blood" from="Player" to="." method="_on_player_sucked_blood"]
