@@ -12,6 +12,7 @@ var player_in_hitbox = false
 @onready var swat_timer = $SwatTimer
 @onready var anim_player = $AnimationPlayer
 
+
 func _ready():
 	swat_timer.wait_time = swat_interval
 	anim_player.speed_scale = swat_speed
