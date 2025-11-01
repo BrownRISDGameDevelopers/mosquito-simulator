@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://pnwr810jgj3y"]
 
-[ext_resource type="Texture2D" uid="uid://dckn0106d2ah7" path="res://assets/child sprite 2.png" id="1_x3j6d"]
+[ext_resource type="Texture2D" uid="uid://dag5lmwmsf5xi" path="res://assets/lose screen temp.JPG" id="1_x3j6d"]
 [ext_resource type="PackedScene" uid="uid://dk0d45kifysp7" path="res://scenes/EndScreenMenuItems.tscn" id="2_aeugc"]
 
 [node name="LoseScreen" type="Control"]
@@ -22,4 +22,7 @@ texture = ExtResource("1_x3j6d")
 
 [node name="EndScreenMenuItems" parent="." instance=ExtResource("2_aeugc")]
 layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.47400004
+offset_top = 0.079956055
 label_message = "You Died."
