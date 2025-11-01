@@ -25,4 +25,4 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.47400004
 offset_top = 0.079956055
-label_message = "You Died."
+label_message = " "
