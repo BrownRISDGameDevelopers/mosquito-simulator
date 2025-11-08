@@ -10,6 +10,9 @@ signal exited_bounds
 var extra_swatters = []
 var num_swatters = 0
 
+func _ready():
+	add_swatter(1)
+
 func _on_minigame_bounds_body_exited(body: Node2D):
 	exited_bounds.emit()
 
