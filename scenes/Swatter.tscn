@@ -100,6 +100,9 @@ movement_speed = 550.0
 [node name="Tree" type="Sprite2D" parent="."]
 position = Vector2(0, -200)
 scale = Vector2(0.23842594, 0.23842591)
+
+[node name="Hand" type="Sprite2D" parent="Tree"]
+position = Vector2(448.7767, 117.436905)
 texture = ExtResource("2_76vkj")
 
 [node name="Tree2" type="Sprite2D" parent="."]
