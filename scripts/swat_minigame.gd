@@ -22,11 +22,13 @@ func add_swatter(swatter_adj = 0):
 		return
 	var swatter_angle = randf() * 2 * PI
 	var swatter_offset = Vector2(cos(swatter_angle), sin(swatter_angle)) * swatter_distance
-	var new_swatter = swatter_scene.instantiate()
+	var new_swatter: Node2D = swatter_scene.instantiate()
 	new_swatter.player = player
 	new_swatter.position = swatter_offset
 	extra_swatters.append(new_swatter)
-	add_child(new_swatter)
+	new_swatter.scale /= $Hand.scale
+	new_swatter.rotation = -$Hand.rotation
+	$Hand.add_child(new_swatter)
 
 func reset():
 	for swatter in extra_swatters:
