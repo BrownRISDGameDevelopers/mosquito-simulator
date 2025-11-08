@@ -10,10 +10,11 @@ signal loading_complete
 @onready var loadingLabel: Label = $LoadingLabel
 
 const AMP = 60
-const LOADING_TIME = 15
+#const LOADING_TIME = 15
+const LOADING_TIME = 2
 const STARTING_Y = 540.0
 const END_X = 4519.0
-const MAIN_LEVEL = preload("res://scenes/LevelContainer.tscn")
+const LEVEL_CONTAINER = "res://scenes/LevelContainer.tscn"
 const MAIN_MAP = preload("res://scenes/Map.tscn")
 
 var running_delta = 0
@@ -26,14 +27,13 @@ func loading_finished():
 
 	# change to main level
 	Global.starting_level = MAIN_MAP
-	get_tree().change_scene_to_packed(MAIN_LEVEL)
+	get_tree().change_scene_to_file(LEVEL_CONTAINER)
 	
 func _ready() -> void:
 	background.position = Vector2.ZERO
 
 	var x_tween = create_tween()
 	x_tween.tween_property(mosquito, "position:x", END_X, LOADING_TIME)
-	x_tween.tween_callback(loading_finished).set_delay(1.5)
 
 	var mosquito_tween = create_tween()
 	mosquito.position = Vector2(473, STARTING_Y)
@@ -41,6 +41,9 @@ func _ready() -> void:
 	mosquito_tween.tween_property(mosquito, "position:y", STARTING_Y - AMP, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	mosquito_tween.set_loops()
 
+	# wait for the horizontal tween to finish, then proceed
+	await x_tween.finished
+	loading_finished()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

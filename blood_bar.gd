@@ -17,10 +17,10 @@ func _on_timer_timeout() -> void:
 		emit_signal("death")"""
 
 @export var FAST_DEPLETION = 4
-@export var NORMAL_DEPLETION = 1
+@export var NORMAL_DEPLETION = 20
 
 @export var blood_left = 100
-@onready var blood_deplete_rate = 1
+@onready var blood_deplete_rate = 40
 
 func _ready():
 	update()

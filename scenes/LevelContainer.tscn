@@ -44,6 +44,7 @@ render_target_update_mode = 4
 
 [node name="BloodBar" parent="." instance=ExtResource("4_x305a")]
 layout_mode = 1
+NORMAL_DEPLETION = 50
 
 [node name="Heart1" type="Control" parent="."]
 anchors_preset = 0
