@@ -13,6 +13,8 @@ const AMP = 60
 const LOADING_TIME = 15
 const STARTING_Y = 540.0
 const END_X = 4519.0
+const MAIN_LEVEL = preload("res://scenes/LevelContainer.tscn")
+const MAIN_MAP = preload("res://scenes/Map.tscn")
 
 var running_delta = 0
 
@@ -21,6 +23,10 @@ func loading_finished():
 	tween.tween_property(self, "modulate", Color(0, 0, 0, 1), 1.0)
 	await tween.finished
 	loading_complete.emit()
+
+	# change to main level
+	Global.starting_level = MAIN_MAP
+	get_tree().change_scene_to_packed(MAIN_LEVEL)
 	
 func _ready() -> void:
 	background.position = Vector2.ZERO

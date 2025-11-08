@@ -13,7 +13,11 @@ var playing_minigame = false
 const WIN_SCREEN = preload("res://scenes/WinScreen.tscn")
 const LOSE_SCREEN = preload("res://scenes/LoseScreen.tscn")
 
-const MAP = preload("res://scenes/Map.tscn")
+const MAIN_MAP = preload("res://scenes/Map.tscn")
+const TUTORIAL_MAP = preload("res://scenes/TutorialMap.tscn")
+
+var CURR_MAP
+
 @onready var npcs # update in set_level: npc will register themselves
 
 signal player_win
@@ -23,7 +27,8 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		set_level(Global.starting_level)
 	else:
-		set_level(MAP)
+		CURR_MAP = Global.starting_level
+		set_level(CURR_MAP)
 		
 	toggle_minigame(playing_minigame)
 
