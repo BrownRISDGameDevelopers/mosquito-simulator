@@ -13,5 +13,13 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+	print(velocity)
+	if (velocity.x < 0.05 && velocity.y < 0.05):
+		print("emitting still signal")
+		Global.player_still.emit(true)
+	else:
+		print("emitting not still signal")
+		Global.player_still.emit(false)
+
 func get_swatted():
 	$Label.text = $Label.text + "ouch"
