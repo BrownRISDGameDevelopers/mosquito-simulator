@@ -2,23 +2,26 @@
 
 [ext_resource type="Script" uid="uid://bbwtfw2j6qh7v" path="res://scripts/swat_minigame.gd" id="1_vn5tw"]
 [ext_resource type="PackedScene" uid="uid://dqrapnubr13ws" path="res://scenes/Player2D.tscn" id="1_xre7j"]
-[ext_resource type="Texture2D" uid="uid://bqotwpd140nfa" path="res://assets/child sprite 1.png" id="2_86fu8"]
+[ext_resource type="Texture2D" uid="uid://dfvr3vo4ndjrf" path="res://assets/hand.png" id="3_yq4fx"]
 [ext_resource type="PackedScene" uid="uid://cmbjd2lukby5b" path="res://scenes/Swatter.tscn" id="4_y7wqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86fu8"]
-size = Vector2(836, 1932)
+size = Vector2(836, 2511)
 
 [node name="SwatMinigame" type="Node2D"]
 script = ExtResource("1_vn5tw")
 swatter_scene = ExtResource("4_y7wqd")
 
-[node name="ChildSprite1" type="Sprite2D" parent="."]
-scale = Vector2(30, 30)
-texture = ExtResource("2_86fu8")
+[node name="Hand" type="Sprite2D" parent="."]
+position = Vector2(-56, -559)
+rotation = 1.5707964
+scale = Vector2(2.2919128, 2.7576144)
+texture = ExtResource("3_yq4fx")
 
 [node name="MinigameBounds" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameBounds"]
+position = Vector2(0, 289.5)
 shape = SubResource("RectangleShape2D_86fu8")
 debug_color = Color(0.51330525, 0.5524319, 0.46904778, 0.41960785)
 

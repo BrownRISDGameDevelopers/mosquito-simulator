@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://812i5rc2n730" path="res://assets/mosquitosprite_top_v2.PNG" id="2_smyaq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smyaq"]
-size = Vector2(127, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_smyaq"]
 size = Vector2(200, 200)
 
 [node name="Player2D" type="CharacterBody2D"]
