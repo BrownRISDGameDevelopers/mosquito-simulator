@@ -30,6 +30,7 @@ shape = SubResource("CylinderShape3D_6xvi5")
 [node name="NPCSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 billboard = 1
+autoplay = "default"
 sprite_frames = ExtResource("2_6xvi5")
 animation = &"walk_backward"
 

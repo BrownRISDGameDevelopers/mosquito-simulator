@@ -6,6 +6,7 @@ var playing_minigame = false
 @onready var map_3d = $MapViewport/SubViewport/Map
 @onready var minigame_viewport = $MinigameViewport
 @onready var minigame = $MinigameViewport/SubViewport/SwatMinigame
+@onready var hearts = [$Heart3, $Heart2, $Heart1]
 # @onready var infinite_mode: bool = false
 @onready var blood_bar: Control = $BloodBar
 
@@ -59,11 +60,16 @@ func _process(_delta) -> void:
 			emit_signal("player_win")
 			get_tree().change_scene_to_packed(WIN_SCREEN) # display win screen
 
+	#heart removal
+	if Global.lives_left != hearts.size():
+		var heart_to_remove = hearts.get(0)
+		heart_to_remove.visible = false
+		hearts.remove_at(0)
+			
 
 func on_map_3d_minigame_toggle():
 	toggle_minigame(true)
 	minigame.reset()
-
 
 func _on_swat_minigame_exited_bounds():
 	toggle_minigame(false)
