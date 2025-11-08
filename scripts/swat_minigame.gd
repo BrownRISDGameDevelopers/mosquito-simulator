@@ -10,6 +10,12 @@ signal exited_bounds
 var extra_swatters = []
 var num_swatters = 0
 
+func _ready():
+	Global.completed_minigame.connect(_on_completion)
+
+func _on_completion():
+	exited_bounds.emit()
+
 func _on_minigame_bounds_body_exited(body: Node2D):
 	exited_bounds.emit()
 
@@ -25,6 +31,7 @@ func add_swatter(swatter_adj = 0):
 	extra_swatters.append(new_swatter)
 	add_child(new_swatter)
 
+
 func reset():
 	for swatter in extra_swatters:
 		swatter.queue_free()
@@ -32,3 +39,5 @@ func reset():
 	for i in range(num_swatters):
 		add_swatter()
 	player.position = Vector2.ZERO
+
+

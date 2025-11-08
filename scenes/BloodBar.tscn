@@ -27,7 +27,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_oj3me")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimeLeft" type="Timer" parent="."]
 autostart = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -51,4 +51,7 @@ fill_mode = 3
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="BloodSucked" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimeLeft" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="BloodSucked" to="." method="_on_blood_sucked_timeout"]

@@ -53,6 +53,7 @@ func _process(_delta) -> void:
 			
 
 func on_map_3d_minigame_toggle():
+	Global.start_minigame.emit()
 	toggle_minigame(true)
 	minigame.reset()
 

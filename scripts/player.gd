@@ -33,6 +33,14 @@ func _ready():
 	epicycle_timer.wait_time = 2 * PI / hover_freq
 
 func _physics_process(delta: float) -> void:
+	#if player is staying still
+	if (velocity.x < 0.05 && velocity.z < 0.05):
+		print("emitting still signal")
+		Global.player_still.emit(true)
+	else:
+		print("emitting not still signal")
+		Global.player_still.emit(false)
+	
 	if on_camper:
 		global_position = current_camper.global_position + hover_distance * epicycle()
 		return
