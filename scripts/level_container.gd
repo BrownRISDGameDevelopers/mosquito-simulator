@@ -116,7 +116,7 @@ func handle_win():
 		# maybe more dialogue and such and then transition?
 		get_tree().change_scene_to_packed(LOAD_SCREEN)
 		Global.tutorial_completed = true
-	else: 
+	else:
 		get_tree().change_scene_to_packed(WIN_SCREEN) # display win screen
 
 
@@ -124,14 +124,13 @@ func handle_lose():
 	emit_signal("player_lose")
 	if !Global.tutorial_completed:
 		blood_bar.blood_left = 50;
-	else: 
+	else:
 		get_tree().change_scene_to_packed(LOSE_SCREEN) # display lose screen
 			
 
 func on_map_3d_minigame_toggle():
 	toggle_minigame(true)
 	minigame.reset()
-
 
 func _on_swat_minigame_exited_bounds():
 	toggle_minigame(false)

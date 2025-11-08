@@ -73,4 +73,31 @@ offset_bottom = 40.0
 position = Vector2(1812, 116)
 texture = ExtResource("4_wm43x")
 
+[node name="Heart1" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Heart1"]
+position = Vector2(1510, 111)
+texture = ExtResource("4_wm43x")
+
+[node name="Heart2" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Heart2"]
+position = Vector2(1656, 112)
+texture = ExtResource("4_wm43x")
+
+[node name="Heart3" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Heart3"]
+position = Vector2(1812, 116)
+texture = ExtResource("4_wm43x")
+
 [connection signal="exited_bounds" from="MinigameViewport/SubViewport/SwatMinigame" to="." method="_on_swat_minigame_exited_bounds"]
