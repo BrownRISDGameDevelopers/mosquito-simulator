@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bcyvadahyriu7"]
+[gd_scene load_steps=0 format=3 uid="uid://bcyvadahyriu7"]
 
 [node name="Lose Screen" type="Control"]
 layout_mode = 3
