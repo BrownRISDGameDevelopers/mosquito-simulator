@@ -11,7 +11,7 @@ signal loading_complete
 
 const AMP = 60
 #const LOADING_TIME = 15
-const LOADING_TIME = 2
+const LOADING_TIME = 5
 const STARTING_Y = 540.0
 const END_X = 4519.0
 const LEVEL_CONTAINER = "res://scenes/LevelContainer.tscn"
