@@ -129,7 +129,9 @@ func handle_lose():
 			
 
 func on_map_3d_minigame_toggle():
+	Global.start_minigame.emit()
 	toggle_minigame(true)
+	minigame.blood_bar = $BloodBar
 	minigame.reset()
 
 func _on_swat_minigame_exited_bounds():

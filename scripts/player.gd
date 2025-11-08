@@ -36,12 +36,12 @@ func _physics_process(delta: float) -> void:
 	if on_camper:
 		global_position = current_camper.global_position + hover_distance * epicycle()
 		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 	player_movement(delta)
-		
 
 	for npc in get_tree().get_nodes_in_group("npcs"):
 		npc.prompt.visible = false

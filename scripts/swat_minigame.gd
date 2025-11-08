@@ -3,15 +3,20 @@ extends Node2D
 signal exited_bounds
 
 @export var swatter_distance = 800
-
 @onready var player = $Player2D
 @export var swatter_scene: PackedScene
+
+var blood_bar
 
 var extra_swatters = []
 var num_swatters = 0
 
 func _ready():
+	Global.completed_minigame.connect(_on_completion)
 	add_swatter(1)
+
+func _on_completion():
+	exited_bounds.emit()
 
 func _on_minigame_bounds_body_exited(body: Node2D):
 	exited_bounds.emit()
@@ -29,6 +34,7 @@ func add_swatter(swatter_adj = 0):
 	new_swatter.scale /= $Hand.scale
 	new_swatter.rotation = -$Hand.rotation
 	$Hand.add_child(new_swatter)
+
 
 func reset():
 	for swatter in extra_swatters:
