@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbvvla6w656vp"]
+[gd_scene load_steps=6 format=3 uid="uid://b3gtouo40dymy"]
 
 [ext_resource type="Texture2D" uid="uid://bj3ce5y846j7b" path="res://assets/Transition from Tutorial to Camp concept rev2.png" id="1_rx3dl"]
 [ext_resource type="Script" uid="uid://bu332k8nlfs6c" path="res://scripts/loading.gd" id="1_y56h7"]

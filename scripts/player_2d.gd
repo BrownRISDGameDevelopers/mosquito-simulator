@@ -1,6 +1,11 @@
 extends CharacterBody2D
 
 const SPEED = 500
+const LOSE_SCREEN = preload("res://scenes/LoseScreen.tscn")
+
+@onready var minigame = get_parent()
+@onready var level_container = get_node(".")
+
 
 func _physics_process(delta):
 	var input_dir := Input.get_vector("left", "right", "up", "down")
@@ -23,3 +28,9 @@ func _physics_process(delta):
 
 func get_swatted():
 	$Label.text = $Label.text + "ouch"
+	if Global.lives_left > 1:
+		Global.lives_left -= 1
+	else:
+		print("lost")
+		get_tree().change_scene_to_packed(LOSE_SCREEN)
+

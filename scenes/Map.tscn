@@ -91,7 +91,19 @@ script = ExtResource("2_lajc7")
 player = NodePath("../Player")
 
 [node name="NPC" parent="." groups=["Campers"] instance=ExtResource("3_xkm8s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.18363154, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5314417, 0.18363154, -2)
+
+[node name="NPC2" parent="." groups=["Campers"] instance=ExtResource("3_xkm8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7527454, 0.18363154, -2)
+
+[node name="NPC3" parent="." groups=["Campers"] instance=ExtResource("3_xkm8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7472253, 0.36726308, 1.4649217)
+
+[node name="NPC4" parent="." groups=["Campers"] instance=ExtResource("3_xkm8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7356477, 0.5508946, -1.1155088)
+
+[node name="NPC5" parent="." groups=["Campers"] instance=ExtResource("3_xkm8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8179045, 0.73452616, 1.4787421)
 
 [connection signal="change_blood_rate" from="Player" to="." method="_on_player_change_blood_rate"]
 [connection signal="minigame_toggle" from="Player" to="." method="_on_player_minigame_toggle"]

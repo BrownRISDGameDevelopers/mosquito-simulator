@@ -19,7 +19,7 @@ func _on_timer_timeout() -> void:
 @export var FAST_DEPLETION = 4
 @export var NORMAL_DEPLETION = 1
 
-@onready var blood_left = 100
+@export var blood_left = 100
 @onready var blood_deplete_rate = 1
 
 @onready var blood_sucked = 0
