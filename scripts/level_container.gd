@@ -7,14 +7,16 @@ var playing_minigame = false
 @onready var minigame_viewport = $MinigameViewport
 @onready var minigame = $MinigameViewport/SubViewport/SwatMinigame
 # @onready var infinite_mode: bool = false
+@onready var blood_bar: Control = $BloodBar
 
 const WIN_SCREEN = preload("res://scenes/WinScreen.tscn")
-
+const LOSE_SCREEN = preload("res://scenes/LoseScreen.tscn")
 
 const MAP = preload("res://scenes/Map.tscn")
 @onready var npcs # update in set_level: npc will register themselves
 
 signal player_win
+signal player_lose
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -46,11 +48,17 @@ func toggle_minigame(minigame_state):
 		$MapViewport.scale = Vector2.ONE
 
 func _process(_delta) -> void:
-	if Global.current_level == "infinite":
+	# lose condition
+	if blood_bar.blood_left == 0:
+		emit_signal("player_lose")
+		get_tree().change_scene_to_packed(LOSE_SCREEN) # display lose screen
+
+	# win condition
+	if Global.current_level != "infinite":
 		if all_npc_bitten():
 			emit_signal("player_win")
 			get_tree().change_scene_to_packed(WIN_SCREEN) # display win screen
-			
+
 
 func on_map_3d_minigame_toggle():
 	toggle_minigame(true)
