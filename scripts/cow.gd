@@ -52,10 +52,7 @@ func _on_navigation_finished():
 	# When the NPC reaches its target, set a new random target
 	npc_sprite.stop()
 	await get_tree().create_timer(rng.randf_range(1.0, 5.0)).timeout # Wait a bit
-	if bit_camper == null:
-		set_random_target()
-	elif bit_camper != self:
-		set_target_by_position(bit_camper.global_position)
+
 
 func _ready():
 	npc_sprite.sprite_frames = npc_frames
