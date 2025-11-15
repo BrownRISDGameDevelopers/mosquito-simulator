@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1x5dwcj0f7yk"]
+
+[ext_resource type="Script" uid="uid://2ltk2pg6120f" path="res://scripts/tutorial_instruction.gd" id="1_sompc"]
+[ext_resource type="FontFile" uid="uid://c7vbvnaiafor2" path="res://assets/fonts/Chaloops Medium.otf" id="2_3b6o2"]
+
+[node name="TutorialInstruction" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sompc")
+
+[node name="MovementInstruction" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1576.0
+offset_top = 992.0
+offset_right = -63.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3b6o2")
+theme_override_font_sizes/font_size = 32
+text = "Press WASD to move"
+
+[node name="SuckBloodInstruction" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1432.0
+offset_top = 960.0
+offset_right = -64.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3b6o2")
+theme_override_font_sizes/font_size = 32
+text = "Stand still to suck blood. 
+Make sure to dodge the hands!"

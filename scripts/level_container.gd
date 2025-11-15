@@ -1,6 +1,7 @@
 extends Control
 
 var playing_minigame = false
+var in_tutorial
 
 @onready var map_viewport = $MapViewport/SubViewport
 @onready var map_3d = $MapViewport/SubViewport/Map
@@ -9,6 +10,7 @@ var playing_minigame = false
 @onready var hearts = [$Heart3, $Heart2, $Heart1]
 # @onready var infinite_mode: bool = false
 @onready var blood_bar: Control = $BloodBar
+@onready var tutorial_instruction: Control = $TutorialInstruction
 
 const WIN_SCREEN = preload("res://scenes/WinScreen.tscn")
 const LOSE_SCREEN = preload("res://scenes/LoseScreen.tscn")
@@ -32,6 +34,12 @@ func _ready() -> void:
 		set_level(start_map)
 	else:
 		CURR_MAP = Global.starting_level
+		if CURR_MAP == TUTORIAL_MAP:
+			in_tutorial = true
+			tutorial_instruction.visible = true
+		else:
+			in_tutorial = false
+			tutorial_instruction.visible = false
 		set_level(CURR_MAP)
 		
 	toggle_minigame(playing_minigame)
