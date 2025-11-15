@@ -34,7 +34,6 @@ func _ready():
 	$TimeLeft.start()
 	Global.start_minigame.connect(_start_minigame)
 	Global.player_still.connect(_on_player_still)
-	$BloodSucked.timeout.connect(_on_blood_sucked_timeout)
 
 func _on_timer_timeout() -> void:
 	update()
@@ -52,27 +51,9 @@ func _start_minigame():
 func _on_player_still(is_still: bool):
 	if ($TimeLeft.is_stopped()):
 		if is_still:
-			# $BloodSucked.start()
 			blood_sucked += BLOOD_SUCK_RATE
 			progress_bar.value = blood_sucked
 			if blood_sucked > 100:
 				Global.completed_minigame.emit()
 				$ProgressBar.value = blood_left + BLOOD_BOOST #reset progress bar back to showing time left
-				# $BloodSucked.stop()
 				$TimeLeft.start()
-		# else:
-			# $BloodSucked.stop()
-
-func _on_blood_sucked_timeout() -> void:
-# 	print("	sucking blood")
-# 	blood_sucked += 10
-# 	print(" " + str(blood_sucked))
-# 	# print(" ProgressBar value" + str($ProgressBar.value))
-# 	progress_bar.value = blood_sucked
-# 	if blood_sucked > 100:
-# 		print("	successful completion")
-# 		Global.completed_minigame.emit()
-# 		$ProgressBar.value = blood_left + BLOOD_BOOST #reset progress bar back to showing time left
-# 		$BloodSucked.stop()
-# 		$TimeLeft.start()
-	pass
