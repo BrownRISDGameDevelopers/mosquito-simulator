@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://t0krcbley86c"]
+
+[ext_resource type="Texture2D" uid="uid://cnfmjl528hr27" path="res://assets/cow spritesheet.png" id="1_kfhki"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aempe"]
+atlas = ExtResource("1_kfhki")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cr3s"]
+atlas = ExtResource("1_kfhki")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aempe")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cr3s")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
