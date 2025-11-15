@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ciq6bgutxc088"]
 
 [ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="1_gxsa1"]
-[ext_resource type="SpriteFrames" uid="uid://he6h6evpy2e1" path="res://resources/cow.tres" id="2_0nyyw"]
+[ext_resource type="SpriteFrames" uid="uid://t0krcbley86c" path="res://resources/cow.tres" id="2_0nyyw"]
 [ext_resource type="Script" uid="uid://mnllnmpuafap" path="res://scripts/cow.gd" id="2_8qujo"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0nyyw"]
@@ -17,3 +17,8 @@ animation = &"walk_right"
 
 [node name="Prompt" parent="." index="5"]
 texture = SubResource("ViewportTexture_0nyyw")
+
+[node name="MovementTimer" type="Timer" parent="." index="6"]
+autostart = true
+
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
