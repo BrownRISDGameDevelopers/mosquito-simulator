@@ -16,6 +16,11 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
+	if velocity.y > 0:
+		$PlayerSprite.flip_v = true
+	else:
+		$PlayerSprite.flip_v = false
+
 	move_and_slide()
 
 	#checking if player is still
@@ -31,4 +36,3 @@ func get_swatted():
 	else:
 		print("lost")
 		get_tree().change_scene_to_packed(LOSE_SCREEN)
-
