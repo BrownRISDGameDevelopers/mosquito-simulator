@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://pnwr810jgj3y"]
 
-[ext_resource type="Texture2D" uid="uid://dag5lmwmsf5xi" path="res://assets/lose screen temp.JPG" id="1_x3j6d"]
+[ext_resource type="Texture2D" uid="uid://g68pgqusxnxa" path="res://assets/you-lose-screen.png" id="1_x3j6d"]
 [ext_resource type="PackedScene" uid="uid://dk0d45kifysp7" path="res://scenes/EndScreenMenuItems.tscn" id="2_aeugc"]
 
 [node name="LoseScreen" type="Control"]
