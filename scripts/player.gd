@@ -19,7 +19,7 @@ var accelerating: bool = false
 var on_camper = false
 var can_attach = true
 
-var current_camper
+var current_camper: NPC
 var closest_camper
 
 @onready var epicycle_timer = $EpicycleTimer
@@ -31,6 +31,7 @@ func _ready():
 	current_speed = NORMAL_SPEED
 	hover_height = hover_height / hover_distance
 	epicycle_timer.wait_time = 2 * PI / hover_freq
+	Global.successful_bite.connect(func(): current_camper.is_bitten = true)
 
 func _physics_process(delta: float) -> void:
 	if on_camper:

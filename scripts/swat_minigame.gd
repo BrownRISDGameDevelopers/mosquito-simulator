@@ -13,9 +13,11 @@ var num_swatters = 0
 
 func _ready():
 	Global.completed_minigame.connect(_on_completion)
-	add_swatter(1)
+	# add_swatter(1)
 
 func _on_completion():
+	print('done!')
+	Global.successful_bite.emit()
 	exited_bounds.emit()
 
 func _on_minigame_bounds_body_exited(body: Node2D):
