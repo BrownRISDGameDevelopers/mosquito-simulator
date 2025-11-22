@@ -7,6 +7,28 @@ const TUTORIAL = preload("res://scenes/TutorialMap.tscn")
 const MAIN_MAP = preload("res://scenes/Map.tscn")
 const INFINITE_MODE = preload("res://scenes/InfiniteModeMap.tscn")
 
+func _ready() -> void:
+	var buttons: Array[TextureButton] = [$StartButton, $InfiniteMode, $Quit, $Credits]
+
+	for button in buttons:
+		# var image = button.texture_normal
+		# var bitmap = BitMap.new()
+		# bitmap.create_from_image_alpha(image)
+		# button.texture_click_mask = bitmap
+		print(button)
+
+		button.mouse_entered.connect(func() -> void:
+			print('hover', button.name)
+			button.material.set_shader_parameter("enabled", true)
+			button.scale = button.scale * 1.05
+			button.position -= Vector2(10, 10)
+		)
+
+		button.mouse_exited.connect(func() -> void:
+			button.material.set_shader_parameter("enabled", false)
+			button.scale = button.scale / 1.05
+			button.position += Vector2(10, 10)
+		)
 
 func _on_start_button_pressed() -> void:
 	print("Start pressed")
@@ -15,7 +37,7 @@ func _on_start_button_pressed() -> void:
 
 	if !Global.tutorial_completed:
 		Global.starting_level = TUTORIAL
-	else: 
+	else:
 		Global.starting_level = MAIN_MAP
 	var packed = load(LEVEL_CONTAINER_PATH)
 	if packed == null:
@@ -47,7 +69,3 @@ func _on_infinite_mode_button_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	get_tree().change_scene_to_packed(CREDITS)
-
-
-func _on_settings_pressed() -> void:
-	pass # Replace with function body.
