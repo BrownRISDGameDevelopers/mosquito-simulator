@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=35 format=3 uid="uid://cgjmoi64fedho"]
+[gd_resource type="SpriteFrames" load_steps=35 format=3 uid="uid://oor82is61pg5"]
 
 [ext_resource type="Texture2D" uid="uid://braba342f2klt" path="res://assets/npc/Post Bite run 2.png" id="1_yky4o"]
 [ext_resource type="Texture2D" uid="uid://dbt3ooomgplab" path="res://assets/npc/Normal 2.png" id="2_0ttdb"]

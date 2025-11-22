@@ -12,6 +12,7 @@ script = ExtResource("2_8qujo")
 npc_frames = ExtResource("2_0nyyw")
 
 [node name="NPCSprite" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 sprite_frames = ExtResource("2_0nyyw")
 animation = &"walk_right"
 
