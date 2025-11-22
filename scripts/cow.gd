@@ -2,6 +2,8 @@ extends NPC
 
 class_name Cow
 
+var direction = 1
+var moving = true
 
 func set_random_target(range: float = 10.0):
 	# generate random coords in world space
@@ -23,15 +25,10 @@ func set_target_by_position(target_position):
 		set_random_target()
 
 func set_camper_target(camper: NPC):
-	bit_camper = camper
-	set_target_by_position(bit_camper.global_position)
-	if bit_camper == self:
-		panic()
+	return
 
 func clear_camper_target():
-	if bit_camper == self:
-		calm_down()
-	bit_camper = null
+	return
 
 func panic():
 	panicking = true
@@ -63,6 +60,9 @@ func _ready():
 
 	navigation_agent.navigation_finished.connect(_on_navigation_finished)
 
+	if randf() < 0.5:
+		direction = - direction
+
 	prompt = $Prompt
 
 	add_to_group("npcs") # maintain list
@@ -71,28 +71,17 @@ func _ready():
 	actor_setup.call_deferred()
 
 func _physics_process(delta):
-	if navigation_agent.is_navigation_finished() and not panicking:
+	if navigation_agent.is_navigation_finished():
 		return
 
 	var current_agent_position: Vector3 = global_position
-	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 
-	if not panicking:
-		velocity = current_agent_position.direction_to(next_path_position) * movement_speed
-	
+	if moving:
+		velocity = Vector3(direction, 0, 0)
+		$NPCSprite.flip_h = direction < 0
 	else:
-		panic_timer += delta
-		velocity = Vector3(cos(panic_timer * PI * movement_speed), 0, 0)
+		velocity = Vector3.ZERO
 
-	var angle = atan2(velocity.z, velocity.x)
-	if abs(angle) < 0.25 * PI:
-		npc_sprite.play("walk_right")
-	elif abs(angle) > 0.75 * PI:
-		npc_sprite.play("walk_left")
-	elif angle > 0.0:
-		npc_sprite.play("walk_forward")
-	else:
-		npc_sprite.play("walk_backward")
 	move_and_slide()
 
 func _on_area_3d_body_entered(body: Node3D):
@@ -103,3 +92,11 @@ func _on_area_3d_body_entered(body: Node3D):
 func _on_area_3d_body_exited(body):
 	if body is Player:
 		add_swatter.emit(-1)
+
+
+func _on_movement_timer_timeout():
+	if moving:
+		moving = false
+	else:
+		moving = true
+		direction = - direction

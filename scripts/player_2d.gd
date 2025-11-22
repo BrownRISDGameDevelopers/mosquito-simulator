@@ -16,14 +16,17 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
+	if velocity.y > 0:
+		$PlayerSprite.flip_v = true
+	else:
+		$PlayerSprite.flip_v = false
+
 	move_and_slide()
 
-	print(velocity)
-	if (velocity.x < 0.05 && velocity.y < 0.05):
-		print("emitting still signal")
+	#checking if player is still
+	if (abs(velocity.x) < 0.01 && abs(velocity.y) < 0.01):
 		Global.player_still.emit(true)
 	else:
-		print("emitting not still signal")
 		Global.player_still.emit(false)
 
 func get_swatted():
@@ -33,4 +36,3 @@ func get_swatted():
 	else:
 		print("lost")
 		get_tree().change_scene_to_packed(LOSE_SCREEN)
-

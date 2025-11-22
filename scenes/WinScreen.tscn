@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bge0omsur22a3"]
 
-[ext_resource type="Texture2D" uid="uid://di0rxj8b15frg" path="res://assets/tree.PNG" id="1_ulig0"]
+[ext_resource type="Texture2D" uid="uid://b8tbagcf25oit" path="res://assets/win_screen.PNG" id="1_okh34"]
 [ext_resource type="PackedScene" uid="uid://dk0d45kifysp7" path="res://scenes/EndScreenMenuItems.tscn" id="2_okh34"]
 
 [node name="WinScreen" type="Control"]
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ulig0")
+texture = ExtResource("1_okh34")
 
 [node name="EndScreenMenuItems" parent="." instance=ExtResource("2_okh34")]
 layout_mode = 1
