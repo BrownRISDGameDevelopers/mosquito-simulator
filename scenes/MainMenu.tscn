@@ -1,18 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://cu1ldntnivb8j"]
+[gd_scene load_steps=25 format=3 uid="uid://cu1ldntnivb8j"]
 
 [ext_resource type="Script" uid="uid://cp50y7rdio8mm" path="res://scripts/main_menu.gd" id="1_yqorp"]
 [ext_resource type="Texture2D" uid="uid://kh0ul6twtwiv" path="res://assets/ui/Title Screen.png" id="2_0ykhv"]
+[ext_resource type="Texture2D" uid="uid://kkot0buo7xr3" path="res://assets/ui/titleartmosquitonobuttons.png" id="2_mipys"]
 [ext_resource type="Texture2D" uid="uid://iqb8ynf551nq" path="res://assets/sign/infinite.png" id="3_2wh52"]
 [ext_resource type="Texture2D" uid="uid://byi518tu32x8t" path="res://assets/sign/play.png" id="3_ucygd"]
 [ext_resource type="FontFile" uid="uid://dnjrrjnmwxpyp" path="res://assets/fonts/Chinchilla Regular.otf" id="4_mipys"]
 [ext_resource type="Texture2D" uid="uid://cudp3ck61scs6" path="res://assets/sign/credits.png" id="6_8a8k8"]
 [ext_resource type="Texture2D" uid="uid://cmoiyncydlv5o" path="res://assets/sign/quit.png" id="7_7la6k"]
-
-[sub_resource type="Gradient" id="Gradient_ucygd"]
-colors = PackedColorArray(0.49894404, 0.8105613, 0.99999994, 1, 0.49803922, 0.8117647, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_mipys"]
-gradient = SubResource("Gradient_ucygd")
 
 [sub_resource type="Shader" id="Shader_ucygd"]
 code = "shader_type canvas_item;
@@ -683,14 +678,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqorp")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_mipys")
+texture = ExtResource("2_mipys")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
