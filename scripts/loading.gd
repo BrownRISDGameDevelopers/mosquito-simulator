@@ -15,7 +15,7 @@ const LOADING_TIME = 5
 const STARTING_Y = 540.0
 const END_X = 4519.0
 const LEVEL_CONTAINER = "res://scenes/LevelContainer.tscn"
-const MAIN_MAP = preload("res://scenes/Map.tscn")
+const MAIN_MAP = preload("res://scenes/Campgrounds.tscn")
 
 var running_delta = 0
 
