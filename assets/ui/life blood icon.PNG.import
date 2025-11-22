@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjmi18yp3fjfx"
-path="res://.godot/imported/bar backing (1).png-5ce43a4a1b75238124cdbe17f8447e4b.ctex"
+uid="uid://bj45lgvv5pq4y"
+path="res://.godot/imported/life blood icon.PNG-6f9f11e65ca50d374034c97bc7fd84f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/drive-download-20251115T215627Z-1-001/bar backing (1).png"
-dest_files=["res://.godot/imported/bar backing (1).png-5ce43a4a1b75238124cdbe17f8447e4b.ctex"]
+source_file="res://assets/ui/life blood icon.PNG"
+dest_files=["res://.godot/imported/life blood icon.PNG-6f9f11e65ca50d374034c97bc7fd84f9.ctex"]
 
 [params]
 

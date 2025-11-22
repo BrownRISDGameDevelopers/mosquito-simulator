@@ -703,6 +703,7 @@ offset_bottom = -0.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_0ykhv")
+metadata/_edit_use_anchors_ = true
 
 [node name="StartButton" type="TextureButton" parent="."]
 material = SubResource("ShaderMaterial_7la6k")
@@ -764,10 +765,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1171875
 anchor_top = 0.71481484
-anchor_right = 0.2726052
-anchor_bottom = 0.81536216
-offset_right = 4.5980225
-offset_bottom = -15.5911255
+anchor_right = 0.275
+anchor_bottom = 0.8009259
 texture_normal = ExtResource("6_8a8k8")
 metadata/_edit_use_anchors_ = true
 
@@ -793,10 +792,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.13489583
 anchor_top = 0.8564815
-anchor_right = 0.293079
-anchor_bottom = 0.9312248
-offset_right = -2.71167
-offset_bottom = 5.2772217
+anchor_right = 0.29166666
+anchor_bottom = 0.9361111
 texture_normal = ExtResource("7_7la6k")
 metadata/_edit_use_anchors_ = true
 

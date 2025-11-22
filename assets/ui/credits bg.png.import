@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2w238u7ldcjx"
-path="res://.godot/imported/blood bar.png-6d22dcde5910580173d6c54b0529334c.ctex"
+uid="uid://b2b4pby4grwcf"
+path="res://.godot/imported/credits bg.png-c9675d9a402e5b9c3f7c0b937ab067bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/drive-download-20251115T215627Z-1-001/blood bar.png"
-dest_files=["res://.godot/imported/blood bar.png-6d22dcde5910580173d6c54b0529334c.ctex"]
+source_file="res://assets/ui/credits bg.png"
+dest_files=["res://.godot/imported/credits bg.png-c9675d9a402e5b9c3f7c0b937ab067bd.ctex"]
 
 [params]
 
