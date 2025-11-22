@@ -15,7 +15,7 @@ script = ExtResource("1_vn5tw")
 swatter_scene = ExtResource("4_y7wqd")
 
 [node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(451.99988, 290.0001)
+position = Vector2(-55.99997, -59.99994)
 scale = Vector2(2.838297, 2.838297)
 texture = ExtResource("4_b73rt")
 
