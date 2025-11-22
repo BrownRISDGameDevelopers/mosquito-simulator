@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuudj6gmqmnno"]
+[gd_scene load_steps=5 format=3 uid="uid://cuudj6gmqmnno"]
 
 [ext_resource type="Script" uid="uid://dvw2xug5adtq0" path="res://blood_bar.gd" id="1_oj3me"]
+[ext_resource type="Texture2D" uid="uid://bjmi18yp3fjfx" path="res://assets/drive-download-20251115T215627Z-1-001/bar backing (1).png" id="2_qrlab"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mk6yt"]
 bg_color = Color(0, 0, 0, 1)
@@ -56,6 +57,18 @@ process_thread_group = 2
 process_thread_group_order = 0
 process_thread_messages = 0
 wait_time = 0.1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 1927.0
+offset_top = -44.0
+offset_right = 2854.628
+offset_bottom = 148.0
+rotation = 1.5707964
+texture = ExtResource("2_qrlab")
+region_rect = Rect2(6, 3, 1140, 380)
+patch_margin_left = 488
+patch_margin_right = 108
 
 [connection signal="timeout" from="TimeLeft" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="BloodSucked" to="." method="_on_blood_sucked_timeout"]

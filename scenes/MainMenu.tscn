@@ -13,18 +13,28 @@ grow_vertical = 2
 script = ExtResource("1_yqorp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1081.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.00046296295
+anchor_right = 1.0
+anchor_bottom = 1.000463
+offset_top = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_0ykhv")
+metadata/_edit_use_anchors_ = true
 
 [node name="StartButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 539.99994
-offset_top = 655.0
-offset_right = 919.99994
-offset_bottom = 765.0
+anchor_left = 0.28124997
+anchor_top = 0.6064815
+anchor_right = 0.48725095
+anchor_bottom = 0.6137969
+offset_right = -15.521912
+offset_bottom = 102.099365
 rotation = -0.2617994
+metadata/_edit_use_anchors_ = true
 
 [node name="InfiniteMode" type="TextureButton" parent="."]
 layout_mode = 0
@@ -34,11 +44,14 @@ offset_right = 1016.0
 offset_bottom = 493.5
 
 [node name="Credits" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 235.99998
-offset_top = 774.0
-offset_right = 536.0
-offset_bottom = 854.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12291666
+anchor_top = 0.71666664
+anchor_right = 0.27677187
+anchor_bottom = 0.805177
+offset_right = 4.5980225
+offset_bottom = -15.5911255
 rotation = 0.05235988
 
 [node name="Quit" type="TextureButton" parent="."]
@@ -46,10 +59,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.14166668
 anchor_top = 0.86666673
-anchor_right = 0.18125
-anchor_bottom = 0.9018519
-offset_right = 214.0
-offset_bottom = 42.0
+anchor_right = 0.29341254
+anchor_bottom = 0.93604326
+offset_right = -1.3520508
+offset_bottom = 5.0733643
 rotation = -0.017453292
 metadata/_edit_use_anchors_ = true
 
