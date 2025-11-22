@@ -50,28 +50,29 @@ render_target_update_mode = 4
 layout_mode = 1
 NORMAL_DEPLETION = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Lives" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -304.5
+offset_left = -341.25
 offset_top = 51.0
-offset_right = -42.0
-offset_bottom = 126.0
+offset_right = -40.25
+offset_bottom = 137.0
 grow_horizontal = 0
+theme_override_constants/separation = 4
 
-[node name="1" type="TextureRect" parent="HBoxContainer"]
+[node name="Heart1" type="TextureRect" parent="Lives"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("4_wm43x")
 
-[node name="2" type="TextureRect" parent="HBoxContainer"]
+[node name="Heart2" type="TextureRect" parent="Lives"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("4_wm43x")
 
-[node name="3" type="TextureRect" parent="HBoxContainer"]
+[node name="Heart3" type="TextureRect" parent="Lives"]
 material = SubResource("ShaderMaterial_4v4af")
 layout_mode = 2
 size_flags_horizontal = 3
