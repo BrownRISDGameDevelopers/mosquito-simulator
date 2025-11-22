@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkd675tlyb8ra"]
+[gd_scene load_steps=7 format=3 uid="uid://dkd675tlyb8ra"]
 
 [ext_resource type="Script" uid="uid://cea4mxa35k4wb" path="res://scripts/level_container.gd" id="1_etwxj"]
 [ext_resource type="PackedScene" uid="uid://21duxb65jl10" path="res://scenes/SwatMinigame.tscn" id="3_tsmwp"]
@@ -78,5 +78,8 @@ material = SubResource("ShaderMaterial_4v4af")
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("4_wm43x")
+
+[node name="TutorialInstructions" parent="." instance=ExtResource("5_wm43x")]
+layout_mode = 1
 
 [connection signal="exited_bounds" from="MinigameViewport/SubViewport/SwatMinigame" to="." method="_on_swat_minigame_exited_bounds"]

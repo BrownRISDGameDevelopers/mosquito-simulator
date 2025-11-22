@@ -1,4 +1,4 @@
-[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://cbkpe82ino35t"]
+[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://duxvdin4gdwi8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dphp7"]
 resource_name = "Atlas.001"

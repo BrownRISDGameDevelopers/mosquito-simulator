@@ -1,9 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://1ayg4tlicupc"]
 
 [ext_resource type="Script" uid="uid://dfb8m4motdh6b" path="res://scripts/npc.gd" id="1_mhefn"]
-[ext_resource type="SpriteFrames" path="res://resources/npc.tres" id="2_6xvi5"]
-[ext_resource type="SpriteFrames" uid="uid://oor82is61pg5" path="res://resources/summer_npc2.tres" id="3_jnjht"]
+[ext_resource type="SpriteFrames" uid="uid://cgjmoi64fedho" path="res://resources/summer_npc2.tres" id="3_jnjht"]
 [ext_resource type="Texture2D" uid="uid://cads8sa417atu" path="res://icon.svg" id="3_ktgr7"]
+
+[sub_resource type="Resource" id="Resource_ktgr7"]
+metadata/__load_path__ = "res://resources/npc.tres"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6xvi5"]
 height = 0.125
@@ -20,7 +22,7 @@ region = Rect2(8, 13, 33, 21)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_mhefn")
-npc_frames = ExtResource("2_6xvi5")
+npc_frames = SubResource("Resource_ktgr7")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 simplify_path = true
@@ -32,8 +34,8 @@ shape = SubResource("CylinderShape3D_6xvi5")
 [node name="NPCSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, -0.125, 0)
 billboard = 1
-sprite_frames = ExtResource("2_6xvi5")
-animation = &"walk_backward"
+sprite_frames = ExtResource("3_jnjht")
+animation = &"panic_backward"
 
 [node name="Area3D" type="Area3D" parent="."]
 
