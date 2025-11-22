@@ -19,21 +19,22 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1804.0
-offset_top = -382.0
-offset_right = -1133.0
-offset_bottom = -73.0
+offset_left = -1800.0
+offset_top = -440.0
+offset_right = -868.0
+offset_bottom = -92.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_nylga")
 theme_override_font_sizes/font_size = 36
-text = "Press WASD to move
+text = "Press WASD to move.
 Press SHIFT to sprint while moving
-(uses blood)
+(uses blood).
 
 Press SPACE when close to cows to 
-suck their blood
+suck their blood.
 
+Once you suck someone's blood you can't attack them again.
 Suck everyone's blood to win!"
 
 [node name="MinigameInstructions" type="Label" parent="."]
