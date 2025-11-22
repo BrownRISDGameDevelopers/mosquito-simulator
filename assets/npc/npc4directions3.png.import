@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db5u83s67jvv6"
-path="res://.godot/imported/longer arm.PNG-56ccef215663be1d268eae62282c7937.ctex"
+uid="uid://bm4xkfholyu8g"
+path="res://.godot/imported/npc4directions3.png-5dacf1ccc8e4a52fe93aa697fbbdd7b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/longer arm.PNG"
-dest_files=["res://.godot/imported/longer arm.PNG-56ccef215663be1d268eae62282c7937.ctex"]
+source_file="res://assets/npc/npc4directions3.png"
+dest_files=["res://.godot/imported/npc4directions3.png-5dacf1ccc8e4a52fe93aa697fbbdd7b8.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqotwpd140nfa"
-path.s3tc="res://.godot/imported/child sprite 1.png-650399c707bc154e94a1308e2b7eb3d9.s3tc.ctex"
+uid="uid://yiqd7gpls0na"
+path.s3tc="res://.godot/imported/Normal 3.png-62da95f55a23f7c6b020d91cef19c561.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/child sprite 1.png"
-dest_files=["res://.godot/imported/child sprite 1.png-650399c707bc154e94a1308e2b7eb3d9.s3tc.ctex"]
+source_file="res://assets/npc/Normal 3.png"
+dest_files=["res://.godot/imported/Normal 3.png-62da95f55a23f7c6b020d91cef19c561.s3tc.ctex"]
 
 [params]
 
