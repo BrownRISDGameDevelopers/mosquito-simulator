@@ -5,6 +5,9 @@ signal exited_bounds
 @export var swatter_distance = 800
 @onready var player = $Player2D
 @export var swatter_scene: PackedScene
+@export var in_tutorial = true
+@onready var hand: Sprite2D = $Hand
+@onready var cow: Sprite2D = $Cow
 
 var blood_bar
 
@@ -13,9 +16,11 @@ var num_swatters = 0
 
 func _ready():
 	Global.completed_minigame.connect(_on_completion)
-	add_swatter(1)
+	# add_swatter(1)
 
 func _on_completion():
+	print('done!')
+	Global.successful_bite.emit()
 	exited_bounds.emit()
 
 func _on_minigame_bounds_body_exited(body: Node2D):
@@ -43,3 +48,11 @@ func reset():
 	for i in range(num_swatters):
 		add_swatter()
 	player.position = Vector2.ZERO
+
+func show_cow():
+	hand.visible = false
+	cow.visible = true
+
+func show_hand():
+	cow.visible = false
+	hand.visible = true

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://21duxb65jl10"]
+[gd_scene load_steps=8 format=3 uid="uid://21duxb65jl10"]
 
 [ext_resource type="Script" uid="uid://bbwtfw2j6qh7v" path="res://scripts/swat_minigame.gd" id="1_vn5tw"]
 [ext_resource type="PackedScene" uid="uid://dqrapnubr13ws" path="res://scenes/Player2D.tscn" id="1_xre7j"]
-[ext_resource type="Texture2D" uid="uid://db5u83s67jvv6" path="res://assets/longer arm.PNG" id="3_eb7gk"]
+[ext_resource type="Texture2D" uid="uid://db5u83s67jvv6" path="res://assets/minigame/longer arm.PNG" id="3_eb7gk"]
+[ext_resource type="Texture2D" uid="uid://bveh8ykobgcqf" path="res://assets/brgdinfinitebg.png" id="4_b73rt"]
 [ext_resource type="PackedScene" uid="uid://cmbjd2lukby5b" path="res://scenes/Swatter.tscn" id="4_y7wqd"]
-[ext_resource type="PackedScene" uid="uid://cymhomd4q4qen" path="res://scenes/TutorialTileMap.tscn" id="5_eb7gk"]
+[ext_resource type="Texture2D" uid="uid://crfqdmpf5diq1" path="res://assets/minigame/cow back.png" id="4_yq4fx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86fu8"]
 size = Vector2(836, 2511)
@@ -13,12 +14,24 @@ size = Vector2(836, 2511)
 script = ExtResource("1_vn5tw")
 swatter_scene = ExtResource("4_y7wqd")
 
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(-55.99997, -59.99994)
+scale = Vector2(2.838297, 2.838297)
+texture = ExtResource("4_b73rt")
+
 [node name="Hand" type="Sprite2D" parent="."]
 clip_children = 2
 position = Vector2(-56, -559)
 rotation = 1.5707964
 scale = Vector2(2.758, 2.758)
 texture = ExtResource("3_eb7gk")
+
+[node name="Cow" type="Sprite2D" parent="."]
+clip_children = 2
+position = Vector2(16, 280)
+rotation = -3.1415925
+scale = Vector2(2.0848827, 2.084883)
+texture = ExtResource("4_yq4fx")
 
 [node name="MinigameBounds" type="Area2D" parent="."]
 
@@ -28,9 +41,5 @@ shape = SubResource("RectangleShape2D_86fu8")
 debug_color = Color(0.51330525, 0.5524319, 0.46904778, 0.41960785)
 
 [node name="Player2D" parent="." instance=ExtResource("1_xre7j")]
-
-[node name="TileMap" parent="." instance=ExtResource("5_eb7gk")]
-z_index = -190
-position = Vector2(-1466, -273)
 
 [connection signal="body_exited" from="MinigameBounds" to="." method="_on_minigame_bounds_body_exited"]

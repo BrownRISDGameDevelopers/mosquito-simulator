@@ -2,16 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db5u83s67jvv6"
-path="res://.godot/imported/longer arm.PNG-56ccef215663be1d268eae62282c7937.ctex"
+uid="uid://dbobb1avtluru"
+path="res://.godot/imported/sign_0.png-d9aba2988323ccba813e5fb497a8a04d.ctex"
 metadata={
 "vram_texture": false
+}
+generator_parameters={
+"md5": "b6d81b360a5672d80c27430f39153e2c"
 }
 
 [deps]
 
-source_file="res://assets/longer arm.PNG"
-dest_files=["res://.godot/imported/longer arm.PNG-56ccef215663be1d268eae62282c7937.ctex"]
+source_file="res://assets/sign_0.png"
+dest_files=["res://.godot/imported/sign_0.png-d9aba2988323ccba813e5fb497a8a04d.ctex"]
 
 [params]
 
@@ -23,7 +26,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
