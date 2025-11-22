@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ugb4dl0qkpih"]
+[gd_scene load_steps=15 format=3 uid="uid://ugb4dl0qkpih"]
 
-[ext_resource type="Script" path="res://scripts/map.gd" id="1_tm3qm"]
+[ext_resource type="Script" uid="uid://b758chpqi1w0e" path="res://scripts/map.gd" id="1_tm3qm"]
 [ext_resource type="PackedScene" uid="uid://bh26dknmrfir1" path="res://scenes/Player.tscn" id="1_xkm8s"]
 [ext_resource type="Script" uid="uid://r64v6uqb3av8" path="res://scripts/camera.gd" id="2_lajc7"]
+[ext_resource type="AudioStream" uid="uid://b2lmwxfwmjtjg" path="res://assets/sounds/summer camp bg noise.mp3" id="2_yyirk"]
 [ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="3_xkm8s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tm3qm"]
@@ -42,6 +43,11 @@ size = Vector2(10, 10)
 [node name="Map" type="Node3D"]
 script = ExtResource("1_tm3qm")
 metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_yyirk")
+autoplay = true
+parameters/looping = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yyirk")

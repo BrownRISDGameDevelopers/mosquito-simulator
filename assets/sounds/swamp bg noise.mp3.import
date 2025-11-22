@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bmps0ntknntpl"
+path="res://.godot/imported/swamp bg noise.mp3-8f0b72994ccf5880e1adde51aeda1dbb.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/swamp bg noise.mp3"
+dest_files=["res://.godot/imported/swamp bg noise.mp3-8f0b72994ccf5880e1adde51aeda1dbb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
