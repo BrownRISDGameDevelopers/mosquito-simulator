@@ -30,7 +30,6 @@ func _physics_process(delta):
 		Global.player_still.emit(false)
 
 func get_swatted():
-	$Label.text = $Label.text + "ouch"
 	if Global.lives_left > 1:
 		Global.lives_left -= 1
 	else:

@@ -6,7 +6,7 @@ var playing_minigame = false
 @onready var map_3d = $MapViewport/SubViewport/Map
 @onready var minigame_viewport = $MinigameViewport
 @onready var minigame = $MinigameViewport/SubViewport/SwatMinigame
-@onready var hearts = [$Heart3, $Heart2, $Heart1]
+@onready var hearts = [$Lives/Heart3, $Lives/Heart2, $Lives/Heart1]
 # @onready var infinite_mode: bool = false
 @onready var blood_bar: Control = $BloodBar
 @onready var tutorial_instructions: Control = $TutorialInstructions
@@ -18,6 +18,8 @@ const MAIN_MAP = preload("res://scenes/Map.tscn")
 const TUTORIAL_MAP = preload("res://scenes/TutorialMap.tscn")
 
 const LOAD_SCREEN = preload("res://scenes/Loading.tscn")
+
+const GREYED_OUT_HEART = preload("res://assets/ui/life blood greyed icon.PNG")
 
 var CURR_MAP
 var in_tutorial = false
@@ -122,7 +124,7 @@ func _process(_delta) -> void:
 	#heart removal
 	if Global.lives_left != hearts.size():
 		var heart_to_remove = hearts.get(0)
-		heart_to_remove.visible = false
+		heart_to_remove.texture = GREYED_OUT_HEART
 		hearts.remove_at(0)
 
 

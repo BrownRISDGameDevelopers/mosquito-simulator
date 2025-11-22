@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b758chpqi1w0e" path="res://scripts/map.gd" id="1_edgwa"]
 [ext_resource type="PackedScene" uid="uid://cymhomd4q4qen" path="res://scenes/TutorialTileMap.tscn" id="2_d0kgo"]
+[ext_resource type="AudioStream" uid="uid://pnw556ofk0qm" path="res://assets/sounds/tutorial bg noise.mp3" id="2_m5fjn"]
 [ext_resource type="PackedScene" uid="uid://ciq6bgutxc088" path="res://scenes/Cow.tscn" id="3_d0kgo"]
 [ext_resource type="PackedScene" uid="uid://bh26dknmrfir1" path="res://scenes/Player.tscn" id="3_xev4h"]
 [ext_resource type="Script" uid="uid://r64v6uqb3av8" path="res://scripts/camera.gd" id="4_g2bvt"]
@@ -60,6 +61,11 @@ buffer = PackedFloat32Array(0.24794604, 0.15826696, -0.4521425, 1.6340599, 0.026
 
 [node name="TutorialMap" type="Node3D"]
 script = ExtResource("1_edgwa")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_m5fjn")
+autoplay = true
+parameters/looping = true
 
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true

@@ -20,10 +20,3 @@ scale = Vector2(3.5, 3.5)
 texture = ExtResource("2_smyaq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Label" type="Label" parent="."]
-offset_left = 149.0
-offset_top = -60.0
-offset_right = 268.0
-offset_bottom = 81.0
-theme_override_font_sizes/font_size = 50

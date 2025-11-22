@@ -24,9 +24,9 @@ func _on_timer_timeout() -> void:
 
 @onready var blood_sucked = 0
 const BLOOD_BOOST = 20; # amount of blood added to the timer upon successful minigame completion
-const BLOOD_SUCK_RATE = 1; # how much blood is sucked per second
+const BLOOD_SUCK_RATE = .15; # how much blood is sucked per second
 
-@onready var progress_bar = $ProgressBar
+@onready var progress_bar = $ProgessBar
 
 
 func _ready():
@@ -41,20 +41,19 @@ func _on_timer_timeout() -> void:
 func update():
 	print("updating")
 	blood_left -= blood_deplete_rate
-	$ProgressBar.value = blood_left
+	progress_bar.value = blood_left
 
 func _start_minigame():
 	$TimeLeft.stop()
-	$ProgressBar.value = 0
-	blood_sucked = 0
+	progress_bar.value = 0
 
 #when the player is staying still
 func _on_player_still(is_still: bool):
-	if ($TimeLeft.is_stopped()) and is_still:
-		print('still')
-		blood_sucked += BLOOD_SUCK_RATE
-		progress_bar.value = blood_sucked
-		if blood_sucked > 100:
-			Global.completed_minigame.emit()
-			$ProgressBar.value = blood_left + BLOOD_BOOST # reset progress bar back to showing time left
-			$TimeLeft.start()
+	if ($TimeLeft.is_stopped()):
+		if is_still:
+			blood_sucked += BLOOD_SUCK_RATE
+			progress_bar.value = blood_sucked
+			if blood_sucked > 100:
+				Global.completed_minigame.emit()
+				progress_bar.value = blood_left + BLOOD_BOOST # reset progress bar back to showing time left
+				$TimeLeft.start()
