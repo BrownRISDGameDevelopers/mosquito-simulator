@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://mbk4p5iu7x36"
+path="res://.godot/imported/npc running away sfx.wav-ca59f5f32a98b1246928727dc08d9003.sample"
+
+[deps]
+
+source_file="res://assets/sounds/npc running away sfx.wav"
+dest_files=["res://.godot/imported/npc running away sfx.wav-ca59f5f32a98b1246928727dc08d9003.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

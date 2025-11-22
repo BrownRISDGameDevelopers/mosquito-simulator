@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciq6bgutxc088"]
+[gd_scene load_steps=4 format=3 uid="uid://ciq6bgutxc088"]
 
 [ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="1_gxsa1"]
 [ext_resource type="SpriteFrames" uid="uid://t0krcbley86c" path="res://resources/cow.tres" id="2_0nyyw"]
 [ext_resource type="Script" uid="uid://mnllnmpuafap" path="res://scripts/cow.gd" id="2_8qujo"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_0nyyw"]
-viewport_path = NodePath("SubViewport")
 
 [node name="Cow" instance=ExtResource("1_gxsa1")]
 script = ExtResource("2_8qujo")
@@ -14,11 +11,3 @@ npc_frames = ExtResource("2_0nyyw")
 [node name="NPCSprite" parent="." index="2"]
 sprite_frames = ExtResource("2_0nyyw")
 animation = &"walk_right"
-
-[node name="Prompt" parent="." index="5"]
-texture = SubResource("ViewportTexture_0nyyw")
-
-[node name="MovementTimer" type="Timer" parent="." index="6"]
-autostart = true
-
-[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

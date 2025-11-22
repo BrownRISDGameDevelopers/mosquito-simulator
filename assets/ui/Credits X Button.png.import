@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c38y4awhse6ja"
-path="res://.godot/imported/blood bar front.png-209b7b1c33f4ed89080e7991c2fccc3d.ctex"
+uid="uid://cold5s8ojcrtu"
+path="res://.godot/imported/Credits X Button.png-e3f61d4c04fa7ade5c5a0ab305d8fe3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/drive-download-20251115T215627Z-1-001/blood bar front.png"
-dest_files=["res://.godot/imported/blood bar front.png-209b7b1c33f4ed89080e7991c2fccc3d.ctex"]
+source_file="res://assets/ui/Credits X Button.png"
+dest_files=["res://.godot/imported/Credits X Button.png-e3f61d4c04fa7ade5c5a0ab305d8fe3c.ctex"]
 
 [params]
 

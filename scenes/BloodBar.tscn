@@ -1,21 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuudj6gmqmnno"]
 
 [ext_resource type="Script" uid="uid://dvw2xug5adtq0" path="res://blood_bar.gd" id="1_oj3me"]
-[ext_resource type="Texture2D" uid="uid://bjmi18yp3fjfx" path="res://assets/drive-download-20251115T215627Z-1-001/bar backing (1).png" id="2_qrlab"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mk6yt"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrlab"]
-bg_color = Color(1, 0, 0.016666412, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+[ext_resource type="Texture2D" uid="uid://cac04j0dm1kjg" path="res://assets/ui/bloodbar/bg.png" id="2_m6h8r"]
+[ext_resource type="Texture2D" uid="uid://cf7saaa8wd56v" path="res://assets/ui/bloodbar/stripes.png" id="3_s2lrd"]
+[ext_resource type="Texture2D" uid="uid://bccpljyjtmnem" path="res://assets/ui/bloodbar/blood.png" id="4_c4f8e"]
 
 [node name="BloodBar" type="Control"]
 layout_mode = 3
@@ -31,44 +19,31 @@ script = ExtResource("1_oj3me")
 [node name="TimeLeft" type="Timer" parent="."]
 autostart = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.9557292
-anchor_top = 0.5
-anchor_right = 0.9557292
-anchor_bottom = 0.5
-offset_left = -18.0
-offset_top = -332.5
-offset_right = 18.0
-offset_bottom = 332.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_mk6yt")
-theme_override_styles/fill = SubResource("StyleBoxFlat_qrlab")
-value = 85.0
-rounded = true
-fill_mode = 3
-show_percentage = false
-metadata/_edit_use_anchors_ = true
-
 [node name="BloodSucked" type="Timer" parent="."]
 process_thread_group = 2
 process_thread_group_order = 0
 process_thread_messages = 0
 wait_time = 0.1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 1927.0
-offset_top = -44.0
-offset_right = 2854.628
-offset_bottom = 148.0
+[node name="ProgessBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9259897
+anchor_top = 0.1537037
+anchor_right = 0.9259897
+anchor_bottom = 0.8078704
+offset_left = 113.099976
+offset_right = 2468.0999
+offset_bottom = -329.5
 rotation = 1.5707964
-texture = ExtResource("2_qrlab")
-region_rect = Rect2(6, 3, 1140, 380)
-patch_margin_left = 488
-patch_margin_right = 108
+scale = Vector2(0.3, 0.3)
+value = 100.0
+fill_mode = 1
+texture_under = ExtResource("2_m6h8r")
+texture_over = ExtResource("3_s2lrd")
+texture_progress = ExtResource("4_c4f8e")
+texture_progress_offset = Vector2(152, 144)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="TimeLeft" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="BloodSucked" to="." method="_on_blood_sucked_timeout"]

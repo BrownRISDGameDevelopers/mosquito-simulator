@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cea4mxa35k4wb" path="res://scripts/level_container.gd" id="1_etwxj"]
 [ext_resource type="PackedScene" uid="uid://21duxb65jl10" path="res://scenes/SwatMinigame.tscn" id="3_tsmwp"]
-[ext_resource type="Texture2D" uid="uid://cads8sa417atu" path="res://icon.svg" id="4_wm43x"]
+[ext_resource type="Texture2D" uid="uid://bj45lgvv5pq4y" path="res://assets/ui/life blood icon.PNG" id="4_wm43x"]
 [ext_resource type="PackedScene" uid="uid://cuudj6gmqmnno" path="res://scenes/BloodBar.tscn" id="4_x305a"]
 [ext_resource type="PackedScene" uid="uid://dxyhnihe4roi5" path="res://scenes/TutorialInstructions.tscn" id="5_wm43x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4v4af"]
 
 [node name="LevelContainer" type="Control"]
 layout_mode = 3
@@ -49,49 +51,32 @@ render_target_update_mode = 4
 layout_mode = 1
 NORMAL_DEPLETION = 50
 
-[node name="Heart1" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 50.0
-offset_bottom = 50.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Heart1"]
-position = Vector2(1510, 111)
-texture = ExtResource("4_wm43x")
-
-[node name="Heart2" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Heart2"]
-position = Vector2(1656, 112)
-texture = ExtResource("4_wm43x")
-
-[node name="Heart3" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Heart3"]
-position = Vector2(1812, 116)
-texture = ExtResource("4_wm43x")
-
-[node name="Heart4" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 50.0
-offset_bottom = 50.0
-
-[node name="Heart5" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Heart6" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TutorialInstructions" parent="." instance=ExtResource("5_wm43x")]
+[node name="Lives" type="HBoxContainer" parent="."]
 layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -341.25
+offset_top = 51.0
+offset_right = -40.25
+offset_bottom = 137.0
+grow_horizontal = 0
+theme_override_constants/separation = 4
+
+[node name="Heart1" type="TextureRect" parent="Lives"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_wm43x")
+
+[node name="Heart2" type="TextureRect" parent="Lives"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_wm43x")
+
+[node name="Heart3" type="TextureRect" parent="Lives"]
+material = SubResource("ShaderMaterial_4v4af")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_wm43x")
 
 [connection signal="exited_bounds" from="MinigameViewport/SubViewport/SwatMinigame" to="." method="_on_swat_minigame_exited_bounds"]
