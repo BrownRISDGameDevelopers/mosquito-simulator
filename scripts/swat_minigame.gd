@@ -5,6 +5,9 @@ signal exited_bounds
 @export var swatter_distance = 800
 @onready var player = $Player2D
 @export var swatter_scene: PackedScene
+@export var in_tutorial = true
+@onready var hand: Sprite2D = $Hand
+@onready var cow: Sprite2D = $Cow
 
 var blood_bar
 
@@ -45,3 +48,11 @@ func reset():
 	for i in range(num_swatters):
 		add_swatter()
 	player.position = Vector2.ZERO
+
+func show_cow():
+	hand.visible = false
+	cow.visible = true
+
+func show_hand():
+	cow.visible = false
+	hand.visible = true

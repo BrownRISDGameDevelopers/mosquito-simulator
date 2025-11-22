@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxyhnihe4roi5"]
+
+[ext_resource type="FontFile" uid="uid://c7vbvnaiafor2" path="res://assets/fonts/Chaloops Medium.otf" id="1_nylga"]
+[ext_resource type="Script" uid="uid://chjfn5glev8np" path="res://scripts/tutorial_instructions.gd" id="1_nyyqf"]
+
+[node name="TutorialInstructions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nyyqf")
+
+[node name="MovementInstructions" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1804.0
+offset_top = -382.0
+offset_right = -1133.0
+offset_bottom = -73.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_nylga")
+theme_override_font_sizes/font_size = 36
+text = "Press WASD to move
+Press SHIFT to sprint while moving
+(uses blood)
+
+Press SPACE when close to cows to 
+suck their blood
+
+Suck everyone's blood to win!"
+
+[node name="MinigameInstructions" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1800.0
+offset_top = -224.0
+offset_right = -1001.0
+offset_bottom = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_nylga")
+theme_override_font_sizes/font_size = 36
+text = "Suck blood by standing still, and stay on the cow!
+
+In the real game, watch out for the 
+swatting hands :)"

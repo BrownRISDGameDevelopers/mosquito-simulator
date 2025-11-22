@@ -9,6 +9,7 @@ var playing_minigame = false
 @onready var hearts = [$Heart3, $Heart2, $Heart1]
 # @onready var infinite_mode: bool = false
 @onready var blood_bar: Control = $BloodBar
+@onready var tutorial_instructions: Control = $TutorialInstructions
 
 const WIN_SCREEN = preload("res://scenes/WinScreen.tscn")
 const LOSE_SCREEN = preload("res://scenes/LoseScreen.tscn")
@@ -19,6 +20,7 @@ const TUTORIAL_MAP = preload("res://scenes/TutorialMap.tscn")
 const LOAD_SCREEN = preload("res://scenes/Loading.tscn")
 
 var CURR_MAP
+var in_tutorial = false
 
 @onready var npcs # update in set_level: npc will register themselves
 
@@ -33,6 +35,11 @@ func _ready() -> void:
 	else:
 		CURR_MAP = Global.starting_level
 		set_level(CURR_MAP)
+		if CURR_MAP == TUTORIAL_MAP:
+			in_tutorial = true
+			tutorial_instructions.visible = true
+		else:
+			tutorial_instructions.visible = false
 		
 	toggle_minigame(playing_minigame)
 
@@ -82,12 +89,21 @@ func set_level(map) -> void:
 func toggle_minigame(minigame_state):
 	playing_minigame = minigame_state
 	minigame_viewport.visible = playing_minigame
+	
 	if playing_minigame:
 		minigame_viewport.process_mode = Node.PROCESS_MODE_PAUSABLE
 		$MapViewport.scale = Vector2(0.25, 0.25)
+		if in_tutorial: 
+			minigame.show_cow()
+			tutorial_instructions.show_minigame_instructions()
+		else:
+			minigame.show_hand()
 	if not playing_minigame:
 		minigame_viewport.process_mode = Node.PROCESS_MODE_DISABLED
 		$MapViewport.scale = Vector2.ONE
+		if in_tutorial: 
+			minigame.in_tutorial = false
+			tutorial_instructions.show_movement_instructions()
 
 
 func _process(_delta) -> void:
