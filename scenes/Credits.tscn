@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cold5s8ojcrtu" path="res://assets/ui/Credits X Button.png" id="4_tlwrt"]
 [ext_resource type="AudioStream" uid="uid://cf03erq2loq1o" path="res://assets/sounds/menu click sfx.wav" id="7_g618n"]
 
-[sub_resource type="Shader" id="Shader_tlwrt"]
+[sub_resource type="Shader" id="Shader_g618n"]
 code = "shader_type canvas_item;
 
 uniform bool enabled = false;
@@ -159,7 +159,7 @@ colors = PackedColorArray(0.32941177, 0.13333334, 0.07450981, 1, 0.3309633, 0.13
 gradient = SubResource("Gradient_g618n")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jka11"]
-shader = SubResource("Shader_tlwrt")
+shader = SubResource("Shader_g618n")
 shader_parameter/enabled = false
 shader_parameter/scrollingTexture = SubResource("GradientTexture1D_t4hkn")
 shader_parameter/textureScale = Vector2(1, 1)
@@ -204,10 +204,10 @@ texture = ExtResource("2_spvsy")
 material = SubResource("ShaderMaterial_jka11")
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.106770836
-anchor_top = 0.11203704
-anchor_right = 0.1625
-anchor_bottom = 0.20925926
+anchor_left = 0.11927083
+anchor_top = 0.14537036
+anchor_right = 0.175
+anchor_bottom = 0.24259259
 texture_normal = ExtResource("4_tlwrt")
 metadata/_edit_use_anchors_ = true
 
@@ -339,6 +339,23 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ButtonClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_g618n")
+bus = &"Sound"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40989584
+anchor_top = 0.17407407
+anchor_right = 0.5859375
+anchor_bottom = 0.26296297
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y8nor")
+theme_override_font_sizes/font_size = 96
+text = "CREDITS"
+horizontal_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="Return" to="." method="_on_return_mouse_entered"]
 [connection signal="mouse_exited" from="Return" to="." method="_on_return_mouse_exited"]

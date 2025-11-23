@@ -26,10 +26,13 @@ texture = ExtResource("2_smyaq")
 [node name="SlapSuccess" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vngwi")
 volume_db = -10.0
+bus = &"Sound"
 
 [node name="SuckBlood" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_rps1s")
 volume_db = 20.0
+bus = &"Sound"
+
 [node name="Targets" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Targets"]

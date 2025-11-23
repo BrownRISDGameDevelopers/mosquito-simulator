@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://chogavn7l2yj6"]
+[gd_scene load_steps=58 format=4 uid="uid://chogavn7l2yj6"]
 
 [ext_resource type="Script" uid="uid://b758chpqi1w0e" path="res://scripts/map.gd" id="1_bl1rg"]
 [ext_resource type="PackedScene" path="res://scenes/CampgroundTileMap.tscn" id="2_0cvu2"]
@@ -611,12 +611,14 @@ shadow_enabled = true
 [node name="Bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_hs4wc")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="Noise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_88ad1")
 volume_db = -20.0
 autoplay = true
+bus = &"Sound"
 parameters/looping = true
 
 [connection signal="minigame_toggle" from="Player" to="." method="_on_player_minigame_toggle"]
