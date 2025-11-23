@@ -5,10 +5,11 @@ class_name Cow
 var direction = 1
 var moving = true
 
-func set_random_target(range: float = 10.0):
+func set_random_target(range: float = 1.0):
 	# generate random coords in world space
 	var random_x = rng.randf_range(-range, range)
-	var random_position = Vector3(random_x, global_position.y, global_position.z)
+	var random_position = Vector3(random_x, 0, global_position.z)
+	print(random_position)
 	set_target_by_position(random_position)
 
 
@@ -49,6 +50,7 @@ func _on_navigation_finished():
 	# When the NPC reaches its target, set a new random target
 	npc_sprite.stop()
 	await get_tree().create_timer(rng.randf_range(1.0, 5.0)).timeout # Wait a bit
+	set_random_target()
 
 
 func _ready():
