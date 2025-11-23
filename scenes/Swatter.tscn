@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmbjd2lukby5b"]
+[gd_scene load_steps=10 format=3 uid="uid://cmbjd2lukby5b"]
 
 [ext_resource type="Script" uid="uid://bc0may7e5kl3r" path="res://scripts/swatter.gd" id="1_76vkj"]
 [ext_resource type="Texture2D" uid="uid://db5u83s67jvv6" path="res://assets/minigame/longer arm.PNG" id="2_q1jp2"]
+
 [ext_resource type="Texture2D" uid="uid://l2c2htv3f2qq" path="res://assets/minigame/arm shadow for multiply longer.png" id="3_q1jp2"]
+[ext_resource type="AudioStream" uid="uid://b6gaiw4r3e64c" path="res://assets/sounds/slap fail sfx.wav" id="4_qaa4o"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_76vkj"]
 radius = 78.0
@@ -127,6 +130,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_q1jp2")
 }
 
+[node name="SlapFail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qaa4o")
+volume_db = -10.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true

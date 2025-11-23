@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dntcjm2vyns2o"
+path="res://.godot/imported/Mosquito Menace _The Only Thing They Are Annoyed By Is You_.mp3-ea846adf2e358cbf16a5e0c6b0dad77b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/Mosquito Menace _The Only Thing They Are Annoyed By Is You_.mp3"
+dest_files=["res://.godot/imported/Mosquito Menace _The Only Thing They Are Annoyed By Is You_.mp3-ea846adf2e358cbf16a5e0c6b0dad77b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

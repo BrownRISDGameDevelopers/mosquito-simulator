@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://f6qjatffyst4"
+path="res://.godot/imported/Mosquito Menace _Out for Blood_.mp3-14bdc4e4ce20b510a719c1fd6c6dce40.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/Mosquito Menace _Out for Blood_.mp3"
+dest_files=["res://.godot/imported/Mosquito Menace _Out for Blood_.mp3-14bdc4e4ce20b510a719c1fd6c6dce40.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

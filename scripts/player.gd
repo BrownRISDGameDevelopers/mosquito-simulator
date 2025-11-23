@@ -24,6 +24,7 @@ var closest_camper
 @export var hover_distance = 0.1
 @export var hover_height = 0.2
 @export var hover_freq = 4
+@onready var bite_notif: AudioStreamPlayer = $BiteNotif
 
 func _ready():
 	current_speed = NORMAL_SPEED
@@ -47,6 +48,7 @@ func _physics_process(delta: float) -> void:
 
 	closest_camper = get_nearest_npc()
 	if closest_camper:
+		bite_notif.play()
 		closest_camper.prompt.visible = true
 	
 	if Input.is_action_just_pressed("suck") and closest_camper and not on_camper:

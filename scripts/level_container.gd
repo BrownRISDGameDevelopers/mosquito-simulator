@@ -15,7 +15,7 @@ var rng = RandomNumberGenerator.new()
 const WIN_SCREEN = preload("res://scenes/WinScreen.tscn")
 const LOSE_SCREEN = preload("res://scenes/LoseScreen.tscn")
 
-const MAIN_MAP = preload("res://scenes/Map.tscn")
+const MAIN_MAP = preload("res://scenes/Campgrounds.tscn")
 const TUTORIAL_MAP = preload("res://scenes/TutorialMap.tscn")
 
 const LOAD_SCREEN = preload("res://scenes/Loading.tscn")
@@ -38,16 +38,18 @@ signal player_win
 signal player_lose
 
 func _ready() -> void:
-	CURR_MAP = Global.starting_level
-	set_level(CURR_MAP)
-
-	print(CURR_MAP)
-
-	if CURR_MAP == TUTORIAL_MAP:
-		in_tutorial = true
-		tutorial_instructions.visible = true
+	if Engine.is_editor_hint():
+		# use a safe value if Global.starting_level is null
+		var start_map = Global.starting_level
+		set_level(start_map)
 	else:
-		tutorial_instructions.visible = false
+		CURR_MAP = Global.starting_level
+		set_level(CURR_MAP)
+		if Global.in_tutorial:
+			in_tutorial = true
+			tutorial_instructions.visible = true
+		else:
+			tutorial_instructions.visible = false
 		
 	toggle_minigame(playing_minigame)
 
@@ -107,14 +109,24 @@ func toggle_minigame(minigame_state):
 	if playing_minigame:
 		minigame_viewport.process_mode = Node.PROCESS_MODE_PAUSABLE
 		$MapViewport.scale = Vector2(0.25, 0.25)
+
+		map_3d.stop_playing_music()
+		print("in tutorial: ", in_tutorial)
+		
 		if in_tutorial:
 			minigame.show_cow()
 			tutorial_instructions.show_minigame_instructions()
 		else:
+			minigame.play_music()
 			minigame.show_hand()
+
 	if not playing_minigame:
 		minigame_viewport.process_mode = Node.PROCESS_MODE_DISABLED
 		$MapViewport.scale = Vector2.ONE
+
+		map_3d.play_music()
+		minigame.stop_music()
+
 		if in_tutorial:
 			minigame.in_tutorial = false
 			tutorial_instructions.show_movement_instructions()

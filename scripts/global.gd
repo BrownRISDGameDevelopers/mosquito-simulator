@@ -7,6 +7,7 @@ var lives_left = 3
 var tutorial_completed = false
 
 var current_level = null
+var in_tutorial = true
 
 signal start_minigame
 signal player_still(is_still: bool)
