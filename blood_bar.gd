@@ -42,8 +42,8 @@ func update():
 	progress_bar.value = blood_left
 
 func _start_minigame():
-	$TimeLeft.stop()
 	progress_bar.value = 0
+	$TimeLeft.stop()
 
 #when the player is staying still
 func _on_player_still(is_still: bool):

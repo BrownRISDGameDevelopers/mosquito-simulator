@@ -71,9 +71,6 @@ func _ready():
 	actor_setup.call_deferred()
 
 func _physics_process(delta):
-	if navigation_agent.is_navigation_finished():
-		return
-
 	var current_agent_position: Vector3 = global_position
 
 	if moving:
