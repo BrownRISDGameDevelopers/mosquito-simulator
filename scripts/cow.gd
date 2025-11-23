@@ -5,7 +5,7 @@ class_name Cow
 var direction = 1
 var moving = true
 
-func set_random_target(range: float = 1.0):
+func set_random_target(range: float = 10.0):
 	# generate random coords in world space
 	var random_x = rng.randf_range(-range, range)
 	var random_position = Vector3(random_x, 0, global_position.z)
@@ -57,8 +57,8 @@ func _ready():
 	npc_sprite.sprite_frames = npc_frames
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
-	navigation_agent.path_desired_distance = 0.5
-	navigation_agent.target_desired_distance = 0.5
+	navigation_agent.path_desired_distance = 1
+	navigation_agent.target_desired_distance = 1
 
 	navigation_agent.navigation_finished.connect(_on_navigation_finished)
 

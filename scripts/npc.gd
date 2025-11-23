@@ -11,7 +11,7 @@ var rng = RandomNumberGenerator.new()
 
 var movement_speed: float = rng.randf_range(0.5, 2.0)
 var bit_camper: NPC
-var panicking = false
+@export var panicking = false
 var panic_timer = 0.
 var swatting = false
 
@@ -26,8 +26,6 @@ func set_random_target(range: float = 10.0):
 	var random_x = rng.randf_range(-range, range)
 	var random_z = rng.randf_range(-range, range)
 	var random_position = Vector3(random_x, 0, random_z)
-
-	print(random_position)
 
 	set_target_by_position(random_position)
 
