@@ -16,7 +16,6 @@ func _on_timer_timeout() -> void:
 	if _time_to_die():
 		emit_signal("death")"""
 
-@export var FAST_DEPLETION = 4
 @export var NORMAL_DEPLETION = 1
 
 @export var blood_left = 100
@@ -39,7 +38,6 @@ func _on_timer_timeout() -> void:
 	update()
 	
 func update():
-	print("updating")
 	blood_left -= blood_deplete_rate
 	progress_bar.value = blood_left
 

@@ -11,5 +11,4 @@ var current_level = null
 signal start_minigame
 signal player_still(is_still: bool)
 signal completed_minigame
-
 signal successful_bite
