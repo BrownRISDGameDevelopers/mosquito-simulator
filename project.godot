@@ -80,6 +80,10 @@ devskip={
 3d_physics/layer_2="Camper"
 3d_physics/layer_3="Terrain"
 
+[physics]
+
+common/physics_ticks_per_second=120
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

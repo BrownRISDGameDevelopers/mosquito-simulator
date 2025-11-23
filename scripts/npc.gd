@@ -78,6 +78,8 @@ func _on_navigation_finished():
 		set_target_by_position(bit_camper.global_position)
 
 func _ready():
+	rng.seed = Time.get_unix_time_from_system()
+
 	npc_sprite.sprite_frames = npc_frames
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
