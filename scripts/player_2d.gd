@@ -40,3 +40,7 @@ func get_swatted():
 		print("lost")
 		get_tree().change_scene_to_packed(LOSE_SCREEN)
 	slap_success.play()
+
+func get_target(i):
+	var children: Array[Node] = $Targets.get_children()
+	return children[i % len(children)]

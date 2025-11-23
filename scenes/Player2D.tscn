@@ -30,3 +30,22 @@ volume_db = -10.0
 [node name="SuckBlood" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_rps1s")
 volume_db = 20.0
+[node name="Targets" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Targets"]
+position = Vector2(204, -192)
+
+[node name="Marker2D2" type="Marker2D" parent="Targets"]
+position = Vector2(143, 245)
+
+[node name="Marker2D3" type="Marker2D" parent="Targets"]
+position = Vector2(-216, 192)
+
+[node name="Marker2D4" type="Marker2D" parent="Targets"]
+position = Vector2(-175, -290)
+
+[node name="Marker2D5" type="Marker2D" parent="Targets"]
+position = Vector2(310, 67)
+
+[node name="Marker2D6" type="Marker2D" parent="Targets"]
+position = Vector2(-279, -102)

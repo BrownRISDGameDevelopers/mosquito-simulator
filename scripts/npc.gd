@@ -13,6 +13,7 @@ var movement_speed: float = rng.randf_range(0.5, 2.0)
 var bit_camper: NPC
 var panicking = false
 var panic_timer = 0.
+var swatting = false
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var npc_sprite: AnimatedSprite3D = $NPCSprite
@@ -52,6 +53,7 @@ func set_camper_target(camper: NPC):
 func clear_camper_target():
 	if bit_camper == self:
 		calm_down()
+	swatting = false
 	bit_camper = null
 
 func panic():
@@ -85,6 +87,8 @@ func _on_navigation_finished():
 		set_target_by_position(bit_camper.global_position)
 
 func _ready():
+	rng.seed = Time.get_unix_time_from_system()
+
 	npc_sprite.sprite_frames = npc_frames
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
@@ -126,10 +130,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_area_3d_body_entered(body: Node3D):
-	if body is Player:
-		add_swatter.emit(1)
-
-
-func _on_area_3d_body_exited(body):
-	if body is Player:
-		add_swatter.emit(-1)
+	if body is Player and not swatting:
+		add_swatter.emit(2)
+		swatting = true
