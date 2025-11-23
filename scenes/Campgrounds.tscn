@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://chogavn7l2yj6"]
+[gd_scene load_steps=46 format=4 uid="uid://chogavn7l2yj6"]
 
 [ext_resource type="Script" uid="uid://b758chpqi1w0e" path="res://scripts/map.gd" id="1_bl1rg"]
 [ext_resource type="PackedScene" path="res://scenes/CampgroundTileMap.tscn" id="2_0cvu2"]

@@ -1,14 +1,18 @@
-[gd_scene load_steps=26 format=3 uid="uid://cu1ldntnivb8j"]
+[gd_scene load_steps=27 format=3 uid="uid://cu1ldntnivb8j"]
 
 [ext_resource type="Script" uid="uid://cp50y7rdio8mm" path="res://scripts/main_menu.gd" id="1_yqorp"]
-[ext_resource type="Texture2D" uid="uid://kh0ul6twtwiv" path="res://assets/ui/Title Screen.png" id="2_0ykhv"]
 [ext_resource type="Texture2D" uid="uid://4rupyok3eeqm" path="res://assets/ui/main menu bg.png" id="2_mipys"]
 [ext_resource type="Texture2D" uid="uid://iqb8ynf551nq" path="res://assets/sign/infinite.png" id="3_2wh52"]
+[ext_resource type="Texture2D" uid="uid://dnuohvmx2v8by" path="res://assets/ui/title text.png" id="3_8a8k8"]
 [ext_resource type="Texture2D" uid="uid://byi518tu32x8t" path="res://assets/sign/play.png" id="3_ucygd"]
-[ext_resource type="FontFile" uid="uid://dnjrrjnmwxpyp" path="res://assets/fonts/Chinchilla Regular.otf" id="4_mipys"]
 [ext_resource type="Texture2D" uid="uid://cudp3ck61scs6" path="res://assets/sign/credits.png" id="6_8a8k8"]
 [ext_resource type="Texture2D" uid="uid://cmoiyncydlv5o" path="res://assets/sign/quit.png" id="7_7la6k"]
+[ext_resource type="Texture2D" uid="uid://cxh4esfrhij6v" path="res://assets/ui/pole.PNG" id="8_7la6k"]
 [ext_resource type="AudioStream" uid="uid://cf03erq2loq1o" path="res://assets/sounds/menu click sfx.wav" id="9_8a8k8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nypq"]
+atlas = ExtResource("3_8a8k8")
+region = Rect2(34, 130, 927, 440)
 
 [sub_resource type="Shader" id="Shader_ucygd"]
 code = "shader_type canvas_item;
@@ -688,125 +692,81 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_mipys")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TitleText" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.00046296295
-anchor_right = 1.0
-anchor_bottom = 1.000463
+anchor_left = 0.051041666
+anchor_top = 0.09583333
+anchor_right = 0.5338542
+anchor_bottom = 0.50416666
 offset_top = 0.5
 offset_bottom = -0.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_0ykhv")
+texture = SubResource("AtlasTexture_2nypq")
+stretch_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="StartButton" type="TextureButton" parent="."]
 material = SubResource("ShaderMaterial_7la6k")
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.28385416
-anchor_top = 0.5222222
-anchor_right = 0.48020834
-anchor_bottom = 0.6990741
+anchor_left = 0.2734375
+anchor_top = 0.53981483
+anchor_right = 0.475
+anchor_bottom = 0.71666664
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("3_ucygd")
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="StartButton"]
-layout_mode = 0
-anchor_left = 0.265252
-anchor_top = 0.40314135
-anchor_right = 0.67887306
-anchor_bottom = 0.6180073
-offset_right = -15.93515
-offset_bottom = 38.9606
-rotation = -0.2617994
-theme_override_colors/font_color = Color(0.059375823, 0.011149791, 0.0046140575, 1)
-theme_override_fonts/font = ExtResource("4_mipys")
-theme_override_font_sizes/font_size = 80
-text = "PLAY"
-metadata/_edit_use_anchors_ = true
-
 [node name="InfiniteMode" type="TextureButton" parent="."]
 material = SubResource("ShaderMaterial_5faoh")
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3015625
-anchor_top = 0.7962963
-anchor_right = 0.46770832
-anchor_bottom = 0.8712963
+anchor_left = 0.28125
+anchor_top = 0.7574074
+anchor_right = 0.503125
+anchor_bottom = 0.9574074
 texture_normal = ExtResource("3_2wh52")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label2" type="Label" parent="InfiniteMode"]
-layout_mode = 0
-anchor_left = 0.18495297
-anchor_top = 0.19753124
-anchor_right = 0.7241379
-anchor_bottom = 0.83950657
-offset_right = 1.5258789e-05
-theme_override_colors/font_color = Color(0.059375823, 0.011149791, 0.0046140575, 1)
-theme_override_fonts/font = ExtResource("4_mipys")
-theme_override_font_sizes/font_size = 52
-text = "INFINITE"
-uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Credits" type="TextureButton" parent="."]
 material = SubResource("ShaderMaterial_tdapf")
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1171875
-anchor_top = 0.71481484
-anchor_right = 0.275
-anchor_bottom = 0.8009259
+anchor_left = 0.11666667
+anchor_top = 0.68333334
+anchor_right = 0.28541666
+anchor_bottom = 0.77037036
 texture_normal = ExtResource("6_8a8k8")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label2" type="Label" parent="Credits"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.33003297
-anchor_top = 0.19354808
-anchor_right = 0.8085808
-anchor_bottom = 0.7526879
-offset_right = 1.5258789e-05
-rotation = 0.054105207
-theme_override_colors/font_color = Color(0.059375823, 0.011149791, 0.0046140575, 1)
-theme_override_fonts/font = ExtResource("4_mipys")
-theme_override_font_sizes/font_size = 52
-text = "CREDITS"
-uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Quit" type="TextureButton" parent="."]
 material = SubResource("ShaderMaterial_1n6yq")
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.13489583
-anchor_top = 0.8564815
-anchor_right = 0.29166666
-anchor_bottom = 0.9361111
+anchor_left = 0.12916666
+anchor_top = 0.85925925
+anchor_right = 0.29791668
+anchor_bottom = 0.9398148
 texture_normal = ExtResource("7_7la6k")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="Quit"]
+[node name="Pole" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3920266
-anchor_top = 0.25581384
-anchor_right = 0.6976744
-anchor_bottom = 0.8604646
-offset_right = 1.5258789e-05
-rotation = -0.017453292
-theme_override_colors/font_color = Color(0.059375823, 0.011149791, 0.0046140575, 1)
-theme_override_fonts/font = ExtResource("4_mipys")
-theme_override_font_sizes/font_size = 52
-text = "QUIT"
-uppercase = true
+anchor_left = 0.25
+anchor_top = 0.57453704
+anchor_right = 0.321875
+anchor_bottom = 1.0013889
+offset_top = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_7la6k")
+stretch_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonClick" type="AudioStreamPlayer" parent="."]
