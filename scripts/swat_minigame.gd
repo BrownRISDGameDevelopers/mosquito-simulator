@@ -26,6 +26,20 @@ func _on_completion():
 func _on_minigame_bounds_body_exited(body: Node2D):
 	exited_bounds.emit()
 
+func _physics_process(delta):
+	if $Player2D.position.x > 300:
+		$Player2D/Danger.position.x = 700
+	elif $Player2D.position.x < -300:
+		$Player2D/Danger.position.x = -700
+	else:
+		$Player2D/Danger.position.x = 0
+	if $Player2D.position.y > 700:
+		$Player2D/Danger.position.y = 300
+	elif $Player2D.position.y < -700:
+		$Player2D/Danger.position.y = -300
+	else:
+		$Player2D/Danger.position.y = 0
+
 func add_swatter(swatter_adj = 0):
 	num_swatters += swatter_adj
 	if swatter_adj < 0:
@@ -56,3 +70,11 @@ func show_cow():
 func show_hand():
 	cow.visible = false
 	hand.visible = true
+
+
+func _on_warning_bounds_body_exited(body: Node2D):
+	$Player2D/Danger.visible = true
+
+
+func _on_warning_bounds_body_entered(body: Node2D):
+	$Player2D/Danger.visible = false

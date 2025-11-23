@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://c11ckkvqs6cvy" path="res://assets/trash can texture.png" id="3_upc0u"]
 [ext_resource type="Script" uid="uid://r64v6uqb3av8" path="res://scripts/camera.gd" id="4_e6d76"]
 [ext_resource type="SpriteFrames" uid="uid://brvj14s4v88ju" path="res://resources/summer_npc1.tres" id="7_87yg3"]
-[ext_resource type="ArrayMesh" uid="uid://cbkpe82ino35t" path="res://assets/grass.tres" id="8_upc0u"]
-[ext_resource type="SpriteFrames" uid="uid://oor82is61pg5" path="res://resources/summer_npc2.tres" id="11_yqv3m"]
+[ext_resource type="ArrayMesh" uid="uid://duxvdin4gdwi8" path="res://assets/grass.tres" id="8_upc0u"]
+[ext_resource type="SpriteFrames" uid="uid://cgjmoi64fedho" path="res://resources/summer_npc2.tres" id="11_yqv3m"]
 [ext_resource type="SpriteFrames" uid="uid://c6urn180mjqrl" path="res://resources/summer_npc3.tres" id="12_b63aa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fkoim"]
