@@ -52,6 +52,7 @@ func _on_infinite_mode_pressed() -> void:
 	# get_tree().change_scene_to_packed(LEVEL_CONTAINER)
 	print("infinite mode")
 	Global.starting_level = INFINITE_MODE
+	Global.current_level = "infinite"
 	var packed = load(LEVEL_CONTAINER_PATH)
 	if packed == null:
 		push_error("Failed to load LevelContainer scene at: %s" % LEVEL_CONTAINER_PATH)

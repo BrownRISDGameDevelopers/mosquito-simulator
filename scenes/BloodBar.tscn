@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuudj6gmqmnno"]
 
-[ext_resource type="Script" path="res://scripts/blood_bar.gd" id="1_m6h8r"]
+[ext_resource type="Script" uid="uid://dvw2xug5adtq0" path="res://scripts/blood_bar.gd" id="1_m6h8r"]
 [ext_resource type="Texture2D" uid="uid://cac04j0dm1kjg" path="res://assets/ui/bloodbar/bg.png" id="2_m6h8r"]
 [ext_resource type="Texture2D" uid="uid://cf7saaa8wd56v" path="res://assets/ui/bloodbar/stripes.png" id="3_s2lrd"]
 [ext_resource type="Texture2D" uid="uid://bccpljyjtmnem" path="res://assets/ui/bloodbar/blood.png" id="4_c4f8e"]

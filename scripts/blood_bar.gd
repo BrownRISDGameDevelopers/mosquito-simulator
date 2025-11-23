@@ -17,12 +17,12 @@ func _on_timer_timeout() -> void:
 		emit_signal("death")"""
 
 @export var blood_left = 100
-const BLOOD_DEPLETE_RATE = .01
+const BLOOD_DEPLETE_RATE = .025
 const THRESHOLD = 0.01
 
 @onready var blood_sucked = 0
 const BLOOD_BOOST = 20; # amount of blood added to the timer upon successful minigame completion
-const BLOOD_SUCK_RATE = .05; # how much blood is sucked per second
+const BLOOD_SUCK_RATE = .1; # how much blood is sucked per second
 
 @onready var progress_bar = $ProgessBar
 
@@ -76,3 +76,8 @@ func _on_player_still(standing_still: bool):
 			Global.completed_minigame.emit()
 			blood_left = min(blood_left + BLOOD_BOOST, 100)
 			progress_bar.value = blood_left # reset progress bar back to showing time left
+
+
+func _on_swat_minigame_exited_bounds() -> void:
+	minigame_active = false
+	progress_bar.value = blood_left

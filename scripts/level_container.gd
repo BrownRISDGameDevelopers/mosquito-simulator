@@ -1,6 +1,7 @@
 extends Control
 
 var playing_minigame = false
+var rng = RandomNumberGenerator.new()
 
 @onready var map_viewport = $MapViewport/SubViewport
 @onready var map_3d = $MapViewport/SubViewport/Map
@@ -26,22 +27,27 @@ var in_tutorial = false
 
 @onready var npcs # update in set_level: npc will register themselves
 
+const SPAWN_RATE = 10.0
+const TIME_LIMIT = 30.0
+
+var start_times = {}
+var curr_time = 0
+var last_spawn = 0
+
 signal player_win
 signal player_lose
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
-		# use a safe value if Global.starting_level is null
-		var start_map = Global.starting_level
-		set_level(start_map)
+	CURR_MAP = Global.starting_level
+	set_level(CURR_MAP)
+
+	print(CURR_MAP)
+
+	if CURR_MAP == TUTORIAL_MAP:
+		in_tutorial = true
+		tutorial_instructions.visible = true
 	else:
-		CURR_MAP = Global.starting_level
-		set_level(CURR_MAP)
-		if CURR_MAP == TUTORIAL_MAP:
-			in_tutorial = true
-			tutorial_instructions.visible = true
-		else:
-			tutorial_instructions.visible = false
+		tutorial_instructions.visible = false
 		
 	toggle_minigame(playing_minigame)
 
@@ -72,6 +78,11 @@ func set_level(map) -> void:
 	map_viewport.add_child(level_instance)
 	map_3d = level_instance
 
+	if Global.current_level == "infinite":
+		for i in range(3):
+			var new_npc = map_3d.add_swamp_npc()
+			start_times[new_npc] = curr_time
+
 	# connect signals only if the instance provides them
 	if level_instance.has_signal("add_swatter_to_minigame"):
 		map_3d.add_swatter_to_minigame.connect(on_map_3d_add_swatter_to_minigame)
@@ -86,6 +97,7 @@ func set_level(map) -> void:
 		pass
 
 	npcs = get_tree().get_nodes_in_group("npcs")
+	print(npcs)
 
 
 func toggle_minigame(minigame_state):
@@ -108,7 +120,25 @@ func toggle_minigame(minigame_state):
 			tutorial_instructions.show_movement_instructions()
 
 
-func _process(_delta) -> void:
+func _process(delta) -> void:
+	curr_time += delta
+
+	if Global.current_level == "infinite":
+		if (curr_time - last_spawn > SPAWN_RATE) and start_times.size() < 10:
+			var to_spawn = 2 if start_times.size() <= 8 else 1
+
+			for i in range(to_spawn):
+				print("spawning npc. now at ", start_times.size() + 1)
+				var new_npc = map_3d.add_swamp_npc()
+				start_times[new_npc] = curr_time
+			last_spawn = curr_time
+
+		for npc in start_times.keys():
+			if (curr_time - start_times[npc] > TIME_LIMIT) and (rng.randi_range(0, 100) < 30) and npc.panicking == false:
+				print('deleting npc due to time limit')
+				npc.queue_free()
+				start_times.erase(npc)
+
 	# lose condition
 	if Input.is_action_just_pressed("devskip"):
 		handle_win()
