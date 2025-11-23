@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfaxhqa1tob8v"]
+[gd_scene load_steps=21 format=3 uid="uid://dfaxhqa1tob8v"]
 
 [ext_resource type="Script" uid="uid://b758chpqi1w0e" path="res://scripts/map.gd" id="1_edgwa"]
 [ext_resource type="PackedScene" uid="uid://cymhomd4q4qen" path="res://scenes/TutorialTileMap.tscn" id="2_d0kgo"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ciq6bgutxc088" path="res://scenes/Cow.tscn" id="3_d0kgo"]
 [ext_resource type="PackedScene" uid="uid://bh26dknmrfir1" path="res://scenes/Player.tscn" id="3_xev4h"]
 [ext_resource type="Script" uid="uid://r64v6uqb3av8" path="res://scripts/camera.gd" id="4_g2bvt"]
-[ext_resource type="ArrayMesh" uid="uid://cbkpe82ino35t" path="res://assets/grass.tres" id="6_m5fjn"]
+[ext_resource type="ArrayMesh" uid="uid://duxvdin4gdwi8" path="res://assets/grass.tres" id="6_m5fjn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tm3qm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
