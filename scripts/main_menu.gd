@@ -9,6 +9,9 @@ const INFINITE_MODE = preload("res://scenes/InfiniteModeMap.tscn")
 @onready var button_click: AudioStreamPlayer = $ButtonClick
 
 func _ready() -> void:
+	Global.lives_left = 3
+	Global.tutorial_completed = false
+
 	Global.in_tutorial = true
 	var buttons: Array[TextureButton] = [$StartButton, $InfiniteMode, $Quit, $Credits]
 

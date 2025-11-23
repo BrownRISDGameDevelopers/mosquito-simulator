@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cold5s8ojcrtu" path="res://assets/ui/Credits X Button.png" id="4_tlwrt"]
 [ext_resource type="AudioStream" uid="uid://cf03erq2loq1o" path="res://assets/sounds/menu click sfx.wav" id="7_g618n"]
 
-[sub_resource type="Shader" id="Shader_tlwrt"]
+[sub_resource type="Shader" id="Shader_g618n"]
 code = "shader_type canvas_item;
 
 uniform bool enabled = false;
@@ -159,7 +159,7 @@ colors = PackedColorArray(0.32941177, 0.13333334, 0.07450981, 1, 0.3309633, 0.13
 gradient = SubResource("Gradient_g618n")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jka11"]
-shader = SubResource("Shader_tlwrt")
+shader = SubResource("Shader_g618n")
 shader_parameter/enabled = false
 shader_parameter/scrollingTexture = SubResource("GradientTexture1D_t4hkn")
 shader_parameter/textureScale = Vector2(1, 1)
@@ -339,6 +339,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ButtonClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_g618n")
+bus = &"Sound"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

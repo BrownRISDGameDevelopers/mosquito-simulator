@@ -1,20 +1,18 @@
-[gd_scene load_steps=27 format=3 uid="uid://cu1ldntnivb8j"]
+[gd_scene load_steps=39 format=3 uid="uid://dqvf4kagulq8d"]
 
-[ext_resource type="Script" uid="uid://cp50y7rdio8mm" path="res://scripts/main_menu.gd" id="1_yqorp"]
-[ext_resource type="Texture2D" uid="uid://4rupyok3eeqm" path="res://assets/ui/main menu bg.png" id="2_mipys"]
-[ext_resource type="Texture2D" uid="uid://iqb8ynf551nq" path="res://assets/sign/infinite.png" id="3_2wh52"]
-[ext_resource type="Texture2D" uid="uid://dnuohvmx2v8by" path="res://assets/ui/title text.png" id="3_8a8k8"]
-[ext_resource type="Texture2D" uid="uid://byi518tu32x8t" path="res://assets/sign/play.png" id="3_ucygd"]
-[ext_resource type="Texture2D" uid="uid://cudp3ck61scs6" path="res://assets/sign/credits.png" id="6_8a8k8"]
-[ext_resource type="Texture2D" uid="uid://cmoiyncydlv5o" path="res://assets/sign/quit.png" id="7_7la6k"]
-[ext_resource type="Texture2D" uid="uid://cxh4esfrhij6v" path="res://assets/ui/pole.PNG" id="8_7la6k"]
-[ext_resource type="AudioStream" uid="uid://cf03erq2loq1o" path="res://assets/sounds/menu click sfx.wav" id="9_8a8k8"]
+[ext_resource type="Texture2D" uid="uid://c20frbr0k56s1" path="res://assets/ui/settings bg.PNG" id="1_0ep5p"]
+[ext_resource type="Script" uid="uid://bqqmgds113bca" path="res://scripts/pause.gd" id="1_7akkw"]
+[ext_resource type="Texture2D" uid="uid://cold5s8ojcrtu" path="res://assets/ui/Credits X Button.png" id="2_hdb6x"]
+[ext_resource type="Texture2D" uid="uid://w82dohlmgjfk" path="res://assets/ui/pause board.PNG" id="2_w5f6b"]
+[ext_resource type="Texture2D" uid="uid://cuylv356oullg" path="res://assets/ui/resume pause.PNG" id="3_a08a3"]
+[ext_resource type="FontFile" uid="uid://c7vbvnaiafor2" path="res://assets/fonts/Chaloops Medium.otf" id="3_uc2tp"]
+[ext_resource type="Texture2D" uid="uid://o6bdp6ordxly" path="res://assets/ui/settings pause.PNG" id="4_5nbhg"]
+[ext_resource type="Texture2D" uid="uid://b02y5yt6nogl5" path="res://assets/ui/slider min.PNG" id="4_qp6fb"]
+[ext_resource type="Texture2D" uid="uid://b05n1uqh00cil" path="res://assets/ui/quit pause.PNG" id="5_a08a3"]
+[ext_resource type="Texture2D" uid="uid://dvu05f4hk4gg8" path="res://assets/ui/slider max.PNG" id="5_qp6fb"]
+[ext_resource type="Texture2D" uid="uid://c0e8s3rtqkcus" path="res://assets/ui/slider button.PNG" id="6_7akkw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2nypq"]
-atlas = ExtResource("3_8a8k8")
-region = Rect2(34, 130, 927, 440)
-
-[sub_resource type="Shader" id="Shader_ucygd"]
+[sub_resource type="Shader" id="Shader_a08a3"]
 code = "shader_type canvas_item;
 
 uniform bool enabled = false;
@@ -158,28 +156,28 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="Gradient" id="Gradient_mipys"]
-colors = PackedColorArray(0.32941177, 0.13333334, 0.07450981, 1, 0.3309633, 0.1337755, 0.076025434, 1)
+[sub_resource type="Gradient" id="Gradient_5nbhg"]
+colors = PackedColorArray(0.95450634, 0.64727736, 0.5003462, 1, 0.9529412, 0.64705884, 0.5019608, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8a8k8"]
-gradient = SubResource("Gradient_mipys")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dx38n"]
+gradient = SubResource("Gradient_5nbhg")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7la6k"]
-shader = SubResource("Shader_ucygd")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wukie"]
+shader = SubResource("Shader_a08a3")
 shader_parameter/enabled = false
-shader_parameter/scrollingTexture = SubResource("GradientTexture1D_8a8k8")
+shader_parameter/scrollingTexture = SubResource("GradientTexture1D_dx38n")
 shader_parameter/textureScale = Vector2(1, 1)
 shader_parameter/angle = 45.0000021375
 shader_parameter/textureSpeed = 5.73200074727
 shader_parameter/textureStrength = 0.85600004066
-shader_parameter/maxLineWidth = 0.0
+shader_parameter/maxLineWidth = 1.0000000475
 shader_parameter/minLineWidth = 5.0
 shader_parameter/speed = 2.000000095
 shader_parameter/blockSize = 20.0
 shader_parameter/gradientResolution = 1
 shader_parameter/tolerance = 0.0
 
-[sub_resource type="Shader" id="Shader_2nypq"]
+[sub_resource type="Shader" id="Shader_y6622"]
 code = "shader_type canvas_item;
 
 uniform bool enabled = false;
@@ -323,28 +321,28 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="Gradient" id="Gradient_bky6r"]
-colors = PackedColorArray(0.32941177, 0.13333334, 0.07450981, 1, 0.3309633, 0.1337755, 0.076025434, 1)
+[sub_resource type="Gradient" id="Gradient_1w3pp"]
+colors = PackedColorArray(0.95450634, 0.64727736, 0.5003462, 1, 0.9529412, 0.64705884, 0.5019608, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_l4mxc"]
-gradient = SubResource("Gradient_bky6r")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tdlhl"]
+gradient = SubResource("Gradient_1w3pp")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5faoh"]
-shader = SubResource("Shader_2nypq")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ifdo"]
+shader = SubResource("Shader_y6622")
 shader_parameter/enabled = false
-shader_parameter/scrollingTexture = SubResource("GradientTexture1D_l4mxc")
+shader_parameter/scrollingTexture = SubResource("GradientTexture1D_tdlhl")
 shader_parameter/textureScale = Vector2(1, 1)
 shader_parameter/angle = 45.0000021375
 shader_parameter/textureSpeed = 5.73200074727
 shader_parameter/textureStrength = 0.85600004066
-shader_parameter/maxLineWidth = 0.0
+shader_parameter/maxLineWidth = 1.0000000475
 shader_parameter/minLineWidth = 5.0
 shader_parameter/speed = 2.000000095
 shader_parameter/blockSize = 20.0
 shader_parameter/gradientResolution = 1
 shader_parameter/tolerance = 0.0
 
-[sub_resource type="Shader" id="Shader_ptake"]
+[sub_resource type="Shader" id="Shader_c021c"]
 code = "shader_type canvas_item;
 
 uniform bool enabled = false;
@@ -488,28 +486,28 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="Gradient" id="Gradient_hubol"]
-colors = PackedColorArray(0.32941177, 0.13333334, 0.07450981, 1, 0.3309633, 0.1337755, 0.076025434, 1)
+[sub_resource type="Gradient" id="Gradient_hw5nl"]
+colors = PackedColorArray(0.95450634, 0.64727736, 0.5003462, 1, 0.9529412, 0.64705884, 0.5019608, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8vx4p"]
-gradient = SubResource("Gradient_hubol")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_40rsd"]
+gradient = SubResource("Gradient_hw5nl")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tdapf"]
-shader = SubResource("Shader_ptake")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwabk"]
+shader = SubResource("Shader_c021c")
 shader_parameter/enabled = false
-shader_parameter/scrollingTexture = SubResource("GradientTexture1D_8vx4p")
+shader_parameter/scrollingTexture = SubResource("GradientTexture1D_40rsd")
 shader_parameter/textureScale = Vector2(1, 1)
 shader_parameter/angle = 45.0000021375
 shader_parameter/textureSpeed = 5.73200074727
 shader_parameter/textureStrength = 0.85600004066
-shader_parameter/maxLineWidth = 0.0
+shader_parameter/maxLineWidth = 1.0000000475
 shader_parameter/minLineWidth = 5.0
 shader_parameter/speed = 2.000000095
 shader_parameter/blockSize = 20.0
 shader_parameter/gradientResolution = 1
 shader_parameter/tolerance = 0.0
 
-[sub_resource type="Shader" id="Shader_v41fp"]
+[sub_resource type="Shader" id="Shader_tlwrt"]
 code = "shader_type canvas_item;
 
 uniform bool enabled = false;
@@ -653,16 +651,16 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="Gradient" id="Gradient_7shrw"]
+[sub_resource type="Gradient" id="Gradient_7akkw"]
 colors = PackedColorArray(0.32941177, 0.13333334, 0.07450981, 1, 0.3309633, 0.1337755, 0.076025434, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_viowm"]
-gradient = SubResource("Gradient_7shrw")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t4hkn"]
+gradient = SubResource("Gradient_7akkw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1n6yq"]
-shader = SubResource("Shader_v41fp")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5f6b"]
+shader = SubResource("Shader_tlwrt")
 shader_parameter/enabled = false
-shader_parameter/scrollingTexture = SubResource("GradientTexture1D_viowm")
+shader_parameter/scrollingTexture = SubResource("GradientTexture1D_t4hkn")
 shader_parameter/textureScale = Vector2(1, 1)
 shader_parameter/angle = 45.0000021375
 shader_parameter/textureSpeed = 5.73200074727
@@ -674,106 +672,242 @@ shader_parameter/blockSize = 20.0
 shader_parameter/gradientResolution = 1
 shader_parameter/tolerance = 0.0
 
-[node name="MainMenu" type="Control"]
+[sub_resource type="Shader" id="Shader_w5f6b"]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0.0, 1.0) = 1.0;
+
+void fragment() {
+    if (UV.x > progress) {
+        discard;
+    }
+    COLOR = texture(TEXTURE, UV);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_87awh"]
+shader = SubResource("Shader_w5f6b")
+shader_parameter/progress = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87awh"]
+atlas = ExtResource("5_qp6fb")
+region = Rect2(0, 0, 762, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5f6b"]
+atlas = ExtResource("6_7akkw")
+region = Rect2(19, 21, 105, 105)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_87awh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x85fr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a08a3"]
+
+[sub_resource type="Shader" id="Shader_7akkw"]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0.0, 1.0) = 1.0;
+
+void fragment() {
+    if (UV.x > progress) {
+        discard;
+    }
+    COLOR = texture(TEXTURE, UV);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x85fr"]
+shader = SubResource("Shader_7akkw")
+shader_parameter/progress = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a08a3"]
+load_path = "res://.godot/imported/slider max.PNG-ac63309a2a3692159fb64f5b2743aa6f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7akkw"]
+atlas = SubResource("CompressedTexture2D_a08a3")
+region = Rect2(0, 0, 762, 123)
+
+[node name="Pause" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_yqorp")
+script = ExtResource("1_7akkw")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Pause" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_w5f6b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37447917
+anchor_top = 0.3101852
+anchor_right = 0.6333333
+anchor_bottom = 0.78333336
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+metadata/_edit_use_anchors_ = true
+
+[node name="ResumeBtn" type="TextureButton" parent="Pause/VBoxContainer"]
+material = SubResource("ShaderMaterial_wukie")
+layout_mode = 2
+texture_normal = ExtResource("3_a08a3")
+
+[node name="SettingsBtn" type="TextureButton" parent="Pause/VBoxContainer"]
+material = SubResource("ShaderMaterial_2ifdo")
+layout_mode = 2
+texture_normal = ExtResource("4_5nbhg")
+
+[node name="QuitBtn" type="TextureButton" parent="Pause/VBoxContainer"]
+material = SubResource("ShaderMaterial_iwabk")
+layout_mode = 2
+texture_normal = ExtResource("5_a08a3")
+
+[node name="Settings" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_mipys")
+texture = ExtResource("1_0ep5p")
 
-[node name="TitleText" type="TextureRect" parent="."]
+[node name="SettingsReturn" type="TextureButton" parent="Settings"]
+material = SubResource("ShaderMaterial_w5f6b")
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.051041666
-anchor_top = 0.09583333
-anchor_right = 0.5338542
-anchor_bottom = 0.50416666
-offset_top = 0.5
-offset_bottom = -0.5
+anchor_left = 0.11927083
+anchor_top = 0.14537036
+anchor_right = 0.175
+anchor_bottom = 0.24259259
+texture_normal = ExtResource("2_hdb6x")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40989584
+anchor_top = 0.17407407
+anchor_right = 0.5859375
+anchor_bottom = 0.26296297
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_uc2tp")
+theme_override_font_sizes/font_size = 96
+text = "Settings"
+horizontal_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SoundLabel" type="Label" parent="Settings"]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 444.0
+offset_right = 537.0
+offset_bottom = 508.0
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_uc2tp")
+theme_override_font_sizes/font_size = 64
+text = "sound"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="SoundSlider" type="TextureRect" parent="Settings"]
+layout_mode = 0
+offset_left = 628.0
+offset_top = 402.0
+offset_right = 1618.0
+offset_bottom = 551.0
+size_flags_horizontal = 3
+texture = ExtResource("4_qp6fb")
+
+[node name="FillBar" type="TextureRect" parent="Settings/SoundSlider"]
+material = SubResource("ShaderMaterial_87awh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_2nypq")
-stretch_mode = 2
-metadata/_edit_use_anchors_ = true
+texture = SubResource("AtlasTexture_87awh")
 
-[node name="StartButton" type="TextureButton" parent="."]
-material = SubResource("ShaderMaterial_7la6k")
+[node name="Slider" type="HSlider" parent="Settings/SoundSlider"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2734375
-anchor_top = 0.53981483
-anchor_right = 0.475
-anchor_bottom = 0.71666664
+anchor_left = 0.017171716
+anchor_right = 0.9727273
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("3_ucygd")
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = SubResource("AtlasTexture_w5f6b")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_w5f6b")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_w5f6b")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_87awh")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_x85fr")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_a08a3")
+value = 100.0
 
-[node name="InfiniteMode" type="TextureButton" parent="."]
-material = SubResource("ShaderMaterial_5faoh")
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.28125
-anchor_top = 0.7574074
-anchor_right = 0.503125
-anchor_bottom = 0.9574074
-texture_normal = ExtResource("3_2wh52")
-metadata/_edit_use_anchors_ = true
+[node name="MusicLabel" type="Label" parent="Settings"]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 624.0
+offset_right = 537.0
+offset_bottom = 688.0
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_uc2tp")
+theme_override_font_sizes/font_size = 64
+text = "MUSIC"
+horizontal_alignment = 1
+uppercase = true
 
-[node name="Credits" type="TextureButton" parent="."]
-material = SubResource("ShaderMaterial_tdapf")
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.11666667
-anchor_top = 0.68333334
-anchor_right = 0.28541666
-anchor_bottom = 0.77037036
-texture_normal = ExtResource("6_8a8k8")
-metadata/_edit_use_anchors_ = true
+[node name="MusicSlider" type="TextureRect" parent="Settings"]
+layout_mode = 0
+offset_left = 628.0
+offset_top = 582.0
+offset_right = 1618.0
+offset_bottom = 731.0
+size_flags_horizontal = 3
+texture = ExtResource("4_qp6fb")
 
-[node name="Quit" type="TextureButton" parent="."]
-material = SubResource("ShaderMaterial_1n6yq")
+[node name="FillBar" type="TextureRect" parent="Settings/MusicSlider"]
+material = SubResource("ShaderMaterial_x85fr")
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.12916666
-anchor_top = 0.85925925
-anchor_right = 0.29791668
-anchor_bottom = 0.9398148
-texture_normal = ExtResource("7_7la6k")
-metadata/_edit_use_anchors_ = true
-
-[node name="Pole" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25
-anchor_top = 0.57453704
-anchor_right = 0.321875
-anchor_bottom = 1.0013889
-offset_top = 0.5
-offset_bottom = -0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_7la6k")
-stretch_mode = 2
-metadata/_edit_use_anchors_ = true
+texture = SubResource("AtlasTexture_7akkw")
 
-[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_8a8k8")
-bus = &"Sound"
+[node name="Slider" type="HSlider" parent="Settings/MusicSlider"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017171716
+anchor_right = 0.9727273
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = SubResource("AtlasTexture_w5f6b")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_w5f6b")
+theme_override_icons/grabber_disabled = SubResource("AtlasTexture_w5f6b")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_87awh")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_x85fr")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_a08a3")
+value = 100.0
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="InfiniteMode" to="." method="_on_infinite_mode_pressed"]
-[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Pause/VBoxContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="Pause/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="Pause/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="Settings/SettingsReturn" to="." method="_on_settings_return_pressed"]
+[connection signal="value_changed" from="Settings/SoundSlider/Slider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="value_changed" from="Settings/MusicSlider/Slider" to="." method="_on_music_slider_value_changed"]

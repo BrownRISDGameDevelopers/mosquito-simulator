@@ -104,6 +104,7 @@ autoplay = "blink"
 
 [node name="MinigameBgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ryn2c")
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="body_exited" from="MinigameBounds" to="." method="_on_minigame_bounds_body_exited"]
