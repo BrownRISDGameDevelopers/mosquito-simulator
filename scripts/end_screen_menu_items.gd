@@ -28,3 +28,10 @@ func _on_quit_pressed() -> void:
 	button_click.play()
 	await button_click.finished
 	get_tree().quit()
+
+
+func _on_main_menu_button_mouse_entered() -> void:
+	$MainMenuButton.material.set_shader_parameter("enabled", true)
+
+func _on_main_menu_button_mouse_exited() -> void:
+	$MainMenuButton.material.set_shader_parameter("enabled", false)
