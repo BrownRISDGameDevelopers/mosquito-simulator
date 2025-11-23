@@ -9,6 +9,8 @@ signal sucked_blood
 
 @onready var player = $Player
 @onready var targetable_camera = $Camera3D
+@onready var bgm: AudioStreamPlayer = $Bgm
+@onready var noise: AudioStreamPlayer = $Noise
 
 func _ready():
 	for camper in get_tree().get_nodes_in_group("Campers"):
@@ -34,3 +36,13 @@ func _on_player_change_blood_rate(fast_drain: bool):
 
 func _on_player_sucked_blood():
 	sucked_blood.emit()
+
+func stop_playing_music():
+	if bgm:
+		bgm.stop()
+	noise.stop()
+
+func play_music():
+	if bgm:
+		bgm.play()
+	noise.play()
