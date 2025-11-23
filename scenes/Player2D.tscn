@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqrapnubr13ws"]
+[gd_scene load_steps=5 format=3 uid="uid://dqrapnubr13ws"]
 
 [ext_resource type="Script" uid="uid://dqucnn32ba1gt" path="res://scripts/player_2d.gd" id="1_smyaq"]
 [ext_resource type="Texture2D" uid="uid://812i5rc2n730" path="res://assets/mosquitosprite_top_v2.PNG" id="2_smyaq"]
+[ext_resource type="AudioStream" uid="uid://cfgye3ukxfaxk" path="res://assets/sounds/hit success sfx.wav" id="3_vngwi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smyaq"]
 size = Vector2(200, 200)
@@ -20,3 +21,6 @@ scale = Vector2(3.5, 3.5)
 texture = ExtResource("2_smyaq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="SlapSuccess" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vngwi")

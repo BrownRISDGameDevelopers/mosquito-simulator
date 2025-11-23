@@ -14,7 +14,7 @@ var playing_minigame = false
 const WIN_SCREEN = preload("res://scenes/WinScreen.tscn")
 const LOSE_SCREEN = preload("res://scenes/LoseScreen.tscn")
 
-const MAIN_MAP = preload("res://scenes/Map.tscn")
+const MAIN_MAP = preload("res://scenes/Campgrounds.tscn")
 const TUTORIAL_MAP = preload("res://scenes/TutorialMap.tscn")
 
 const LOAD_SCREEN = preload("res://scenes/Loading.tscn")
