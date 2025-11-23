@@ -3,7 +3,6 @@ extends CharacterBody3D
 class_name Player
 
 signal minigame_toggle(camper)
-signal change_blood_rate(fast_drain: bool)
 signal sucked_blood
 
 const SPRINT_SPEED: float = 4
@@ -14,7 +13,6 @@ const DECELERATION: float = 2
 const MIN_DISTANCE_TO_NPC: float = 0.5
 
 var current_speed: float = 1
-var accelerating: bool = false
 
 var on_camper = false
 var can_attach = true
@@ -84,12 +82,12 @@ func get_nearest_npc():
 func player_movement(delta):
 	# handling sprinting
 	var sprint_req := Input.is_action_pressed("sprint");
-	if sprint_req and not accelerating:
-		accelerating = true
+	if sprint_req and not Global.sprinting:
+		Global.sprinting = true
 		current_speed = SPRINT_SPEED
 
-	elif not sprint_req and accelerating:
-		accelerating = false
+	elif not sprint_req and Global.sprinting:
+		Global.sprinting = false
 		current_speed = NORMAL_SPEED
 	
 	var input_dir := Input.get_vector("left", "right", "up", "down")
