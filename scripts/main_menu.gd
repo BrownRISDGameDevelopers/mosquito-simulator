@@ -3,9 +3,9 @@ extends Control
 const LEVEL_CONTAINER_PATH := "res://scenes/LevelContainer.tscn"
 const CREDITS = preload("res://scenes/Credits.tscn")
 
-const TUTORIAL = "res://scenes/TutorialMap.tscn"
-const MAIN_MAP = "res://scenes/Campgrounds.tscn"
-const INFINITE_MODE = "res://scenes/InfiniteModeMap.tscn"
+const TUTORIAL = preload("res://scenes/TutorialMap.tscn")
+const MAIN_MAP = preload("res://scenes/Campgrounds.tscn")
+const INFINITE_MODE = preload("res://scenes/InfiniteModeMap.tscn")
 
 func _ready() -> void:
 	var buttons: Array[TextureButton] = [$StartButton, $InfiniteMode, $Quit, $Credits]

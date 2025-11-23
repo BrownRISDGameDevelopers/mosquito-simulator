@@ -5,7 +5,7 @@ const LOSE_SCREEN = preload("res://scenes/LoseScreen.tscn")
 
 @onready var minigame = get_parent()
 @onready var level_container = get_node(".")
-@onready var slap_success: AudioStreamPlayer2D = $SlapSuccess
+@onready var slap_success: AudioStreamPlayer = $SlapSuccess
 
 
 func _physics_process(delta):
@@ -27,13 +27,15 @@ func _physics_process(delta):
 	#checking if player is still
 	if (abs(velocity.x) < 0.01 && abs(velocity.y) < 0.01):
 		Global.player_still.emit(true)
+		
 	else:
 		Global.player_still.emit(false)
 
 func get_swatted():
+	print("SlapSuccess exists? ", slap_success)
 	if Global.lives_left > 1:
 		Global.lives_left -= 1
-		slap_success.play()
 	else:
 		print("lost")
 		get_tree().change_scene_to_packed(LOSE_SCREEN)
+	slap_success.play()

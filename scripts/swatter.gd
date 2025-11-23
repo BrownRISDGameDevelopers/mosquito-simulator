@@ -11,7 +11,7 @@ var player_in_hitbox = false
 @export var swatting = false
 @onready var swat_timer = $SwatTimer
 @onready var anim_player = $AnimationPlayer
-
+@onready var slap_fail: AudioStreamPlayer = $SlapFail
 
 func _ready():
 	swat_timer.wait_time = swat_interval
@@ -31,6 +31,8 @@ func _physics_process(delta):
 func swat_player():
 	if player_in_hitbox:
 		player.get_swatted()
+	else:
+		slap_fail.play()
 
 func post_swat():
 	swatting = false
