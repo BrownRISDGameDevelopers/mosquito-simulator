@@ -22,7 +22,10 @@ func set_random_target(range: float = 10.0):
 	# generate random coords in world space
 	var random_x = rng.randf_range(-range, range)
 	var random_z = rng.randf_range(-range, range)
-	var random_position = Vector3(random_x, global_position.y, random_z)
+	var random_position = Vector3(random_x, 0, random_z)
+
+	print(random_position)
+
 	set_target_by_position(random_position)
 
 
@@ -58,6 +61,7 @@ func calm_down():
 	
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
+	await get_tree().physics_frame
 	await get_tree().physics_frame
 
 	# Set initial random target

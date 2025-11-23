@@ -460,27 +460,27 @@ skeleton = NodePath("")
 multimesh = SubResource("MultiMesh_e3n67")
 
 [node name="NPC" parent="." groups=["Campers"] instance=ExtResource("2_fkoim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39647222, 0.25, 0.35441434)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4496965, 0.25, 1.4401555)
 collision_mask = 6
 npc_frames = ExtResource("7_87yg3")
 
 [node name="NPC2" parent="." groups=["Campers"] instance=ExtResource("2_fkoim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11449373, 0.25, -0.44330502)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0982566, 0.25, -3.1044753)
 collision_mask = 6
 npc_frames = ExtResource("11_yqv3m")
 
 [node name="NPC3" parent="." groups=["Campers"] instance=ExtResource("2_fkoim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5703144, 0.25, -0.13847375)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.381361, 0.25, -0.13847375)
 collision_mask = 6
 npc_frames = ExtResource("12_b63aa")
 
 [node name="NPC4" parent="." groups=["Campers"] instance=ExtResource("2_fkoim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31801915, 0.25, -0.27973258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31801915, 0.25, 2.365694)
 collision_mask = 6
 npc_frames = ExtResource("7_87yg3")
 
 [node name="NPC5" parent="." groups=["Campers"] instance=ExtResource("2_fkoim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38939905, 0.25, 0.24770832)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8639667, 0.25, -2.8200183)
 collision_mask = 6
 npc_frames = ExtResource("11_yqv3m")
 
