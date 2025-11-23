@@ -17,6 +17,8 @@ var panic_timer = 0.
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var npc_sprite: AnimatedSprite3D = $NPCSprite
 @export var npc_frames: SpriteFrames
+@onready var run_away: AudioStreamPlayer = $RunAway
+@onready var scream: AudioStreamPlayer = $Scream
 
 func set_random_target(range: float = 10.0):
 	# generate random coords in world space
@@ -54,10 +56,15 @@ func clear_camper_target():
 
 func panic():
 	panicking = true
+	scream.play()
 
 func calm_down():
 	panicking = false
 	set_random_target()
+	run_away.play()
+	var tween = create_tween()
+	tween.tween_interval(3.0)
+	tween.tween_property(run_away, "volume_db", -80, 1.0)
 	
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
