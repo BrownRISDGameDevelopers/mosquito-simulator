@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c20xnrto8bbf"]
+[gd_scene load_steps=12 format=3 uid="uid://c20xnrto8bbf"]
 
 [ext_resource type="Script" uid="uid://3ycpf45ykl2r" path="res://scripts/credits.gd" id="1_hi4w3"]
 [ext_resource type="Texture2D" uid="uid://b2b4pby4grwcf" path="res://assets/ui/credits bg.png" id="2_al82v"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://c7vbvnaiafor2" path="res://assets/fonts/Chaloops Medium.otf" id="3_y8nor"]
 [ext_resource type="FontFile" uid="uid://dnjrrjnmwxpyp" path="res://assets/fonts/Chinchilla Regular.otf" id="4_al82v"]
 [ext_resource type="Texture2D" uid="uid://cold5s8ojcrtu" path="res://assets/ui/Credits X Button.png" id="4_tlwrt"]
+[ext_resource type="AudioStream" uid="uid://cf03erq2loq1o" path="res://assets/sounds/menu click sfx.wav" id="7_g618n"]
 
 [sub_resource type="Shader" id="Shader_tlwrt"]
 code = "shader_type canvas_item;
@@ -335,6 +336,9 @@ GRACE YANG"
 horizontal_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_g618n")
 
 [connection signal="mouse_entered" from="Return" to="." method="_on_return_mouse_entered"]
 [connection signal="mouse_exited" from="Return" to="." method="_on_return_mouse_exited"]

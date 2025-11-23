@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://21duxb65jl10"]
+[gd_scene load_steps=14 format=3 uid="uid://21duxb65jl10"]
 
 [ext_resource type="Script" uid="uid://bbwtfw2j6qh7v" path="res://scripts/swat_minigame.gd" id="1_vn5tw"]
 [ext_resource type="PackedScene" uid="uid://dqrapnubr13ws" path="res://scenes/Player2D.tscn" id="1_xre7j"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cmbjd2lukby5b" path="res://scenes/Swatter.tscn" id="4_y7wqd"]
 [ext_resource type="Texture2D" uid="uid://crfqdmpf5diq1" path="res://assets/minigame/cow back.png" id="4_yq4fx"]
 [ext_resource type="Texture2D" uid="uid://m6e5o8are3tt" path="res://assets/ui/danger.png" id="7_b73rt"]
+[ext_resource type="AudioStream" uid="uid://dntcjm2vyns2o" path="res://assets/sounds/music/Mosquito Menace _The Only Thing They Are Annoyed By Is You_.mp3" id="8_ryn2c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86fu8"]
 size = Vector2(944, 2749)
@@ -100,6 +101,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_52mr7")
 }
 autoplay = "blink"
+
+[node name="MinigameBgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ryn2c")
+parameters/looping = true
 
 [connection signal="body_exited" from="MinigameBounds" to="." method="_on_minigame_bounds_body_exited"]
 [connection signal="body_entered" from="WarningBounds" to="." method="_on_warning_bounds_body_entered"]

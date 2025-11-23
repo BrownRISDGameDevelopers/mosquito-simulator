@@ -8,6 +8,7 @@ signal exited_bounds
 @export var in_tutorial = true
 @onready var hand: Sprite2D = $Hand
 @onready var cow: Sprite2D = $Cow
+@onready var minigame_bgm: AudioStreamPlayer = $MinigameBgm
 
 var blood_bar
 
@@ -78,3 +79,10 @@ func _on_warning_bounds_body_exited(body: Node2D):
 
 func _on_warning_bounds_body_entered(body: Node2D):
 	$Player2D/Danger.visible = false
+
+
+func play_music():
+	minigame_bgm.play()
+
+func stop_music():
+	minigame_bgm.stop()

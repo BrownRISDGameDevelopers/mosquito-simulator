@@ -62,7 +62,7 @@ buffer = PackedFloat32Array(0.24794604, 0.15826696, -0.4521425, 1.6340599, 0.026
 [node name="TutorialMap" type="Node3D"]
 script = ExtResource("1_edgwa")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Noise" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_m5fjn")
 autoplay = true
 parameters/looping = true

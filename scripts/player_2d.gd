@@ -6,6 +6,7 @@ const LOSE_SCREEN = preload("res://scenes/LoseScreen.tscn")
 @onready var minigame = get_parent()
 @onready var level_container = get_node(".")
 @onready var slap_success: AudioStreamPlayer = $SlapSuccess
+@onready var suck_blood: AudioStreamPlayer = $SuckBlood
 
 
 func _physics_process(delta):

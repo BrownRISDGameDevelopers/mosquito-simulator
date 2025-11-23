@@ -26,6 +26,7 @@ func loading_finished():
 	loading_complete.emit()
 
 	# change to main level
+	Global.in_tutorial = false
 	Global.starting_level = MAIN_MAP
 	get_tree().change_scene_to_file(LEVEL_CONTAINER)
 	

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk0d45kifysp7"]
+[gd_scene load_steps=3 format=3 uid="uid://dk0d45kifysp7"]
 
 [ext_resource type="Script" uid="uid://deluu8vx73kr7" path="res://scripts/end_screen_menu_items.gd" id="1_5wjmo"]
+[ext_resource type="AudioStream" uid="uid://cf03erq2loq1o" path="res://assets/sounds/menu click sfx.wav" id="2_ubx66"]
 
 [node name="EndScreenMenuItems" type="Control"]
 layout_mode = 3
@@ -44,6 +45,9 @@ text = "Exit to Main Menu"
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Exit Game"
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ubx66")
 
 [connection signal="pressed" from="VBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
