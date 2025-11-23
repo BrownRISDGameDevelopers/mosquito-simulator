@@ -1,7 +1,7 @@
 [gd_scene load_steps=46 format=4 uid="uid://chogavn7l2yj6"]
 
 [ext_resource type="Script" uid="uid://b758chpqi1w0e" path="res://scripts/map.gd" id="1_bl1rg"]
-[ext_resource type="PackedScene" uid="uid://cswtp6tsbc1su" path="res://scenes/CampgroundTileMap.tscn" id="2_0cvu2"]
+[ext_resource type="PackedScene" path="res://scenes/CampgroundTileMap.tscn" id="2_0cvu2"]
 [ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="2_fkoim"]
 [ext_resource type="PackedScene" uid="uid://bh26dknmrfir1" path="res://scenes/Player.tscn" id="3_0cvu2"]
 [ext_resource type="PackedScene" uid="uid://cymhomd4q4qen" path="res://scenes/TutorialTileMap.tscn" id="3_e3n67"]
@@ -14,7 +14,8 @@
 [ext_resource type="SpriteFrames" uid="uid://c6urn180mjqrl" path="res://resources/summer_npc3.tres" id="12_b63aa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fkoim"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_top_color = Color(0.57368803, 0.8498985, 0.99328977, 1)
+sky_horizon_color = Color(0.7745508, 0.64616066, 0.4765162, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
 [sub_resource type="Sky" id="Sky_7ho5x"]
@@ -23,6 +24,8 @@ sky_material = SubResource("ProceduralSkyMaterial_fkoim")
 [sub_resource type="Environment" id="Environment_0cvu2"]
 background_mode = 2
 sky = SubResource("Sky_7ho5x")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 glow_enabled = true
 
@@ -305,8 +308,6 @@ size = Vector2i(15000, 15000)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0cvu2")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_41ykk")
 
@@ -487,5 +488,10 @@ npc_frames = ExtResource("11_yqv3m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015509725, 0.25, 0.5063307)
 collision_mask = 6
 npc_frames = ExtResource("12_b63aa")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.62570566, 0.7800592, 0, -0.7800592, 0.62570566, 0, 12.9268, 12.664455)
+light_color = Color(0.74978, 0.74978, 0.74977994, 1)
+shadow_enabled = true
 
 [connection signal="minigame_toggle" from="Player" to="." method="_on_player_minigame_toggle"]
