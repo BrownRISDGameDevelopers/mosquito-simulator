@@ -95,7 +95,7 @@ func toggle_minigame(minigame_state):
 	if playing_minigame:
 		minigame_viewport.process_mode = Node.PROCESS_MODE_PAUSABLE
 		$MapViewport.scale = Vector2(0.25, 0.25)
-		if in_tutorial: 
+		if in_tutorial:
 			minigame.show_cow()
 			tutorial_instructions.show_minigame_instructions()
 		else:
@@ -103,7 +103,7 @@ func toggle_minigame(minigame_state):
 	if not playing_minigame:
 		minigame_viewport.process_mode = Node.PROCESS_MODE_DISABLED
 		$MapViewport.scale = Vector2.ONE
-		if in_tutorial: 
+		if in_tutorial:
 			minigame.in_tutorial = false
 			tutorial_instructions.show_movement_instructions()
 
