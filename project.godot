@@ -82,7 +82,7 @@ devskip={
 
 [physics]
 
-common/physics_ticks_per_second=120
+common/canvas_textures/default_texture_filter=1
 
 [rendering]
 
