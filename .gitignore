@@ -17,3 +17,6 @@ mono_crash.*.json
 
 # VScode
 .vscode/
+
+# build
+build/
