@@ -81,6 +81,7 @@ func _on_quit_pressed() -> void:
 
 
 func _on_infinite_mode_button_pressed() -> void:
+	Global.in_tutorial = false
 	button_click.play()
 	await button_click.finished
 	pass # Replace with function body.

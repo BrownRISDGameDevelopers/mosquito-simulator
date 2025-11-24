@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=35 format=3 uid="uid://fgajbjdxxwcc"]
+[gd_resource type="SpriteFrames" load_steps=35 format=3 uid="uid://28pi6mthg8s3"]
 
 [ext_resource type="Texture2D" uid="uid://bdtos86q87pgi" path="res://assets/npc/post bite 2- swamp .png" id="1_wgj0h"]
 [ext_resource type="Texture2D" uid="uid://ckpgmju0op35c" path="res://assets/npc/Normal 2-Swamp.png" id="2_siljt"]

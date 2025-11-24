@@ -25,7 +25,6 @@ npc_frames = SubResource("Resource_ktgr7")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 simplify_path = true
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_6xvi5")
