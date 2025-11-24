@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm41lsvfnra0d"
 path.s3tc="res://.godot/imported/mosquitosprite_front_v1.PNG-eb0789e98756e43c18c9d6c706eb99f2.s3tc.ctex"
+path.etc2="res://.godot/imported/mosquitosprite_front_v1.PNG-eb0789e98756e43c18c9d6c706eb99f2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/mosquitosprite_front_v1.PNG"
-dest_files=["res://.godot/imported/mosquitosprite_front_v1.PNG-eb0789e98756e43c18c9d6c706eb99f2.s3tc.ctex"]
+dest_files=["res://.godot/imported/mosquitosprite_front_v1.PNG-eb0789e98756e43c18c9d6c706eb99f2.s3tc.ctex", "res://.godot/imported/mosquitosprite_front_v1.PNG-eb0789e98756e43c18c9d6c706eb99f2.etc2.ctex"]
 
 [params]
 

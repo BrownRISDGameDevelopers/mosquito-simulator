@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4it0sg7nup57"
 path.s3tc="res://.godot/imported/log_BaseColor.png-efb1d69e45e21f1bbe3b9d08b6218abf.s3tc.ctex"
+path.etc2="res://.godot/imported/log_BaseColor.png-efb1d69e45e21f1bbe3b9d08b6218abf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/swamp/log_BaseColor.png"
-dest_files=["res://.godot/imported/log_BaseColor.png-efb1d69e45e21f1bbe3b9d08b6218abf.s3tc.ctex"]
+dest_files=["res://.godot/imported/log_BaseColor.png-efb1d69e45e21f1bbe3b9d08b6218abf.s3tc.ctex", "res://.godot/imported/log_BaseColor.png-efb1d69e45e21f1bbe3b9d08b6218abf.etc2.ctex"]
 
 [params]
 

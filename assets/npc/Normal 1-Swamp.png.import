@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://begd1dfw4q3w6"
 path.s3tc="res://.godot/imported/Normal 1-Swamp.png-83b29326e57c0866b52ddbe5bcc76f7f.s3tc.ctex"
+path.etc2="res://.godot/imported/Normal 1-Swamp.png-83b29326e57c0866b52ddbe5bcc76f7f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/npc/Normal 1-Swamp.png"
-dest_files=["res://.godot/imported/Normal 1-Swamp.png-83b29326e57c0866b52ddbe5bcc76f7f.s3tc.ctex"]
+dest_files=["res://.godot/imported/Normal 1-Swamp.png-83b29326e57c0866b52ddbe5bcc76f7f.s3tc.ctex", "res://.godot/imported/Normal 1-Swamp.png-83b29326e57c0866b52ddbe5bcc76f7f.etc2.ctex"]
 
 [params]
 

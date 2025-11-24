@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbt3ooomgplab"
 path.s3tc="res://.godot/imported/Normal 2.png-e4da9b8e39197ce37dd3418eba35f921.s3tc.ctex"
+path.etc2="res://.godot/imported/Normal 2.png-e4da9b8e39197ce37dd3418eba35f921.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/npc/Normal 2.png"
-dest_files=["res://.godot/imported/Normal 2.png-e4da9b8e39197ce37dd3418eba35f921.s3tc.ctex"]
+dest_files=["res://.godot/imported/Normal 2.png-e4da9b8e39197ce37dd3418eba35f921.s3tc.ctex", "res://.godot/imported/Normal 2.png-e4da9b8e39197ce37dd3418eba35f921.etc2.ctex"]
 
 [params]
 

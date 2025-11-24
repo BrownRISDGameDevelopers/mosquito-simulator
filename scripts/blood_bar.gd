@@ -66,7 +66,6 @@ func _start_minigame():
 
 #when the player is staying still
 func _on_player_still(standing_still: bool):
-	print("start")
 
 	if (minigame_active and standing_still):
 		blood_sucked += BLOOD_SUCK_RATE

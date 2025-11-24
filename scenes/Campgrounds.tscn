@@ -1,7 +1,7 @@
 [gd_scene load_steps=58 format=4 uid="uid://chogavn7l2yj6"]
 
 [ext_resource type="Script" uid="uid://b758chpqi1w0e" path="res://scripts/map.gd" id="1_bl1rg"]
-[ext_resource type="PackedScene" path="res://scenes/CampgroundTileMap.tscn" id="2_0cvu2"]
+[ext_resource type="PackedScene" uid="uid://dngbvek5t101h" path="res://scenes/CampgroundTileMap.tscn" id="2_0cvu2"]
 [ext_resource type="PackedScene" uid="uid://1ayg4tlicupc" path="res://scenes/NPC.tscn" id="2_fkoim"]
 [ext_resource type="PackedScene" uid="uid://bh26dknmrfir1" path="res://scenes/Player.tscn" id="3_0cvu2"]
 [ext_resource type="PackedScene" uid="uid://cymhomd4q4qen" path="res://scenes/TutorialTileMap.tscn" id="3_e3n67"]
@@ -622,3 +622,4 @@ bus = &"Sound"
 parameters/looping = true
 
 [connection signal="minigame_toggle" from="Player" to="." method="_on_player_minigame_toggle"]
+[connection signal="sucked_blood" from="Player" to="." method="_on_player_sucked_blood"]

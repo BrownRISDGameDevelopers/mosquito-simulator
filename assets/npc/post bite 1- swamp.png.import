@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0j65m1iil4bc"
 path.s3tc="res://.godot/imported/post bite 1- swamp.png-791fa3bbda0516de1874c24107b40df5.s3tc.ctex"
+path.etc2="res://.godot/imported/post bite 1- swamp.png-791fa3bbda0516de1874c24107b40df5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/npc/post bite 1- swamp.png"
-dest_files=["res://.godot/imported/post bite 1- swamp.png-791fa3bbda0516de1874c24107b40df5.s3tc.ctex"]
+dest_files=["res://.godot/imported/post bite 1- swamp.png-791fa3bbda0516de1874c24107b40df5.s3tc.ctex", "res://.godot/imported/post bite 1- swamp.png-791fa3bbda0516de1874c24107b40df5.etc2.ctex"]
 
 [params]
 

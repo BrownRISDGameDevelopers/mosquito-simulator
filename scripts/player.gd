@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 class_name Player
 
-signal minigame_toggle(camper)
 signal sucked_blood
 
 const SPRINT_SPEED: float = 4
@@ -52,7 +51,8 @@ func _physics_process(delta: float) -> void:
 		closest_camper.prompt.visible = true
 	
 	if Input.is_action_just_pressed("suck") and closest_camper and not on_camper:
-		minigame_toggle.emit(closest_camper)
+		print("suck")
+		Global.minigame_toggle.emit(closest_camper)
 		on_camper = true
 		can_attach = false
 		current_camper = closest_camper

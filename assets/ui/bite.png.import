@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5b5uy8cwmfoj"
 path.s3tc="res://.godot/imported/bite.png-5247f8e2eef0b2a2997a4e5b3497c890.s3tc.ctex"
+path.etc2="res://.godot/imported/bite.png-5247f8e2eef0b2a2997a4e5b3497c890.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/ui/bite.png"
-dest_files=["res://.godot/imported/bite.png-5247f8e2eef0b2a2997a4e5b3497c890.s3tc.ctex"]
+dest_files=["res://.godot/imported/bite.png-5247f8e2eef0b2a2997a4e5b3497c890.s3tc.ctex", "res://.godot/imported/bite.png-5247f8e2eef0b2a2997a4e5b3497c890.etc2.ctex"]
 
 [params]
 

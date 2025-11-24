@@ -82,7 +82,7 @@ func set_level(map) -> void:
 
 	if Global.current_level == "infinite":
 		for i in range(3):
-			var new_npc = map_3d.add_swamp_npc()
+			var new_npc = Global.add_swamp_npc()
 			start_times[new_npc] = curr_time
 
 	# connect signals only if the instance provides them
@@ -92,11 +92,7 @@ func set_level(map) -> void:
 		push_warning("map instance missing signal: add_swatter_to_minigame")
 		pass
 
-	if level_instance.has_signal("minigame_toggle"):
-		map_3d.minigame_toggle.connect(on_map_3d_minigame_toggle)
-	else:
-		push_warning("map instance missing signal: minigame_toggle")
-		pass
+	Global.minigame_toggle.connect(on_map_3d_minigame_toggle)
 
 	npcs = get_tree().get_nodes_in_group("npcs")
 	print(npcs)
@@ -141,7 +137,7 @@ func _process(delta) -> void:
 
 			for i in range(to_spawn):
 				print("spawning npc. now at ", start_times.size() + 1)
-				var new_npc = map_3d.add_swamp_npc()
+				var new_npc = Global.add_swamp_npc()
 				start_times[new_npc] = curr_time
 			last_spawn = curr_time
 
@@ -188,7 +184,8 @@ func handle_lose():
 		get_tree().change_scene_to_packed(LOSE_SCREEN) # display lose screen
 			
 
-func on_map_3d_minigame_toggle():
+func on_map_3d_minigame_toggle(_camper):
+	print('minigame_toggle')
 	Global.start_minigame.emit()
 	toggle_minigame(true)
 	minigame.blood_bar = $BloodBar

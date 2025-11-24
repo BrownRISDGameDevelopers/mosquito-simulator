@@ -305,3 +305,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.8715334)
 multimesh = SubResource("MultiMesh_3f0kq")
 
 [connection signal="minigame_toggle" from="Player" to="." method="_on_player_minigame_toggle"]
+[connection signal="sucked_blood" from="Player" to="." method="_on_player_sucked_blood"]

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2hbblvxaxtp0"
 path.s3tc="res://.godot/imported/Campground Tile Blank.jpg-fcd0b89a081a1df0a06fce48184e0dc0.s3tc.ctex"
+path.etc2="res://.godot/imported/Campground Tile Blank.jpg-fcd0b89a081a1df0a06fce48184e0dc0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Campground Tile Blank.jpg"
-dest_files=["res://.godot/imported/Campground Tile Blank.jpg-fcd0b89a081a1df0a06fce48184e0dc0.s3tc.ctex"]
+dest_files=["res://.godot/imported/Campground Tile Blank.jpg-fcd0b89a081a1df0a06fce48184e0dc0.s3tc.ctex", "res://.godot/imported/Campground Tile Blank.jpg-fcd0b89a081a1df0a06fce48184e0dc0.etc2.ctex"]
 
 [params]
 
