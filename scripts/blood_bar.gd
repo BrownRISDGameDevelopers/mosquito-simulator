@@ -22,7 +22,7 @@ const THRESHOLD = 0.01
 
 @onready var blood_sucked = 0
 const BLOOD_BOOST = 20; # amount of blood added to the timer upon successful minigame completion
-const BLOOD_SUCK_RATE = .1; # how much blood is sucked per second
+const BLOOD_SUCK_RATE = .3; # how much blood is sucked per second
 
 @onready var progress_bar = $ProgessBar
 

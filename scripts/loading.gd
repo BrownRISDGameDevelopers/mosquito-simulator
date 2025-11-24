@@ -10,7 +10,7 @@ signal loading_complete
 @onready var loadingLabel: Label = $LoadingLabel
 
 const AMP = 60
-#const LOADING_TIME = 15
+# const LOADING_TIME = 15
 const LOADING_TIME = 5
 const STARTING_Y = 540.0
 const END_X = 4519.0

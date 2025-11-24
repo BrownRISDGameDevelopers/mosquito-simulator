@@ -73,9 +73,11 @@ func _on_player_sucked_blood():
 func stop_playing_music():
 	if bgm:
 		bgm.stop()
-	noise.stop()
+	if noise:
+		noise.stop()
 
 func play_music():
 	if bgm:
 		bgm.play()
-	noise.play()
+	if noise:
+		noise.play()

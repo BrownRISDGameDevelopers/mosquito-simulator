@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://21duxb65jl10"]
+[gd_scene load_steps=16 format=3 uid="uid://21duxb65jl10"]
 
 [ext_resource type="Script" uid="uid://bbwtfw2j6qh7v" path="res://scripts/swat_minigame.gd" id="1_vn5tw"]
 [ext_resource type="PackedScene" uid="uid://dqrapnubr13ws" path="res://scenes/Player2D.tscn" id="1_xre7j"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://crfqdmpf5diq1" path="res://assets/minigame/cow back.png" id="4_yq4fx"]
 [ext_resource type="Texture2D" uid="uid://m6e5o8are3tt" path="res://assets/ui/danger.png" id="7_b73rt"]
 [ext_resource type="AudioStream" uid="uid://dntcjm2vyns2o" path="res://assets/sounds/music/Mosquito Menace _The Only Thing They Are Annoyed By Is You_.mp3" id="8_ryn2c"]
+[ext_resource type="AudioStream" uid="uid://c0uiqapock51a" path="res://assets/sounds/ow sfx1.wav" id="9_dfc2h"]
+[ext_resource type="AudioStream" uid="uid://bf7dq5ckyr41c" path="res://assets/sounds/ow sfx2.wav" id="10_ahff5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86fu8"]
 size = Vector2(944, 2749)
@@ -55,6 +57,7 @@ _data = {
 [node name="SwatMinigame" type="Node2D"]
 script = ExtResource("1_vn5tw")
 swatter_scene = ExtResource("4_y7wqd")
+audios = Array[AudioStreamWAV]([ExtResource("9_dfc2h"), ExtResource("10_ahff5")])
 
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(-55.99997, -59.99994)
@@ -106,6 +109,10 @@ autoplay = "blink"
 stream = ExtResource("8_ryn2c")
 bus = &"Music"
 parameters/looping = true
+
+[node name="Ouch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_dfc2h")
+bus = &"Sound"
 
 [connection signal="body_exited" from="MinigameBounds" to="." method="_on_minigame_bounds_body_exited"]
 [connection signal="body_entered" from="WarningBounds" to="." method="_on_warning_bounds_body_entered"]
