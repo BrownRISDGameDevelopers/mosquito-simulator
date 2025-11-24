@@ -10,6 +10,9 @@ signal exited_bounds
 @onready var cow: Sprite2D = $Cow
 @onready var minigame_bgm: AudioStreamPlayer = $MinigameBgm
 
+@export var audios: Array[AudioStreamWAV] = []
+@onready var ouch_sound = $Ouch
+
 var blood_bar
 
 var extra_swatters = []
@@ -22,6 +25,8 @@ func _ready():
 func _on_completion():
 	print('done!')
 	Global.successful_bite.emit()
+	ouch_sound.stream = audios[randi() % audios.size()]
+	ouch_sound.play()
 	exited_bounds.emit()
 
 func _on_minigame_bounds_body_exited(body: Node2D):
