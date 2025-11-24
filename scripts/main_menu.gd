@@ -64,6 +64,7 @@ func _on_infinite_mode_pressed() -> void:
 	Global.current_level = "infinite"
 	
 	button_click.play()
+	Global.in_tutorial = false
 	
 	var packed = load(LEVEL_CONTAINER_PATH)
 	if packed == null:
@@ -81,7 +82,6 @@ func _on_quit_pressed() -> void:
 
 
 func _on_infinite_mode_button_pressed() -> void:
-	Global.in_tutorial = false
 	button_click.play()
 	await button_click.finished
 	pass # Replace with function body.

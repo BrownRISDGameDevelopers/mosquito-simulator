@@ -82,6 +82,7 @@ size_flags_horizontal = 3
 texture = ExtResource("4_wm43x")
 
 [node name="TutorialInstructions" parent="." instance=ExtResource("5_wm43x")]
+visible = false
 layout_mode = 1
 
 [node name="Pause" parent="." instance=ExtResource("6_4v4af")]
